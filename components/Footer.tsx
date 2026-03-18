@@ -1,56 +1,13 @@
 "use client"
 
-interface FooterProps {
-  lang: "nl" | "en"
-}
+import { copy, type Lang } from "@/lib/i18n"
 
-const copy = {
-  nl: {
-    columns: [
-      {
-        title: "Diensten",
-        links: ["Software op maat", "Marketing & groei", "Websites", "Social recruitment"],
-      },
-      {
-        title: "Bedrijf",
-        links: ["Over ons", "Werkwijze", "Resultaten", "Contact"],
-      },
-      {
-        title: "Informatie",
-        links: ["Privacybeleid", "Algemene voorwaarden", "Cookie-instellingen"],
-      },
-    ],
-    contact: {
-      title: "Contact",
-      address: "Keizersgracht 520\n1017 EK Amsterdam",
-      email: "info@groupany.nl",
-    },
-  },
-  en: {
-    columns: [
-      {
-        title: "Services",
-        links: ["Custom software", "Marketing & growth", "Websites", "Social recruitment"],
-      },
-      {
-        title: "Company",
-        links: ["About us", "Process", "Results", "Contact"],
-      },
-      {
-        title: "Information",
-        links: ["Privacy policy", "Terms & conditions", "Cookie settings"],
-      },
-    ],
-    contact: {
-      title: "Contact",
-      address: "Keizersgracht 520\n1017 EK Amsterdam",
-      email: "info@groupany.nl",
-    },
-  },
+interface FooterProps {
+  lang: Lang
 }
 
 export default function Footer({ lang }: FooterProps) {
-  const t = copy[lang]
+  const t = copy.footer[lang]
 
   return (
     <footer
@@ -61,11 +18,10 @@ export default function Footer({ lang }: FooterProps) {
       }}
     >
       <div className="container">
-        {/* Columns */}
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "2fr 1fr 1fr 1.2fr",
+            gridTemplateColumns: "2fr 1fr 1fr 1fr",
             gap: 48,
             marginBottom: 56,
           }}
@@ -76,7 +32,7 @@ export default function Footer({ lang }: FooterProps) {
               style={{
                 fontSize: 20,
                 fontWeight: 700,
-                letterSpacing: "-0.02em",
+                letterSpacing: "-0.03em",
                 marginBottom: 12,
               }}
             >
@@ -90,9 +46,7 @@ export default function Footer({ lang }: FooterProps) {
                 maxWidth: 280,
               }}
             >
-              {lang === "nl"
-                ? "Uw digitale team. Software, marketing en websites \u2014 gebouwd door AI-specialisten."
-                : "Your digital team. Software, marketing and websites \u2014 built by AI specialists."}
+              {t.tagline}
             </p>
           </div>
 
@@ -114,17 +68,21 @@ export default function Footer({ lang }: FooterProps) {
               <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                 {col.links.map((link) => (
                   <a
-                    key={link}
-                    href="#"
+                    key={link.label}
+                    href={link.href}
                     style={{
                       fontSize: 14,
                       color: "var(--color-text-secondary)",
                       transition: "color 200ms",
                     }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-text)")}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-text-secondary)")}
+                    onMouseEnter={(e) =>
+                      (e.currentTarget.style.color = "var(--color-text)")
+                    }
+                    onMouseLeave={(e) =>
+                      (e.currentTarget.style.color = "var(--color-text-secondary)")
+                    }
                   >
-                    {link}
+                    {link.label}
                   </a>
                 ))}
               </div>

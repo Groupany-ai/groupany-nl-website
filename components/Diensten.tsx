@@ -1,82 +1,20 @@
 "use client"
 
 import ScrollReveal from "./ScrollReveal"
+import { copy, type Lang } from "@/lib/i18n"
 
 interface DienstenProps {
-  lang: "nl" | "en"
-}
-
-const copy = {
-  nl: {
-    label: "DIENSTEN",
-    headline: "Wat we voor u doen",
-    services: [
-      {
-        icon: "\u2699\ufe0f",
-        title: "Software op maat",
-        desc: "Van idee tot werkende applicatie in weken, niet maanden. Web apps, koppelingen en automatiseringen die uw bedrijf sneller maken.",
-        link: "Meer info \u2192",
-      },
-      {
-        icon: "\ud83d\udcc8",
-        title: "Marketing & groei",
-        desc: "Meer leads, meer klanten, meer omzet. Google Ads, SEO en social media \u2014 meetbaar en transparant.",
-        link: "Meer info \u2192",
-      },
-      {
-        icon: "\ud83c\udf10",
-        title: "Websites",
-        desc: "Professionele websites die presteren. Snel, veilig, en gebouwd om te converteren. Opgeleverd in 3 weken.",
-        link: "Meer info \u2192",
-      },
-      {
-        icon: "\ud83d\udc65",
-        title: "Social recruitment",
-        desc: "Vind de juiste kandidaten via sociale kanalen. Zonder bureau-fees. Effectief en betaalbaar.",
-        link: "Meer info \u2192",
-      },
-    ],
-  },
-  en: {
-    label: "SERVICES",
-    headline: "What we do for you",
-    services: [
-      {
-        icon: "\u2699\ufe0f",
-        title: "Custom software",
-        desc: "From idea to working application in weeks, not months. Web apps, integrations and automations that accelerate your business.",
-        link: "Learn more \u2192",
-      },
-      {
-        icon: "\ud83d\udcc8",
-        title: "Marketing & growth",
-        desc: "More leads, more customers, more revenue. Google Ads, SEO and social media \u2014 measurable and transparent.",
-        link: "Learn more \u2192",
-      },
-      {
-        icon: "\ud83c\udf10",
-        title: "Websites",
-        desc: "Professional websites that perform. Fast, secure, and built to convert. Delivered in 3 weeks.",
-        link: "Learn more \u2192",
-      },
-      {
-        icon: "\ud83d\udc65",
-        title: "Social recruitment",
-        desc: "Find the right candidates through social channels. Without agency fees. Effective and affordable.",
-        link: "Learn more \u2192",
-      },
-    ],
-  },
+  lang: Lang
 }
 
 export default function Diensten({ lang }: DienstenProps) {
-  const t = copy[lang]
+  const t = copy.diensten[lang]
 
   return (
     <section
       id="diensten"
       className="section-pad"
-      style={{ background: "var(--color-bg-white)" }}
+      style={{ background: "var(--color-bg-elevated)" }}
     >
       <div className="container">
         <ScrollReveal>
@@ -89,10 +27,21 @@ export default function Diensten({ lang }: DienstenProps) {
               style={{
                 fontSize: "clamp(32px, 4.5vw, 48px)",
                 color: "var(--color-text)",
+                marginBottom: 12,
               }}
             >
               {t.headline}
             </h2>
+            <p
+              style={{
+                fontSize: 17,
+                color: "var(--color-text-secondary)",
+                maxWidth: 500,
+                margin: "0 auto",
+              }}
+            >
+              {t.sub}
+            </p>
           </div>
         </ScrollReveal>
 
@@ -111,25 +60,22 @@ export default function Diensten({ lang }: DienstenProps) {
               >
                 <div
                   style={{
-                    width: 48,
-                    height: 48,
-                    borderRadius: "var(--radius-md)",
-                    background: "var(--color-bg)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: 22,
-                    marginBottom: 20,
+                    fontSize: 13,
+                    fontWeight: 700,
+                    color: "var(--color-accent)",
+                    letterSpacing: "0.02em",
+                    marginBottom: 16,
                   }}
                 >
-                  {s.icon}
+                  {s.num}
                 </div>
                 <h3
                   style={{
                     fontSize: 20,
                     fontWeight: 700,
-                    marginBottom: 8,
+                    marginBottom: 10,
                     letterSpacing: "-0.01em",
+                    color: "var(--color-text)",
                   }}
                 >
                   {s.title}
@@ -145,15 +91,24 @@ export default function Diensten({ lang }: DienstenProps) {
                 >
                   {s.desc}
                 </p>
-                <span
-                  style={{
-                    fontSize: 14,
-                    fontWeight: 600,
-                    color: "var(--color-primary)",
-                  }}
-                >
-                  {s.link}
-                </span>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                  {s.deliverables.map((d) => (
+                    <span
+                      key={d}
+                      style={{
+                        padding: "4px 12px",
+                        borderRadius: 999,
+                        fontSize: 12,
+                        fontWeight: 500,
+                        background: "var(--color-bg-alt)",
+                        color: "var(--color-text-secondary)",
+                        border: "1px solid var(--color-border-subtle)",
+                      }}
+                    >
+                      {d}
+                    </span>
+                  ))}
+                </div>
               </div>
             </ScrollReveal>
           ))}

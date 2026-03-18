@@ -1,50 +1,21 @@
 "use client"
 
 import ScrollReveal from "./ScrollReveal"
+import { copy, type Lang } from "@/lib/i18n"
 
 interface ResultatenProps {
-  lang: "nl" | "en"
-}
-
-const copy = {
-  nl: {
-    label: "RESULTATEN",
-    headline: "Resultaten die spreken",
-    metrics: [
-      { value: "< 4 uur", label: "Reactietijd", color: "var(--color-primary)" },
-      { value: "3x", label: "Sneller dan traditioneel", color: "var(--color-success)" },
-      { value: "24/7", label: "Beschikbaar", color: "var(--color-terracotta)" },
-      { value: "\u20ac50K+", label: "Bespaard per klant per jaar", color: "var(--color-primary)" },
-    ],
-    caseTitle: "Onze eerste klanten ervaren...",
-    caseItems: [
-      "Snellere oplevering dan verwacht",
-      "Directe communicatie zonder tussenpersonen",
-      "Meetbaar resultaat binnen de eerste maand",
-      "Vaste prijzen zonder verrassingen achteraf",
-    ],
-  },
-  en: {
-    label: "RESULTS",
-    headline: "Results that speak for themselves",
-    metrics: [
-      { value: "< 4 hrs", label: "Response time", color: "var(--color-primary)" },
-      { value: "3x", label: "Faster than traditional", color: "var(--color-success)" },
-      { value: "24/7", label: "Available", color: "var(--color-terracotta)" },
-      { value: "\u20ac50K+", label: "Saved per client per year", color: "var(--color-primary)" },
-    ],
-    caseTitle: "Our first clients experience...",
-    caseItems: [
-      "Faster delivery than expected",
-      "Direct communication without intermediaries",
-      "Measurable results within the first month",
-      "Fixed prices without surprises",
-    ],
-  },
+  lang: Lang
 }
 
 export default function Resultaten({ lang }: ResultatenProps) {
-  const t = copy[lang]
+  const t = copy.resultaten[lang]
+
+  const metricColors = [
+    "var(--color-accent)",
+    "var(--color-success)",
+    "var(--color-warm)",
+    "var(--color-accent)",
+  ]
 
   return (
     <section
@@ -70,7 +41,7 @@ export default function Resultaten({ lang }: ResultatenProps) {
           </div>
         </ScrollReveal>
 
-        {/* Metric cards */}
+        {/* Metrics */}
         <div
           style={{
             display: "grid",
@@ -83,7 +54,7 @@ export default function Resultaten({ lang }: ResultatenProps) {
             <ScrollReveal key={i} delay={i * 0.08}>
               <div
                 style={{
-                  background: "var(--color-bg-white)",
+                  background: "var(--color-bg-elevated)",
                   border: "1px solid var(--color-border)",
                   borderRadius: "var(--radius-lg)",
                   padding: "32px 24px",
@@ -91,14 +62,14 @@ export default function Resultaten({ lang }: ResultatenProps) {
                 }}
               >
                 <div
+                  className="serif"
                   style={{
                     fontSize: "clamp(28px, 3.5vw, 40px)",
-                    fontWeight: 700,
-                    color: m.color,
+                    fontWeight: 400,
+                    color: metricColors[i],
                     letterSpacing: "-0.02em",
                     lineHeight: 1.1,
                     marginBottom: 8,
-                    fontFamily: "var(--font-display)",
                   }}
                 >
                   {m.value}
@@ -117,56 +88,103 @@ export default function Resultaten({ lang }: ResultatenProps) {
           ))}
         </div>
 
-        {/* Case study teaser */}
+        {/* Case study */}
         <ScrollReveal>
           <div
             style={{
-              background: "var(--color-bg-white)",
+              background: "var(--color-bg-elevated)",
               border: "1px solid var(--color-border)",
               borderRadius: "var(--radius-xl)",
-              padding: "40px 48px",
-              maxWidth: 680,
+              padding: "clamp(28px, 4vw, 48px)",
+              maxWidth: 800,
               margin: "0 auto",
             }}
           >
+            <span className="section-label" style={{ marginBottom: 16, display: "block" }}>
+              {t.caseLabel}
+            </span>
             <h3
               style={{
-                fontSize: 20,
+                fontSize: "clamp(24px, 3vw, 32px)",
                 fontWeight: 700,
-                marginBottom: 20,
-                color: "var(--color-text)",
+                marginBottom: 4,
+                letterSpacing: "-0.02em",
               }}
             >
               {t.caseTitle}
             </h3>
-            <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 14 }}>
-              {t.caseItems.map((item, i) => (
-                <li
+            <p
+              style={{
+                fontSize: 15,
+                color: "var(--color-text-muted)",
+                marginBottom: 16,
+                fontWeight: 500,
+              }}
+            >
+              {t.caseSub}
+            </p>
+            <p
+              style={{
+                fontSize: 16,
+                lineHeight: 1.7,
+                color: "var(--color-text-secondary)",
+                marginBottom: 28,
+                maxWidth: 640,
+              }}
+            >
+              {t.caseDesc}
+            </p>
+
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(3, 1fr)",
+                gap: 16,
+                marginBottom: 24,
+              }}
+            >
+              {t.caseStats.map((s, i) => (
+                <div
                   key={i}
                   style={{
-                    display: "flex",
-                    alignItems: "flex-start",
-                    gap: 12,
-                    fontSize: 15,
-                    lineHeight: 1.6,
-                    color: "var(--color-text-secondary)",
+                    background: "var(--color-bg-alt)",
+                    borderRadius: "var(--radius-md)",
+                    padding: "16px 20px",
+                    textAlign: "center",
                   }}
                 >
-                  <span
+                  <div
                     style={{
-                      color: "var(--color-success)",
+                      fontSize: 22,
                       fontWeight: 700,
-                      fontSize: 18,
-                      lineHeight: "24px",
-                      flexShrink: 0,
+                      color: "var(--color-text)",
+                      marginBottom: 2,
                     }}
                   >
-                    \u2713
-                  </span>
-                  {item}
-                </li>
+                    {s.value}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: 13,
+                      color: "var(--color-text-muted)",
+                      fontWeight: 500,
+                    }}
+                  >
+                    {s.label}
+                  </div>
+                </div>
               ))}
-            </ul>
+            </div>
+
+            <p
+              style={{
+                fontSize: 14,
+                color: "var(--color-text-muted)",
+                fontStyle: "italic",
+              }}
+            >
+              {t.caseMore}
+            </p>
           </div>
         </ScrollReveal>
       </div>
@@ -181,8 +199,8 @@ export default function Resultaten({ lang }: ResultatenProps) {
           #resultaten [style*="grid-template-columns: repeat(4"] {
             grid-template-columns: 1fr !important;
           }
-          #resultaten [style*="padding: 40px 48px"] {
-            padding: 28px 24px !important;
+          #resultaten [style*="grid-template-columns: repeat(3"] {
+            grid-template-columns: 1fr !important;
           }
         }
       `}</style>

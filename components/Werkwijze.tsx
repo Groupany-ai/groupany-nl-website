@@ -1,64 +1,20 @@
 "use client"
 
 import ScrollReveal from "./ScrollReveal"
+import { copy, type Lang } from "@/lib/i18n"
 
 interface WerkwijzeProps {
-  lang: "nl" | "en"
-}
-
-const copy = {
-  nl: {
-    label: "WERKWIJZE",
-    headline: "Hoe het werkt",
-    steps: [
-      {
-        num: "01",
-        title: "Kennismaking",
-        desc: "We bespreken uw uitdagingen en doelen. Gratis en vrijblijvend. Geen verkooppraatje \u2014 gewoon luisteren naar wat u nodig heeft.",
-      },
-      {
-        num: "02",
-        title: "Uw team aan het werk",
-        desc: "Binnen een week staan uw AI-specialisten klaar. Ze werken, u beoordeelt. Elke week ontvangt u een voortgangsupdate.",
-      },
-      {
-        num: "03",
-        title: "Resultaat & groei",
-        desc: "U ziet concreet resultaat. Wij optimaliseren continu. Na oplevering laten we u niet vallen \u2014 we groeien met u mee.",
-      },
-    ],
-  },
-  en: {
-    label: "PROCESS",
-    headline: "How it works",
-    steps: [
-      {
-        num: "01",
-        title: "Introduction",
-        desc: "We discuss your challenges and goals. Free and without obligation. No sales pitch \u2014 just listening to what you need.",
-      },
-      {
-        num: "02",
-        title: "Your team at work",
-        desc: "Within a week your AI specialists are ready. They work, you review. Every week you receive a progress update.",
-      },
-      {
-        num: "03",
-        title: "Results & growth",
-        desc: "You see concrete results. We optimise continuously. After delivery we don\u2019t leave you \u2014 we grow with you.",
-      },
-    ],
-  },
+  lang: Lang
 }
 
 export default function Werkwijze({ lang }: WerkwijzeProps) {
-  const t = copy[lang]
+  const t = copy.werkwijze[lang]
 
   return (
     <section
       id="werkwijze"
       className="section-pad"
-      style={{ background: "var(--color-bg-white)" }}
+      style={{ background: "var(--color-bg-elevated)" }}
     >
       <div className="container">
         <ScrollReveal>
@@ -78,7 +34,6 @@ export default function Werkwijze({ lang }: WerkwijzeProps) {
           </div>
         </ScrollReveal>
 
-        {/* Timeline */}
         <div style={{ maxWidth: 640, margin: "0 auto" }}>
           {t.steps.map((step, i) => (
             <ScrollReveal key={i} delay={i * 0.1}>
@@ -90,7 +45,7 @@ export default function Werkwijze({ lang }: WerkwijzeProps) {
                   position: "relative",
                 }}
               >
-                {/* Timeline line + dot */}
+                {/* Timeline */}
                 <div
                   style={{
                     display: "flex",
@@ -105,7 +60,7 @@ export default function Werkwijze({ lang }: WerkwijzeProps) {
                       width: 48,
                       height: 48,
                       borderRadius: "50%",
-                      background: i === 0 ? "var(--color-primary)" : "var(--color-bg)",
+                      background: i === 0 ? "var(--color-accent)" : "var(--color-bg-alt)",
                       border: i === 0 ? "none" : "2px solid var(--color-border)",
                       display: "flex",
                       alignItems: "center",

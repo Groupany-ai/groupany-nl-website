@@ -6,20 +6,20 @@ const BASE_URL = "https://groupany.nl"
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Groupany — Uw digitale team. Altijd aan het werk.",
+    default: "Groupany | Uw technologiepartner in Amsterdam",
     template: "%s | Groupany",
   },
   description:
-    "Software, marketing en websites — gebouwd door AI-specialisten die dag en nacht voor u werken. Sneller. Slimmer. Betaalbaarder.",
+    "Websites, software en marketing die echt werken. Vaste prijzen, geen verrassingen. Gevestigd aan de Keizersgracht in Amsterdam.",
   keywords: [
-    "digitaal bureau",
+    "digitaal bureau Amsterdam",
     "software op maat",
     "website laten maken",
     "marketing bureau",
     "social recruitment",
-    "AI bureau Nederland",
     "Groupany",
     "Amsterdam",
+    "MKB",
   ],
   authors: [{ name: "Groupany", url: BASE_URL }],
   creator: "Groupany",
@@ -28,14 +28,14 @@ export const metadata: Metadata = {
     locale: "nl_NL",
     url: BASE_URL,
     siteName: "Groupany",
-    title: "Groupany — Uw digitale team. Altijd aan het werk.",
+    title: "Groupany | Uw technologiepartner in Amsterdam",
     description:
-      "Software, marketing en websites — gebouwd door AI-specialisten die dag en nacht voor u werken.",
+      "Websites, software en marketing die echt werken. Vaste prijzen, geen verrassingen.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Groupany — Uw digitale team",
-    description: "Software, marketing en websites. Sneller. Slimmer. Betaalbaarder.",
+    title: "Groupany | Uw technologiepartner in Amsterdam",
+    description: "Websites, software en marketing die echt werken. Vaste prijzen, geen verrassingen.",
   },
   robots: { index: true, follow: true },
 }
@@ -46,9 +46,23 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="nl">
+    <html lang="nl" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.ico" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('theme');
+                  if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    document.documentElement.classList.add('dark');
+                  }
+                } catch(e) {}
+              })();
+            `,
+          }}
+        />
       </head>
       <body className="antialiased">{children}</body>
     </html>

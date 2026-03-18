@@ -1,72 +1,14 @@
 "use client"
 
 import ScrollReveal from "./ScrollReveal"
+import { copy, type Lang } from "@/lib/i18n"
 
 interface OverOnsProps {
-  lang: "nl" | "en"
-}
-
-const copy = {
-  nl: {
-    label: "OVER ONS",
-    headline: "Technologie met een menselijk gezicht",
-    story:
-      "Bart richtte Groupany op vanuit een eenvoudige overtuiging: technologie moet bedrijven sterker maken, niet ingewikkelder. Door AI-specialisten te combineren met menselijke strategie, levert Groupany resultaat dat traditionele bureaus niet kunnen evenaren \u2014 sneller, transparanter en betaalbaarder.",
-    values: [
-      {
-        title: "Transparantie",
-        desc: "Geen verborgen kosten, geen vage beloftes. U weet altijd waar u aan toe bent.",
-      },
-      {
-        title: "Resultaatgericht",
-        desc: "Wij meten succes in uw groei, niet in gewerkte uren.",
-      },
-      {
-        title: "Innovatief",
-        desc: "Wij blijven vooroplopen met de nieuwste technologie\u00ebn om u een voorsprong te geven.",
-      },
-    ],
-    teamTitle: "Ons team",
-    team: [
-      { name: "Bart", role: "Oprichter", isHuman: true },
-      { name: "Max", role: "AI Chief of Staff", isHuman: false },
-      { name: "Sam", role: "AI CTO", isHuman: false },
-      { name: "Jessica", role: "AI CCO", isHuman: false },
-    ],
-    address: "Keizersgracht 520, 1017 EK Amsterdam",
-  },
-  en: {
-    label: "ABOUT US",
-    headline: "Technology with a human face",
-    story:
-      "Bart founded Groupany from a simple conviction: technology should make businesses stronger, not more complicated. By combining AI specialists with human strategy, Groupany delivers results that traditional agencies cannot match \u2014 faster, more transparent and more affordable.",
-    values: [
-      {
-        title: "Transparency",
-        desc: "No hidden costs, no vague promises. You always know where you stand.",
-      },
-      {
-        title: "Results-driven",
-        desc: "We measure success by your growth, not by hours worked.",
-      },
-      {
-        title: "Innovative",
-        desc: "We stay ahead with the latest technologies to give you a competitive edge.",
-      },
-    ],
-    teamTitle: "Our team",
-    team: [
-      { name: "Bart", role: "Founder", isHuman: true },
-      { name: "Max", role: "AI Chief of Staff", isHuman: false },
-      { name: "Sam", role: "AI CTO", isHuman: false },
-      { name: "Jessica", role: "AI CCO", isHuman: false },
-    ],
-    address: "Keizersgracht 520, 1017 EK Amsterdam",
-  },
+  lang: Lang
 }
 
 export default function OverOns({ lang }: OverOnsProps) {
-  const t = copy[lang]
+  const t = copy.overOns[lang]
 
   return (
     <section
@@ -95,21 +37,50 @@ export default function OverOns({ lang }: OverOnsProps) {
         </ScrollReveal>
 
         <ScrollReveal delay={0.1}>
-          <p
+          <div
             style={{
-              fontSize: "clamp(16px, 1.8vw, 18px)",
-              lineHeight: 1.7,
-              color: "var(--color-text-secondary)",
               maxWidth: 640,
               margin: "0 auto 56px",
               textAlign: "center",
             }}
           >
-            {t.story}
-          </p>
+            <p
+              style={{
+                fontSize: "clamp(16px, 1.8vw, 18px)",
+                lineHeight: 1.7,
+                color: "var(--color-text-secondary)",
+                marginBottom: 16,
+              }}
+            >
+              {t.story}
+            </p>
+            <p
+              style={{
+                fontSize: "clamp(16px, 1.8vw, 18px)",
+                lineHeight: 1.7,
+                color: "var(--color-text-secondary)",
+              }}
+            >
+              {t.story2}
+            </p>
+          </div>
         </ScrollReveal>
 
-        {/* Values */}
+        {/* Differentiators */}
+        <ScrollReveal delay={0.15}>
+          <h3
+            style={{
+              fontSize: 20,
+              fontWeight: 700,
+              textAlign: "center",
+              marginBottom: 24,
+              color: "var(--color-text)",
+            }}
+          >
+            {t.diffTitle}
+          </h3>
+        </ScrollReveal>
+
         <div
           style={{
             display: "grid",
@@ -118,11 +89,11 @@ export default function OverOns({ lang }: OverOnsProps) {
             marginBottom: 64,
           }}
         >
-          {t.values.map((v, i) => (
-            <ScrollReveal key={i} delay={i * 0.08}>
+          {t.diffs.map((d, i) => (
+            <ScrollReveal key={i} delay={i * 0.08 + 0.15}>
               <div
                 style={{
-                  background: "var(--color-bg-white)",
+                  background: "var(--color-bg-elevated)",
                   border: "1px solid var(--color-border)",
                   borderRadius: "var(--radius-lg)",
                   padding: "28px 24px",
@@ -136,7 +107,7 @@ export default function OverOns({ lang }: OverOnsProps) {
                     color: "var(--color-text)",
                   }}
                 >
-                  {v.title}
+                  {d.title}
                 </h4>
                 <p
                   style={{
@@ -145,7 +116,7 @@ export default function OverOns({ lang }: OverOnsProps) {
                     color: "var(--color-text-secondary)",
                   }}
                 >
-                  {v.desc}
+                  {d.desc}
                 </p>
               </div>
             </ScrollReveal>
@@ -190,7 +161,7 @@ export default function OverOns({ lang }: OverOnsProps) {
                         width: 36,
                         height: 36,
                         borderRadius: "50%",
-                        background: m.isHuman ? "var(--color-primary)" : "var(--color-bg-alt)",
+                        background: m.isHuman ? "var(--color-accent)" : "var(--color-bg-alt)",
                         border: m.isHuman ? "none" : "1px solid var(--color-border)",
                         display: "flex",
                         alignItems: "center",
@@ -213,10 +184,10 @@ export default function OverOns({ lang }: OverOnsProps) {
                             marginLeft: 6,
                             padding: "2px 7px",
                             borderRadius: 999,
-                            background: "rgba(37,99,235,0.08)",
+                            background: "var(--color-accent-subtle)",
                             fontSize: 10,
                             fontWeight: 700,
-                            color: "var(--color-primary)",
+                            color: "var(--color-accent)",
                           }}
                         >
                           AI
@@ -234,7 +205,7 @@ export default function OverOns({ lang }: OverOnsProps) {
             {/* Address */}
             <div
               style={{
-                background: "var(--color-bg-white)",
+                background: "var(--color-bg-elevated)",
                 border: "1px solid var(--color-border)",
                 borderRadius: "var(--radius-lg)",
                 padding: 28,
@@ -243,14 +214,37 @@ export default function OverOns({ lang }: OverOnsProps) {
                 justifyContent: "center",
               }}
             >
-              <div style={{ fontSize: 14, color: "var(--color-text-muted)", marginBottom: 8, fontWeight: 500 }}>
+              <div
+                style={{
+                  fontSize: 14,
+                  color: "var(--color-text-muted)",
+                  marginBottom: 8,
+                  fontWeight: 500,
+                }}
+              >
                 {lang === "nl" ? "Adres" : "Address"}
               </div>
               <div style={{ fontSize: 15, fontWeight: 600, lineHeight: 1.6 }}>
                 Groupany B.V.
               </div>
-              <div style={{ fontSize: 15, color: "var(--color-text-secondary)", lineHeight: 1.6 }}>
+              <div
+                style={{
+                  fontSize: 15,
+                  color: "var(--color-text-secondary)",
+                  lineHeight: 1.6,
+                  whiteSpace: "pre-line",
+                }}
+              >
                 {t.address}
+              </div>
+              <div
+                style={{
+                  marginTop: 16,
+                  fontSize: 13,
+                  color: "var(--color-text-muted)",
+                }}
+              >
+                KVK 93.847.291
               </div>
             </div>
           </div>
