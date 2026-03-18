@@ -192,3 +192,312 @@ button { font-family: inherit; cursor: pointer; }
 @media (min-width: 769px) {
   .show-mobile-only { display: none !important; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   HERO SECTION — 2-Column Layout with Grid Background
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.hero-grid-nl {
+  background-image:
+    radial-gradient(circle, rgba(0,0,0,0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+  padding-top: clamp(7rem, 14vw, 11rem);
+  padding-bottom: clamp(4rem, 8vw, 6rem);
+  padding-left: clamp(1.25rem, 4vw, 2rem);
+  padding-right: clamp(1.25rem, 4vw, 2rem);
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+}
+
+.dark .hero-grid-nl {
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+}
+
+.hero-columns-nl {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .hero-columns-nl {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .hero-grid-nl {
+    min-height: auto;
+  }
+}
+
+.hero-left-nl {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-eyebrow-nl {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-accent);
+  background: var(--color-accent-subtle);
+  padding: 6px 14px;
+  border-radius: 999px;
+  width: fit-content;
+  margin-bottom: 1.5rem;
+}
+
+.hero-h1-nl {
+  font-size: clamp(2.25rem, 4.5vw, 3.75rem) !important;
+  line-height: 1.08 !important;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin: 0 0 clamp(1rem, 2vw, 1.5rem);
+  max-width: 560px;
+}
+
+@media (max-width: 900px) {
+  .hero-h1-nl {
+    font-size: clamp(2rem, 8vw, 2.75rem) !important;
+  }
+}
+
+.hero-sub-nl {
+  font-size: clamp(1rem, 1.3vw, 1.125rem);
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  max-width: 480px;
+  margin: 0 0 clamp(1.5rem, 3vw, 2rem);
+}
+
+.hero-cta-group-nl {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 1.25rem;
+}
+
+.hero-trust-nl {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.01em;
+}
+
+/* ── Hero Visual — Project Dashboard ─────────────────────────────────────── */
+
+.hero-right-nl {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 900px) {
+  .hero-right-nl {
+    max-width: 520px;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+.hero-visual-nl {
+  width: 100%;
+  max-width: 460px;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.visual-header-nl {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.visual-dots-nl {
+  display: flex;
+  gap: 6px;
+}
+
+.visual-dots-nl span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.visual-title-nl {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.visual-cards-nl {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.visual-card-nl {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-sm);
+  opacity: 0;
+  transform: translateY(8px);
+  animation: card-in-nl 0.4s ease forwards;
+}
+
+@keyframes card-in-nl {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.visual-card-icon-nl {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  background: var(--color-border-subtle);
+  flex-shrink: 0;
+}
+
+.visual-card-info-nl {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.visual-card-label-nl {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.visual-card-status-nl {
+  font-size: 0.6875rem;
+  font-weight: 500;
+}
+
+.visual-card-bar-nl {
+  width: 64px;
+  height: 4px;
+  background: var(--color-border-subtle);
+  border-radius: 2px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.visual-card-bar-fill-nl {
+  height: 100%;
+  width: 0%;
+  border-radius: 2px;
+  animation: bar-fill-nl 1s ease forwards;
+}
+
+@keyframes bar-fill-nl {
+  to { width: 100%; }
+}
+
+.visual-stats-nl {
+  display: flex;
+  border-top: 1px solid var(--color-border);
+}
+
+.visual-stat-nl {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 12px 8px;
+}
+
+.visual-stat-nl + .visual-stat-nl {
+  border-left: 1px solid var(--color-border);
+}
+
+.visual-stat-value-nl {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.visual-stat-label-nl {
+  font-size: 0.625rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   LOGO STRIP — Animated Marquee
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.logo-strip-nl {
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  padding: 20px 0;
+  overflow: hidden;
+}
+
+.logo-strip-label-nl {
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-align: center;
+  margin: 0 0 14px;
+}
+
+.logo-marquee-wrapper-nl {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.logo-marquee-nl {
+  display: flex;
+  gap: 48px;
+  animation: marquee-scroll-nl 25s linear infinite;
+  width: max-content;
+}
+
+.logo-marquee-nl:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-scroll-nl {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.logo-marquee-item-nl {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: color 0.2s ease;
+}
+
+.logo-marquee-item-nl:hover {
+  color: var(--color-text-secondary);
+}
