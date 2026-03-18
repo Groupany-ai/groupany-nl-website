@@ -3,10 +3,10 @@
 import { useState } from "react"
 import Nav from "./Nav"
 import Hero from "./Hero"
-import Services from "./Services"
-import About from "./About"
-import Cases from "./Cases"
-import Blog from "./Blog"
+import Diensten from "./Diensten"
+import Resultaten from "./Resultaten"
+import Werkwijze from "./Werkwijze"
+import OverOns from "./OverOns"
 import Contact from "./Contact"
 import Footer from "./Footer"
 
@@ -15,13 +15,13 @@ export default function PageClient() {
 
   return (
     <>
-      <Nav lang={lang} onLangChange={setLang} />
+      <Nav lang={lang} setLang={setLang} />
       <main>
         <Hero lang={lang} />
-        <Services lang={lang} />
-        <About lang={lang} />
-        <Cases lang={lang} />
-        <Blog lang={lang} />
+        <Diensten lang={lang} />
+        <Resultaten lang={lang} />
+        <Werkwijze lang={lang} />
+        <OverOns lang={lang} />
         <Contact lang={lang} />
       </main>
       <Footer lang={lang} />
