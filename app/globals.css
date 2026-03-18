@@ -330,3 +330,22 @@ h1, h2, h3, h4 {
   .hero-ctas     { flex-direction: column; align-items: stretch !important; }
   .hero-ctas a   { text-align: center; justify-content: center !important; }
 }
+
+/* ═══════ New section responsive grids ═══════ */
+.grid-differentiators { grid-template-columns: repeat(3, 1fr); }
+.grid-values          { grid-template-columns: 1fr 1fr; }
+.grid-cases           { grid-template-columns: 1fr 1fr; }
+.grid-blog            { grid-template-columns: repeat(3, 1fr); }
+.grid-contact         { grid-template-columns: 1fr 1fr; }
+
+@media (max-width: 1024px) {
+  .grid-differentiators { grid-template-columns: 1fr 1fr; }
+  .grid-blog            { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .grid-differentiators { grid-template-columns: 1fr !important; }
+  .grid-values          { grid-template-columns: 1fr !important; }
+  .grid-cases           { grid-template-columns: 1fr !important; }
+  .grid-blog            { grid-template-columns: 1fr !important; }
+  .grid-contact         { grid-template-columns: 1fr !important; }
+}

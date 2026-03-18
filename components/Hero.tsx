@@ -5,19 +5,19 @@ interface HeroProps {
 const copy = {
   nl: {
     badge: "Geregistreerd in Nederland",
-    headline: ["Laat jouw bedrijf", "groeien met slimme", "digitale oplossingen"],
+    headline: ["Laat uw bedrijf", "groeien met slimme", "digitale oplossingen"],
     sub: "Wij helpen ambitieuze bedrijven met software op maat, professionele websites, resultaatgerichte marketing en social recruitment. Betrouwbaar, snel en transparant.",
     cta1: "Plan een gratis kennismaking",
     cta2: "Bekijk onze cases",
     statsLabel: "Waarom bedrijven ons kiezen",
     stats: [
-      { value: "100+", label: "tevreden klanten" },
+      { value: "AI", label: "gedreven aanpak" },
       { value: "24/7", label: "ondersteuning" },
       { value: "<4u", label: "reactietijd" },
       { value: "100%", label: "NL eigendom" },
     ],
-    trustLine: "KVK geregistreerd · Gevestigd in Nederland · ISO-27001 compliant",
-    clientsLabel: "Vertrouwd door groeiende bedrijven",
+    trustLine: "KVK geregistreerd · Gevestigd in Amsterdam · Nederlands eigendom",
+    clientsLabel: "Onze klanten",
   },
   en: {
     badge: "Registered in the Netherlands",
@@ -27,25 +27,15 @@ const copy = {
     cta2: "View our cases",
     statsLabel: "Why companies choose us",
     stats: [
-      { value: "100+", label: "happy clients" },
+      { value: "AI", label: "driven approach" },
       { value: "24/7", label: "support" },
       { value: "<4h", label: "response time" },
       { value: "100%", label: "Dutch-owned" },
     ],
-    trustLine: "KVK registered · Based in the Netherlands · ISO-27001 compliant",
-    clientsLabel: "Trusted by growing companies",
+    trustLine: "KVK registered · Based in Amsterdam · Dutch ownership",
+    clientsLabel: "Our clients",
   },
 }
-
-// Minimal client logos as SVG text marks (placeholder — replace with real logos)
-const clients = [
-  "GratisVerhuizen",
-  "Solvari",
-  "Werkspot",
-  "Thuisbaas",
-  "Handyman",
-  "HomeDone",
-]
 
 export default function Hero({ lang }: HeroProps) {
   const t = copy[lang]
@@ -243,7 +233,7 @@ export default function Hero({ lang }: HeroProps) {
                 }}
               >
                 {t.stats.map((s) => (
-                  <div key={s.value} style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                  <div key={s.value + s.label} style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                     <span
                       style={{
                         fontSize: 40,
@@ -277,19 +267,20 @@ export default function Hero({ lang }: HeroProps) {
                   {
                     icon: (
                       <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
-                        <path d="M7.5 1.5L9.25 5.25L13.5 5.75L10.5 8.5L11.25 12.75L7.5 10.75L3.75 12.75L4.5 8.5L1.5 5.75L5.75 5.25L7.5 1.5Z" fill="var(--color-warning)" stroke="var(--color-warning)" strokeWidth="1" strokeLinejoin="round" />
-                      </svg>
-                    ),
-                    text: "4.9 / 5 gemiddelde klantbeoordeling",
-                  },
-                  {
-                    icon: (
-                      <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
                         <path d="M7.5 2L9 5.5H13L10 7.5L11.5 11L7.5 9L3.5 11L5 7.5L2 5.5H6L7.5 2Z" fill="none" stroke="var(--color-success)" strokeWidth="1.5" strokeLinejoin="round" />
                         <path d="M5 7.5L7 9.5L11 5.5" stroke="var(--color-success)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                     ),
                     text: "KVK: 93.847.291 · BTW: NL866041827B01",
+                  },
+                  {
+                    icon: (
+                      <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+                        <path d="M7.5 1C4.46 1 2 3.46 2 6.5c0 4.5 5.5 7.5 5.5 7.5s5.5-3 5.5-7.5C13 3.46 10.54 1 7.5 1z" stroke="var(--color-primary)" strokeWidth="1.3" fill="none" />
+                        <circle cx="7.5" cy="6.5" r="1.5" stroke="var(--color-primary)" strokeWidth="1.3" fill="none" />
+                      </svg>
+                    ),
+                    text: "Keizersgracht 520, Amsterdam",
                   },
                 ].map(({ icon, text }, i) => (
                   <div key={i} style={{ display: "flex", alignItems: "center", gap: 10 }}>
@@ -340,45 +331,7 @@ export default function Hero({ lang }: HeroProps) {
                 whiteSpace: "nowrap",
               }}
             >
-              🇳🇱 Nederlands bedrijf
-            </div>
-          </div>
-        </div>
-
-        {/* Client marquee */}
-        <div style={{ marginTop: 72 }}>
-          <p
-            style={{
-              textAlign: "center",
-              fontSize: 11,
-              fontWeight: 700,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              color: "var(--color-text-placeholder)",
-              marginBottom: 24,
-            }}
-          >
-            {t.clientsLabel}
-          </p>
-          <div style={{ overflow: "hidden", maskImage: "linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%)", WebkitMaskImage: "linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%)" }}>
-            <div className="marquee-track">
-              {[...clients, ...clients].map((name, i) => (
-                <div
-                  key={i}
-                  style={{
-                    flexShrink: 0,
-                    marginRight: 56,
-                    fontSize: 15,
-                    fontWeight: 700,
-                    color: "var(--color-text-dim)",
-                    letterSpacing: "-0.01em",
-                    whiteSpace: "nowrap",
-                    userSelect: "none",
-                  }}
-                >
-                  {name}
-                </div>
-              ))}
+              Nederlands bedrijf
             </div>
           </div>
         </div>

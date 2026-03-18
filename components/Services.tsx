@@ -5,7 +5,7 @@ interface ServicesProps {
 const copy = {
   nl: {
     label: "Onze diensten",
-    headline: "Alles wat jouw bedrijf nodig heeft om te groeien",
+    headline: "Alles wat uw bedrijf nodig heeft om te groeien",
     sub: "Van strategie tot uitvoering. Wij combineren technologie, creativiteit en data om meetbare resultaten te leveren.",
     cta: "Meer informatie",
     services: [
@@ -19,7 +19,7 @@ const copy = {
           </svg>
         ),
         title: "Software ontwikkeling",
-        desc: "Maatwerk webapplicaties, API-integraties, AI-oplossingen en dashboards. Wij bouwen schaalbare systemen die meegroeien met jouw business.",
+        desc: "Maatwerk webapplicaties, API-integraties, AI-oplossingen en dashboards. Wij bouwen schaalbare systemen die meegroeien met uw business.",
         tags: ["Next.js", "Node.js", "AI/ML", "API integraties"],
         href: "#contact",
         accent: "#2563EB",
@@ -64,7 +64,7 @@ const copy = {
           </svg>
         ),
         title: "Social recruitment",
-        desc: "Vacatures invullen via gerichte social media campagnes. Wij targeten de juiste kandidaten op LinkedIn, Meta en TikTok voor jouw openstaande functies.",
+        desc: "Vacatures invullen via gerichte social media campagnes. Wij targeten de juiste kandidaten op LinkedIn, Meta en TikTok voor uw openstaande functies.",
         tags: ["LinkedIn", "Meta Ads", "TikTok", "Employer branding"],
         href: "#contact",
         accent: "#F59E0B",
@@ -313,7 +313,7 @@ export default function Services({ lang }: ServicesProps) {
           <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
             <h3 style={{ fontSize: 22, fontWeight: 800, color: "#fff", letterSpacing: "-0.02em", lineHeight: 1.2 }}>
               {lang === "nl"
-                ? "Benieuwd wat wij voor jou kunnen betekenen?"
+                ? "Benieuwd wat wij voor u kunnen betekenen?"
                 : "Wondering what we can do for you?"}
             </h3>
             <p style={{ fontSize: 14, color: "rgba(255,255,255,0.55)", fontWeight: 400, lineHeight: 1.5 }}>
