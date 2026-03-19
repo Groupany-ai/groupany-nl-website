@@ -514,5 +514,29 @@
       "title": "Marketing Pakket",
       "desc": "Meer zichtbaarheid, meer leads, meer klanten. Meetbaar en transparant."
     }
+  },
+  "impact": {
+    "eyebrow": "ONZE IMPACT",
+    "headline": "Wat wij voor u bouwen",
+    "software": {
+      "title": "Software die werkt",
+      "desc": "Van eerste regel code tot productie. Schaalbare applicaties die uw bedrijf vooruit helpen."
+    },
+    "marketing": {
+      "title": "Marketing die converteert",
+      "desc": "Meer bezoekers, meer leads, meer klanten. Data-gedreven campagnes met meetbaar resultaat."
+    },
+    "websites": {
+      "title": "Websites die presteren",
+      "desc": "Snelle, mooie websites gebouwd op moderne technologie. Geoptimaliseerd voor conversie."
+    },
+    "seo": {
+      "title": "Hoger in Google",
+      "desc": "Meer organisch verkeer door technische SEO, content strategie en linkbuilding."
+    },
+    "recruitment": {
+      "title": "De juiste mensen vinden",
+      "desc": "AI-gedreven kandidaat sourcing via sociale kanalen. Zonder bureau-fees."
+    }
   }
 }

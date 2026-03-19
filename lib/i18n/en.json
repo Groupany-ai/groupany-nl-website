@@ -514,5 +514,29 @@
       "title": "Marketing Package",
       "desc": "More visibility, more leads, more clients. Measurable and transparent."
     }
+  },
+  "impact": {
+    "eyebrow": "OUR IMPACT",
+    "headline": "What we build for you",
+    "software": {
+      "title": "Software that works",
+      "desc": "From first line of code to production. Scalable applications that move your business forward."
+    },
+    "marketing": {
+      "title": "Marketing that converts",
+      "desc": "More visitors, more leads, more customers. Data-driven campaigns with measurable results."
+    },
+    "websites": {
+      "title": "Websites that perform",
+      "desc": "Fast, beautiful websites built on modern technology. Optimized for conversion."
+    },
+    "seo": {
+      "title": "Higher in Google",
+      "desc": "More organic traffic through technical SEO, content strategy and link building."
+    },
+    "recruitment": {
+      "title": "Finding the right people",
+      "desc": "AI-driven candidate sourcing via social channels. Without agency fees."
+    }
   }
 }

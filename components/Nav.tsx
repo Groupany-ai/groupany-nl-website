@@ -16,7 +16,7 @@ export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20)
+    const handleScroll = () => setScrolled(window.scrollY > 100)
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -36,26 +36,16 @@ export default function Nav() {
   return (
     <>
       <nav
-        style={{
-          position: scrolled ? 'fixed' : 'absolute',
-          top: 0, left: 0, right: 0, zIndex: 50, height: 64,
-          background: scrolled ? 'var(--bg-nav)' : 'transparent',
-          backdropFilter: scrolled ? 'blur(20px) saturate(180%)' : 'none',
-          WebkitBackdropFilter: scrolled ? 'blur(20px) saturate(180%)' : 'none',
-          borderBottom: scrolled ? '1px solid var(--border)' : '1px solid transparent',
-          transition: 'background 0.3s ease, border-color 0.3s ease',
-        }}
+        className={`nav-bar ${scrolled ? 'nav-scrolled' : ''}`}
       >
         <div className="container-main" style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <Link href="/" style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text)', textDecoration: 'none', letterSpacing: '-0.03em' }}>
+          <Link href="/" className='nav-logo' style={{ fontSize: '1.25rem', fontWeight: 700, textDecoration: 'none', letterSpacing: '-0.03em' }}>
             Groupany
           </Link>
 
           <div className="hidden md:flex items-center gap-8">
             {NAV_LINKS.map(({ href, label }) => (
-              <Link key={href} href={href} style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.875rem', fontWeight: 500, transition: 'color 0.15s ease' }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text)')}
-                onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}>
+              <Link key={href} href={href} className='nav-link' style={{ textDecoration: 'none', fontSize: '0.875rem', fontWeight: 500 }}>
                 {label}
               </Link>
             ))}
@@ -75,7 +65,7 @@ export default function Nav() {
               ))}
             </div>
             <ThemeToggle />
-            <Link href="/contact" className="btn-primary" style={{ height: 36, padding: '0 16px', fontSize: '0.8125rem', borderRadius: 'var(--radius-full)' }}>
+            <Link href="/contact" className="btn-primary nav-cta" style={{ height: 36, padding: '0 16px', fontSize: '0.8125rem', borderRadius: 'var(--radius-full)' }}>
               {t('nav.getStarted')}
             </Link>
           </div>

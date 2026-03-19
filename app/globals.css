@@ -5015,13 +5015,12 @@ html.dark .hero-slide-label {
 
 /* Client logo text style */
 .client-logo-text {
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 700;
   color: var(--text);
-  opacity: 0.3;
-  padding: 0 40px;
+  opacity: 0.25;
   white-space: nowrap;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
 
 /* Mobile: stack hero */
@@ -5089,10 +5088,12 @@ html.dark .hero-slide-label {
 
 .hero-fullwidth {
   position: relative;
-  min-height: 90vh;
+  min-height: calc(100vh - 24px - 64px);
   display: flex;
   align-items: center;
   overflow: hidden;
+  margin: 12px;
+  border-radius: 20px;
 }
 
 .hero-video-bg {
@@ -5258,11 +5259,14 @@ html.dark .hero-slide-label {
   100% { transform: translateX(-50%); }
 }
 .client-item {
-  padding: 0 36px;
+  padding: 0 48px;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  height: 40px;
 }
 .client-logo-img {
-  height: 28px;
+  height: 24px;
   width: auto;
   filter: grayscale(100%) brightness(0);
   opacity: 0.35;
@@ -5294,12 +5298,30 @@ html.dark .client-logo-img {
 .package-card {
   background: var(--bg-elevated);
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 20px;
   padding: 28px;
   display: flex;
   flex-direction: column;
   transition: transform .3s cubic-bezier(.25,1,.5,1), box-shadow .3s cubic-bezier(.25,1,.5,1);
   position: relative;
+}
+.package-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), #635BFF);
+  border-radius: 20px 20px 0 0;
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+.package-card:hover::before {
+  opacity: 1;
+}
+.package-card-featured::before {
+  opacity: 1;
 }
 .package-card:hover {
   transform: translateY(-4px);
@@ -5402,3 +5424,143 @@ html.dark .client-logo-img {
   color: white;
   border-color: var(--accent);
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   NAV BAR — Glazed translucent style
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.nav-bar {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  height: 64px;
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+  transition: background 0.3s ease, border-color 0.3s ease, position 0s;
+}
+
+.nav-bar.nav-scrolled {
+  position: fixed;
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+html.dark .nav-bar.nav-scrolled {
+  background: rgba(26, 26, 30, 0.85) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Nav link colors */
+.nav-bar:not(.nav-scrolled) .nav-logo {
+  color: rgba(255, 255, 255, 0.95);
+}
+.nav-bar.nav-scrolled .nav-logo {
+  color: var(--text);
+}
+
+.nav-bar:not(.nav-scrolled) .nav-link {
+  color: rgba(255, 255, 255, 0.85);
+  transition: color 0.15s ease;
+}
+.nav-bar:not(.nav-scrolled) .nav-link:hover {
+  color: rgba(255, 255, 255, 1);
+}
+.nav-bar.nav-scrolled .nav-link {
+  color: var(--text-secondary);
+  transition: color 0.15s ease;
+}
+.nav-bar.nav-scrolled .nav-link:hover {
+  color: var(--text);
+}
+
+.nav-bar:not(.nav-scrolled) .nav-cta {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: white !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+.nav-bar:not(.nav-scrolled) .nav-cta:hover {
+  background: rgba(255, 255, 255, 0.25) !important;
+}
+
+/* Mobile hamburger color on hero */
+.nav-bar:not(.nav-scrolled) button {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   IMPACT GRID — Stripe bento style service cards
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+}
+.impact-card {
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid rgba(0,0,0,0.04);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  padding: 28px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform .3s cubic-bezier(.25,1,.5,1), box-shadow .3s cubic-bezier(.25,1,.5,1);
+}
+html.dark .impact-card {
+  background: #1a1a1e;
+  border-color: rgba(255,255,255,0.06);
+}
+.impact-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+.impact-card-lg { grid-column: span 6; }
+.impact-card-md { grid-column: span 4; }
+
+@media (max-width: 1024px) {
+  .impact-card-lg { grid-column: span 6; }
+  .impact-card-md { grid-column: span 6; }
+}
+@media (max-width: 768px) {
+  .impact-card-lg, .impact-card-md { grid-column: span 12; }
+}
+
+.impact-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: #635BFF;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  display: block;
+  margin-bottom: 8px;
+}
+html.dark .impact-label { color: #8F7AFE; }
+
+.impact-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0A2540;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+html.dark .impact-title { color: #f5f5f5; }
+
+.impact-desc {
+  font-size: 0.875rem;
+  color: rgba(0,0,0,0.55);
+  line-height: 1.5;
+  max-width: 340px;
+}
+html.dark .impact-desc { color: rgba(255,255,255,0.5); }
+
+.impact-visual {
+  transition: transform .3s cubic-bezier(.25,1,.5,1);
+}
+.impact-card:hover .impact-visual {
+  transform: scale(1.02);
+}
+

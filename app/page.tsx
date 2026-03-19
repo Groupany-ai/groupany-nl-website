@@ -785,242 +785,86 @@ export default function Home() {
           </div>
         </section>
 
-        {/* SERVICES GRID */}
+        {/* IMPACT — Stripe bento style */}
         <section className="section-py">
           <div className="container-main">
-            <div style={{ textAlign: 'center', marginBottom: 48 }}>
-              <p className="feature-eyebrow reveal" style={{ textAlign: 'center' }}>
-                {t('services.label')}
-              </p>
-              <h2 className="feature-h2 reveal reveal-delay-1" style={{ textAlign: 'center', margin: '0 auto 8px', maxWidth: 600 }}>
-                {t('services.gridHeadline')}
-              </h2>
-              <p className="hero-sub reveal reveal-delay-2" style={{ marginBottom: 0 }}>
-                {t('services.gridSubline')}
-              </p>
+            <div style={{textAlign:'center', marginBottom:64}}>
+              <p className="feature-eyebrow reveal">{t('impact.eyebrow')}</p>
+              <h2 className="feature-h2 reveal reveal-delay-1" style={{textAlign:'center'}}>{t('impact.headline')}</h2>
             </div>
 
-            <div className="feature-grid">
-              {/* Row 1: Two large cards */}
-
-              {/* Card 1: Software Development */}
-              <div className="feature-card feature-card-lg reveal reveal-delay-1" tabIndex={0}>
-                <div className="feature-card-content">
-                  <p className="feature-card-label">{t('services.software.label')}</p>
-                  <h3 className="feature-card-title">{t('services.software.title')}</h3>
-                  <p className="feature-card-desc">{t('services.software.desc')}</p>
+            <div className="impact-grid">
+              {/* Large card: Software */}
+              <div className="impact-card impact-card-lg reveal reveal-delay-1">
+                <div className="impact-card-content">
+                  <span className="impact-label">SOFTWARE</span>
+                  <h3 className="impact-title">{t('impact.software.title')}</h3>
+                  <p className="impact-desc">{t('impact.software.desc')}</p>
                 </div>
-                <div className="feature-visual-panel" style={{
+                <div className="impact-visual" style={{
                   backgroundImage: 'url(/images/card-bg-dev.jpg)',
                   backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  borderRadius: '12px',
-                  padding: '24px',
-                  marginTop: '24px',
-                  position: 'relative',
-                  overflow: 'hidden',
-                  minHeight: '180px',
+                  borderRadius: 12,
+                  padding: 20,
+                  marginTop: 20,
+                  minHeight: 180,
                 }}>
-                  <div style={{position:'relative', zIndex:2}}>
-                    <div style={{
-                      fontFamily: 'monospace',
-                      fontSize: '13px',
-                      lineHeight: '2',
-                      color: '#8898AA',
-                    }}>
-                      <div><span style={{color:'#635BFF'}}>async</span> <span style={{color:'#80E0A7'}}>deploy</span>() {'{'}</div>
-                      <div>  <span style={{color:'#635BFF'}}>await</span> build();</div>
-                      <div>  <span style={{color:'#635BFF'}}>await</span> test();</div>
-                      <div>  <span style={{color:'#80E0A7'}}>return</span> ship();</div>
-                      <div>{'}'}</div>
-                    </div>
+                  <div style={{fontFamily:'monospace', fontSize:12, lineHeight:2, color:'#8898AA'}}>
+                    <div><span style={{color:'#635BFF'}}>const</span> app = <span style={{color:'#80E0A7'}}>createApp</span>();</div>
+                    <div><span style={{color:'#635BFF'}}>await</span> app.deploy();</div>
+                    <div><span style={{color:'#80E0A7'}}>// Live in production</span></div>
                   </div>
                 </div>
               </div>
 
-              {/* Card 2: Marketing & Growth */}
-              <div className="feature-card feature-card-lg reveal reveal-delay-2" tabIndex={0}>
-                <div className="feature-card-content">
-                  <p className="feature-card-label" style={{color: '#2563eb'}}>{t('services.marketing.label')}</p>
-                  <h3 className="feature-card-title">{t('services.marketing.title')}</h3>
-                  <p className="feature-card-desc">{t('services.marketing.desc')}</p>
+              {/* Large card: Marketing */}
+              <div className="impact-card impact-card-lg reveal reveal-delay-2">
+                <div className="impact-card-content">
+                  <span className="impact-label">MARKETING</span>
+                  <h3 className="impact-title">{t('impact.marketing.title')}</h3>
+                  <p className="impact-desc">{t('impact.marketing.desc')}</p>
                 </div>
-                <div className="feature-visual-panel" style={{
+                <div className="impact-visual" style={{
                   backgroundImage: 'url(/images/card-bg-marketing.jpg)',
                   backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  borderRadius: '12px',
-                  padding: '24px',
-                  marginTop: '24px',
-                  minHeight: '180px',
+                  borderRadius: 12,
+                  padding: 20,
+                  marginTop: 20,
+                  minHeight: 180,
                 }}>
-                  <div style={{position:'relative', zIndex:2, display:'flex', alignItems:'flex-end', gap:'6px', height:'140px'}}>
-                    {[40,65,50,80,60,95,75,100,85,110,90,120].map((h,i) => (
-                      <div key={i} style={{
-                        flex:1,
-                        height: `${h*0.9}px`,
-                        background: 'linear-gradient(to top, #2563eb, #635BFF)',
-                        borderRadius: '4px 4px 0 0',
-                        opacity: 0.6 + (i * 0.03),
-                      }} />
+                  <div style={{display:'flex', alignItems:'flex-end', gap:5, height:140}}>
+                    {[35,55,45,70,50,85,65,95,75,110,80,120].map((h,i) => (
+                      <div key={i} style={{flex:1, height:h*0.9, background:'linear-gradient(to top, #2563eb, #635BFF)', borderRadius:'3px 3px 0 0', opacity:0.5+i*0.04}} />
                     ))}
                   </div>
                 </div>
               </div>
 
-              {/* Row 2: Three medium cards */}
-
-              {/* Card 3: Security */}
-              <div className="feature-card feature-card-md reveal reveal-delay-1" tabIndex={0}>
-                <div className="feature-card-content">
-                  <p className="feature-card-label" style={{color: '#059669'}}>{t('services.security.label')}</p>
-                  <h3 className="feature-card-title">{t('services.security.title')}</h3>
-                  <p className="feature-card-desc">{t('services.security.desc')}</p>
-                </div>
-                <div className="feature-visual-panel" style={{
-                  backgroundImage: 'url(/images/card-bg-security.jpg)',
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  borderRadius: '12px',
-                  padding: '24px',
-                  marginTop: '20px',
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  minHeight: '120px',
-                }}>
-                  <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#059669" strokeWidth="1.5" style={{position:'relative', zIndex:2}}>
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                    <path d="M9 12l2 2 4-4" />
-                  </svg>
+              {/* Medium cards row */}
+              <div className="impact-card impact-card-md reveal reveal-delay-1">
+                <div className="impact-card-content">
+                  <span className="impact-label">WEBSITES</span>
+                  <h3 className="impact-title">{t('impact.websites.title')}</h3>
+                  <p className="impact-desc">{t('impact.websites.desc')}</p>
                 </div>
               </div>
 
-              {/* Card 4: Research & Strategy */}
-              <div className="feature-card feature-card-md reveal reveal-delay-2" tabIndex={0}>
-                <div className="feature-card-content">
-                  <p className="feature-card-label" style={{color: '#425466'}}>{t('services.research.label')}</p>
-                  <h3 className="feature-card-title">{t('services.research.title')}</h3>
-                  <p className="feature-card-desc">{t('services.research.desc')}</p>
-                </div>
-                <div className="feature-visual-panel" style={{
-                  background: 'linear-gradient(135deg, #F6F9FC 0%, #EEF2F7 100%)',
-                  borderRadius: '12px',
-                  padding: '16px',
-                  marginTop: '20px',
-                  minHeight: '120px',
-                }}>
-                  <div style={{background:'#fff', borderRadius:'8px', padding:'12px', boxShadow:'0 2px 8px rgba(0,0,0,0.06)'}}>
-                    <div style={{width:'60%', height:'8px', background:'#0A2540', borderRadius:'4px', marginBottom:'8px'}} />
-                    <div style={{width:'90%', height:'5px', background:'#E8EEF4', borderRadius:'3px', marginBottom:'6px'}} />
-                    <div style={{width:'75%', height:'5px', background:'#E8EEF4', borderRadius:'3px', marginBottom:'6px'}} />
-                    <div style={{width:'85%', height:'5px', background:'#E8EEF4', borderRadius:'3px'}} />
-                  </div>
+              <div className="impact-card impact-card-md reveal reveal-delay-2">
+                <div className="impact-card-content">
+                  <span className="impact-label">SEO</span>
+                  <h3 className="impact-title">{t('impact.seo.title')}</h3>
+                  <p className="impact-desc">{t('impact.seo.desc')}</p>
                 </div>
               </div>
 
-              {/* Card 5: HR & Recruitment */}
-              <div className="feature-card feature-card-md reveal reveal-delay-3" tabIndex={0}>
-                <div className="feature-card-content">
-                  <p className="feature-card-label" style={{color: '#2563eb'}}>{t('services.hr.label')}</p>
-                  <h3 className="feature-card-title">{t('services.hr.title')}</h3>
-                  <p className="feature-card-desc">{t('services.hr.desc')}</p>
-                </div>
-                <div className="feature-visual-panel" style={{
-                  background: 'linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%)',
-                  borderRadius: '12px',
-                  padding: '16px',
-                  marginTop: '20px',
-                  minHeight: '120px',
-                }}>
-                  {['Sam', 'Jessica', 'Max'].map((name) => (
-                    <div key={name} style={{
-                      background: '#fff',
-                      borderRadius: '8px',
-                      padding: '8px 12px',
-                      marginBottom: '6px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '8px',
-                      boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
-                      fontSize: '12px',
-                    }}>
-                      <div style={{width:'24px', height:'24px', borderRadius:'50%', background:'#2563eb', color:'#fff', display:'flex', alignItems:'center', justifyContent:'center', fontSize:'10px', fontWeight:'600'}}>
-                        {name[0]}
-                      </div>
-                      <span style={{fontWeight:500, color:'#0A2540'}}>{name}</span>
-                      <span style={{marginLeft:'auto', fontSize:'10px', color:'#059669'}}>Available</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Row 3: Two cards */}
-
-              {/* Card 6: Automation */}
-              <div className="feature-card feature-card-sm reveal reveal-delay-1" tabIndex={0}>
-                <div className="feature-card-content">
-                  <p className="feature-card-label">{t('services.automation.label')}</p>
-                  <h3 className="feature-card-title">{t('services.automation.title')}</h3>
-                  <p className="feature-card-desc">{t('services.automation.desc')}</p>
-                </div>
-                <div className="feature-visual-panel" style={{
-                  background: 'linear-gradient(135deg, #EFF6FF 0%, #F6F9FC 50%, #F0FDF4 100%)',
-                  borderRadius: '12px',
-                  padding: '24px',
-                  marginTop: '24px',
-                  minHeight: '140px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '16px',
-                }}>
-                    {['Trigger', 'Process', 'Action', 'Result'].flatMap((label, i) => {
-                    const items = [
-                      <div key={label} style={{
-                        background:'#fff', borderRadius:'10px', padding:'10px 16px',
-                        boxShadow:'0 2px 8px rgba(0,0,0,0.06)', fontSize:'12px', fontWeight:500,
-                        border: '1px solid #E8EEF4', color:'#0A2540',
-                      }}>
-                        {label}
-                      </div>
-                    ];
-                    if (i < 3) items.push(<div key={`line-${i}`} style={{width:'24px', height:'2px', background:'#2563eb'}} />);
-                    return items;
-                  })}
-                </div>
-              </div>
-
-              {/* Card 7: Legal & Compliance */}
-              <div className="feature-card feature-card-sm reveal reveal-delay-2" tabIndex={0}>
-                <div className="feature-card-content">
-                  <p className="feature-card-label" style={{color: '#425466'}}>{t('services.legal.label')}</p>
-                  <h3 className="feature-card-title">{t('services.legal.title')}</h3>
-                  <p className="feature-card-desc">{t('services.legal.desc')}</p>
-                </div>
-                <div className="feature-visual-panel" style={{
-                  background: 'linear-gradient(135deg, #F6F9FC 0%, #F1F5F9 100%)',
-                  borderRadius: '12px',
-                  padding: '20px',
-                  marginTop: '24px',
-                  minHeight: '140px',
-                }}>
-                  <div style={{background:'#fff', borderRadius:'8px', padding:'16px', boxShadow:'0 2px 8px rgba(0,0,0,0.06)'}}>
-                    <div style={{display:'flex', alignItems:'center', gap:'8px', marginBottom:'12px'}}>
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0A2540" strokeWidth="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
-                      <span style={{fontWeight:600, fontSize:'13px', color:'#0A2540'}}>Contract Review</span>
-                      <span style={{marginLeft:'auto', fontSize:'10px', padding:'2px 8px', background:'#DCFCE7', color:'#059669', borderRadius:'99px', fontWeight:500}}>Approved</span>
-                    </div>
-                    <div style={{width:'100%', height:'5px', background:'#E8EEF4', borderRadius:'3px', marginBottom:'6px'}} />
-                    <div style={{width:'70%', height:'5px', background:'#E8EEF4', borderRadius:'3px'}} />
-                  </div>
+              <div className="impact-card impact-card-md reveal reveal-delay-3">
+                <div className="impact-card-content">
+                  <span className="impact-label">RECRUITMENT</span>
+                  <h3 className="impact-title">{t('impact.recruitment.title')}</h3>
+                  <p className="impact-desc">{t('impact.recruitment.desc')}</p>
                 </div>
               </div>
             </div>
-
-            <p className="services-also">
-              {t('services.also')}
-            </p>
           </div>
         </section>
 
