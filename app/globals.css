@@ -5127,6 +5127,7 @@ html.dark .hero-slide-label {
 .hero-fullwidth-content {
   position: relative;
   z-index: 5;
+  padding-top: 80px; /* space for floating nav */
   padding: clamp(120px, 15vh, 180px) 0 clamp(80px, 10vh, 120px);
 }
 
@@ -5432,21 +5433,24 @@ html.dark .client-logo-img {
 
 .nav-bar {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 12px;
+  left: 16px;
+  right: 16px;
   z-index: 100;
-  height: 56px;
+  height: 52px;
   display: flex;
   align-items: center;
-  padding: 0 24px;
+  padding: 0 20px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-  max-width: none;
-  margin: 0;
 }
 
 .nav-inner {
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto;
   width: 100%;
   display: flex;
@@ -5455,9 +5459,10 @@ html.dark .client-logo-img {
 }
 
 /* On hero (transparent) */
+/* Nav always has glaze - on hero it is light glass, scrolled it is solid */
 .nav-bar:not(.nav-scrolled) {
-  background: transparent;
-  border-bottom: 1px solid transparent;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 .nav-bar:not(.nav-scrolled) a,
 .nav-bar:not(.nav-scrolled) .nav-logo {
@@ -5474,11 +5479,11 @@ html.dark .client-logo-img {
 
 /* Scrolled past hero (solid) */
 .nav-scrolled {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid #E8EEF4;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 }
 html.dark .nav-scrolled {
   background: rgba(26, 26, 30, 0.95);
