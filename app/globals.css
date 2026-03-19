@@ -5448,11 +5448,11 @@ html.dark .client-logo-img {
   border: 1px solid rgba(255, 255, 255, 0.15);
   transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   width: auto;
-  max-width: 85%;
+  max-width: 1200px;
 }
 
 .nav-inner {
-  max-width: 100%;
+  max-width: none;
   margin: 0 auto;
   width: 100%;
   display: flex;
@@ -5670,7 +5670,7 @@ html.dark .reveal-glow.visible {
 /* Hero content container - 85% width matching nav */
 .hero-container {
   text-align: left;
-  max-width: 85%;
+  max-width: 1200px;
   margin: 0 auto;
   padding-left: 36px;
   padding-right: 36px;
