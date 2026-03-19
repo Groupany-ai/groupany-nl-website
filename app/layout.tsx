@@ -23,7 +23,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="nl">
+      <head>
+        {/* Plausible Analytics — privacy-first, no cookies, no consent banner needed */}
+        <script
+          defer
+          data-domain="groupany.nl"
+          src="https://plausible.io/js/script.js"
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
