@@ -5666,3 +5666,20 @@ html.dark .reveal-glow.visible {
 .hero-fw-tagline {
   text-align: left;
 }
+
+/* Hero content container - 85% width matching nav */
+.hero-container {
+  text-align: left;
+  max-width: 85%;
+  margin: 0 auto;
+  padding-left: 36px;
+  padding-right: 36px;
+  box-sizing: border-box;
+}
+@media (max-width: 768px) {
+  .hero-container {
+    max-width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
