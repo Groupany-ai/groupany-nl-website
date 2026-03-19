@@ -5447,8 +5447,8 @@ html.dark .client-logo-img {
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.15);
   transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-  width: fit-content;
-  max-width: calc(100% - 32px);
+  width: auto;
+  max-width: 900px;
 }
 
 .nav-inner {
@@ -5644,21 +5644,24 @@ html.dark .reveal-glow.visible {
   max-width: 200px;
 }
 
-/* Hero text left-aligned to match nav logo position */
+/* Hero text centered with narrow content */
 .hero-fullwidth-content .container-main {
-  text-align: left;
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto;
 }
 .hero-fw-h1 {
-  text-align: left;
+  text-align: center;
 }
 .hero-fw-sub {
-  text-align: left;
-  margin-left: 0;
+  text-align: center;
+  margin-left: auto;
   margin-right: auto;
+  max-width: 560px;
 }
 .hero-fw-ctas {
-  justify-content: flex-start;
+  justify-content: center;
 }
 .hero-fw-tagline {
-  text-align: left;
+  text-align: center;
 }
