@@ -893,91 +893,152 @@ export default function Home() {
             <div style={{textAlign:'center', marginBottom:64}}>
               <p className="feature-eyebrow reveal">{t('packages.eyebrow')}</p>
               <h2 className="feature-h2 reveal reveal-delay-1" style={{textAlign:'center'}}>{t('packages.headline')}</h2>
-              <p className="feature-sub reveal reveal-delay-2" style={{textAlign:'center', maxWidth:600, margin:'0 auto'}}>{t('packages.subline')}</p>
+              <p style={{textAlign:'center', color:'var(--text-secondary)', maxWidth:560, margin:'12px auto 0'}} className="reveal reveal-delay-2">{t('packages.subline')}</p>
             </div>
 
-            <div className="packages-grid">
-              {/* Package 1: Website */}
-              <div className="package-card reveal reveal-glow reveal-delay-1">
-                <div className="package-icon">&#127760;</div>
-                <h3 className="package-title">{t('packages.website.title')}</h3>
-                <p className="package-desc">{t('packages.website.desc')}</p>
-                <ul className="package-features">
-                  <li>Responsive design</li>
-                  <li>CMS integratie</li>
-                  <li>SEO geoptimaliseerd</li>
-                  <li>Analytics dashboard</li>
-                  <li>SSL & hosting</li>
-                </ul>
-                <div className="package-price">
-                  <span className="package-from">{t('packages.from')}</span>
-                  <span className="package-amount">&euro;2.500</span>
+            <div className="packages-bento">
+              {/* Website package */}
+              <div className="pkg-card pkg-card-lg reveal reveal-delay-1">
+                <div className="pkg-visual" style={{background:'linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 50%, #BFDBFE 100%)'}}>
+                  <div className="pkg-browser-mock">
+                    <div className="pkg-browser-chrome">
+                      <span className="pkg-dot" style={{background:'#ff5f57'}} />
+                      <span className="pkg-dot" style={{background:'#ffbd2e'}} />
+                      <span className="pkg-dot" style={{background:'#28c840'}} />
+                      <span className="pkg-url">uwbedrijf.nl</span>
+                    </div>
+                    <div className="pkg-browser-body">
+                      <div style={{height:8,width:'60%',background:'#0A2540',borderRadius:4,marginBottom:8}} />
+                      <div style={{height:5,width:'90%',background:'#E8EEF4',borderRadius:3,marginBottom:4}} />
+                      <div style={{height:5,width:'75%',background:'#E8EEF4',borderRadius:3,marginBottom:4}} />
+                      <div style={{display:'flex',gap:8,marginTop:12}}>
+                        <div style={{flex:1,height:40,background:'#F6F9FC',borderRadius:6}} />
+                        <div style={{flex:1,height:40,background:'#F6F9FC',borderRadius:6}} />
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <a href="/contact" className="package-cta">{t('packages.cta')}</a>
+                <div className="pkg-content">
+                  <span className="pkg-label">WEBSITE</span>
+                  <h3 className="pkg-title">{t('packages.website.title')}</h3>
+                  <p className="pkg-desc">{t('packages.website.desc')}</p>
+                  <ul className="pkg-features">
+                    <li>Responsive design</li>
+                    <li>CMS integratie</li>
+                    <li>SEO geoptimaliseerd</li>
+                    <li>Analytics dashboard</li>
+                  </ul>
+                  <div className="pkg-footer">
+                    <div className="pkg-price">
+                      <span className="pkg-from">{t('packages.from')}</span>
+                      <span className="pkg-amount">&euro;2.500</span>
+                    </div>
+                    <a href="/contact" className="pkg-cta">{t('packages.cta')}</a>
+                  </div>
+                </div>
               </div>
 
-              {/* Package 2: Webshop */}
-              <div className="package-card package-card-featured reveal reveal-glow reveal-delay-2">
-                <div className="package-badge">{t('packages.popular')}</div>
-                <div className="package-icon">&#128722;</div>
-                <h3 className="package-title">{t('packages.webshop.title')}</h3>
-                <p className="package-desc">{t('packages.webshop.desc')}</p>
-                <ul className="package-features">
-                  <li>Product catalogus</li>
-                  <li>Betaalintegratie (iDEAL, Stripe)</li>
-                  <li>Voorraadbeheer</li>
-                  <li>Order management</li>
-                  <li>Klantportaal</li>
-                  <li>Email automatisering</li>
-                </ul>
-                <div className="package-price">
-                  <span className="package-from">{t('packages.from')}</span>
-                  <span className="package-amount">&euro;5.000</span>
+              {/* Webshop package */}
+              <div className="pkg-card pkg-card-lg pkg-featured reveal reveal-delay-2">
+                <div className="pkg-badge">{t('packages.popular')}</div>
+                <div className="pkg-visual" style={{background:'linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 50%, #FED7AA 100%)'}}>
+                  <div className="pkg-shop-mock">
+                    <div style={{display:'flex',gap:8}}>
+                      <div style={{width:60,height:60,background:'#fff',borderRadius:8,boxShadow:'0 2px 8px rgba(0,0,0,0.06)'}} />
+                      <div style={{width:60,height:60,background:'#fff',borderRadius:8,boxShadow:'0 2px 8px rgba(0,0,0,0.06)'}} />
+                      <div style={{width:60,height:60,background:'#fff',borderRadius:8,boxShadow:'0 2px 8px rgba(0,0,0,0.06)'}} />
+                    </div>
+                    <div style={{marginTop:12,background:'#fff',borderRadius:8,padding:10,boxShadow:'0 2px 8px rgba(0,0,0,0.06)'}}>
+                      <div style={{display:'flex',justifyContent:'space-between',fontSize:11,color:'#0A2540'}}>
+                        <span style={{fontWeight:600}}>Totaal</span>
+                        <span style={{fontWeight:700}}>&euro;149,95</span>
+                      </div>
+                      <div style={{marginTop:8,background:'#2563eb',borderRadius:6,padding:'6px 0',textAlign:'center',color:'#fff',fontSize:10,fontWeight:600}}>Afrekenen met iDEAL</div>
+                    </div>
+                  </div>
                 </div>
-                <a href="/contact" className="package-cta">{t('packages.cta')}</a>
+                <div className="pkg-content">
+                  <span className="pkg-label" style={{color:'#ea580c'}}>WEBSHOP</span>
+                  <h3 className="pkg-title">{t('packages.webshop.title')}</h3>
+                  <p className="pkg-desc">{t('packages.webshop.desc')}</p>
+                  <ul className="pkg-features">
+                    <li>Product catalogus</li>
+                    <li>iDEAL &amp; Stripe betaling</li>
+                    <li>Voorraadbeheer</li>
+                    <li>Order management</li>
+                    <li>Email automatisering</li>
+                  </ul>
+                  <div className="pkg-footer">
+                    <div className="pkg-price">
+                      <span className="pkg-from">{t('packages.from')}</span>
+                      <span className="pkg-amount">&euro;5.000</span>
+                    </div>
+                    <a href="/contact" className="pkg-cta pkg-cta-accent">{t('packages.cta')}</a>
+                  </div>
+                </div>
               </div>
 
-              {/* Package 3: Software op maat */}
-              <div className="package-card reveal reveal-glow reveal-delay-3">
-                <div className="package-icon">&#9889;</div>
-                <h3 className="package-title">{t('packages.custom.title')}</h3>
-                <p className="package-desc">{t('packages.custom.desc')}</p>
-                <ul className="package-features">
-                  <li>API development</li>
-                  <li>Database architectuur</li>
-                  <li>Admin dashboard</li>
-                  <li>Gebruikersportaal</li>
-                  <li>CI/CD pipeline</li>
-                  <li>24/7 monitoring</li>
-                </ul>
-                <div className="package-price">
-                  <span className="package-from">{t('packages.from')}</span>
-                  <span className="package-amount">&euro;10.000</span>
+              {/* Software op maat */}
+              <div className="pkg-card pkg-card-wide reveal reveal-delay-1">
+                <div className="pkg-visual" style={{background:'linear-gradient(135deg, #0A2540 0%, #1B1464 50%, #2D1B69 100%)'}}>
+                  <div style={{fontFamily:'monospace',fontSize:11,lineHeight:2.2,color:'#8898AA',padding:4}}>
+                    <div><span style={{color:'#635BFF'}}>const</span> api = <span style={{color:'#80E0A7'}}>createAPI</span>();</div>
+                    <div>api.<span style={{color:'#80E0A7'}}>route</span>(<span style={{color:'#FFD700'}}>&#39;/users&#39;</span>);</div>
+                    <div><span style={{color:'#635BFF'}}>await</span> api.<span style={{color:'#80E0A7'}}>deploy</span>();</div>
+                  </div>
                 </div>
-                <a href="/contact" className="package-cta">{t('packages.cta')}</a>
+                <div className="pkg-content">
+                  <span className="pkg-label" style={{color:'#635BFF'}}>MAATWERK</span>
+                  <h3 className="pkg-title">{t('packages.custom.title')}</h3>
+                  <p className="pkg-desc">{t('packages.custom.desc')}</p>
+                  <ul className="pkg-features">
+                    <li>API development</li>
+                    <li>Database architectuur</li>
+                    <li>Admin dashboard</li>
+                    <li>CI/CD pipeline</li>
+                    <li>24/7 monitoring</li>
+                  </ul>
+                  <div className="pkg-footer">
+                    <div className="pkg-price">
+                      <span className="pkg-from">{t('packages.from')}</span>
+                      <span className="pkg-amount">&euro;10.000</span>
+                    </div>
+                    <a href="/contact" className="pkg-cta">{t('packages.cta')}</a>
+                  </div>
+                </div>
               </div>
 
-              {/* Package 4: Marketing */}
-              <div className="package-card reveal reveal-glow reveal-delay-4">
-                <div className="package-icon">&#128200;</div>
-                <h3 className="package-title">{t('packages.marketing.title')}</h3>
-                <p className="package-desc">{t('packages.marketing.desc')}</p>
-                <ul className="package-features">
-                  <li>SEO strategie & uitvoering</li>
-                  <li>Content marketing</li>
-                  <li>Social media management</li>
-                  <li>Google Ads campagnes</li>
-                  <li>Maandelijkse rapportage</li>
-                </ul>
-                <div className="package-price">
-                  <span className="package-from">{t('packages.from')}</span>
-                  <span className="package-amount">&euro;1.500<span style={{fontSize:'0.6em',fontWeight:400}}>/mnd</span></span>
+              {/* Marketing */}
+              <div className="pkg-card pkg-card-tall reveal reveal-delay-2">
+                <div className="pkg-visual" style={{background:'linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 50%, #BBF7D0 100%)'}}>
+                  <div style={{display:'flex',alignItems:'flex-end',gap:4,height:80,padding:'0 8px'}}>
+                    {[30,45,35,60,50,75,55,85].map((h,i) => (
+                      <div key={i} style={{flex:1,height:h,background:'linear-gradient(to top, #059669, #34d399)',borderRadius:'3px 3px 0 0',opacity:0.5+i*0.06}} />
+                    ))}
+                  </div>
                 </div>
-                <a href="/contact" className="package-cta">{t('packages.cta')}</a>
+                <div className="pkg-content">
+                  <span className="pkg-label" style={{color:'#059669'}}>MARKETING</span>
+                  <h3 className="pkg-title">{t('packages.marketing.title')}</h3>
+                  <p className="pkg-desc">{t('packages.marketing.desc')}</p>
+                  <ul className="pkg-features">
+                    <li>SEO strategie</li>
+                    <li>Content marketing</li>
+                    <li>Google Ads</li>
+                    <li>Maandrapportage</li>
+                  </ul>
+                  <div className="pkg-footer">
+                    <div className="pkg-price">
+                      <span className="pkg-from">{t('packages.from')}</span>
+                      <span className="pkg-amount">&euro;1.500<span style={{fontSize:'0.5em',fontWeight:400}}>/mnd</span></span>
+                    </div>
+                    <a href="/contact" className="pkg-cta">{t('packages.cta')}</a>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <p className="packages-note reveal" style={{textAlign:'center', marginTop:32, fontSize:'0.875rem', color:'var(--text-tertiary)'}}>
+            <p className="reveal" style={{textAlign:'center', marginTop:32, fontSize:'0.8125rem', color:'var(--text-tertiary)'}}>
               {t('packages.note')}
             </p>
           </div>

@@ -52,16 +52,9 @@ export default function Nav() {
           </div>
 
           <div className="hidden md:flex items-center gap-3">
-            <div style={{ display: 'flex', alignItems: 'center', gap: 2, padding: 3, background: 'var(--bg-alt)', border: '1px solid var(--border)', borderRadius: 'var(--radius-full)', marginRight: 4 }}>
+            <div className="lang-container" style={{ display: 'flex', alignItems: 'center', gap: 2, padding: 3, borderRadius: '999px', marginRight: 4 }}>
               {LOCALES.map(({ code, label }) => (
-                <button key={code} onClick={() => setLocale(code)} style={{
-                  padding: '3px 8px', fontSize: '0.6875rem', fontWeight: locale === code ? 700 : 400,
-                  color: locale === code ? 'var(--text)' : 'var(--text-tertiary)',
-                  background: locale === code ? 'var(--bg-elevated)' : 'transparent',
-                  border: 'none', borderRadius: 'var(--radius-full)', cursor: 'pointer',
-                  transition: 'all 0.15s ease', letterSpacing: '0.04em',
-                  boxShadow: locale === code ? '0 1px 3px rgba(0,0,0,0.06)' : 'none',
-                }}>{label}</button>
+                <button key={code} onClick={() => setLocale(code)} className={code === locale ? 'lang-active' : ''}>{label}</button>
               ))}
             </div>
             <ThemeToggle />
