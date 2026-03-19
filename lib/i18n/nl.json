@@ -9,10 +9,10 @@
   "hero": {
     "socialProof": "Vertrouwd door <strong>12 bedrijven</strong> in Nederland",
     "headlinePre": "Uw",
-    "headlinePost": "partner in Amsterdam.",
+    "headlinePost": "partner. Altijd aan het werk.",
     "headlineLine2": "",
     "headline": "Wij bouwen software, websites en marketingcampagnes die meetbaar resultaat opleveren. Sneller, slimmer en betaalbaarder.",
-    "subline": "Software op maat, professionele websites en datagedreven marketing. Vaste prijzen, geen verrassingen. Opgeleverd wanneer afgesproken.",
+    "subline": "Wij bouwen software, websites en marketingcampagnes die meetbaar resultaat opleveren. Sneller, slimmer en betaalbaarder dan traditionele bureaus.",
     "ctaPrimary": "Plan een gesprek",
     "ctaSecondary": "Bekijk onze diensten",
     "rotatingWords": [
@@ -71,17 +71,60 @@
       "desc": "Digitale strategie op maat van uw bedrijfsdoelen. Helder advies, concrete plannen.",
       "label": "STRATEGIE"
     },
+    "security": {
+      "title": "Beveiliging & monitoring",
+      "desc": "Continue monitoring, beveiligingsscans en compliance. Uw data en systemen zijn veilig bij ons.",
+      "label": "BEVEILIGING"
+    },
+    "research": {
+      "title": "Onderzoek & analyse",
+      "desc": "Marktonderzoek, concurrentie-analyse en data-inzichten. Beslissingen op basis van feiten.",
+      "label": "ONDERZOEK"
+    },
+    "hr": {
+      "title": "HR & recruitment",
+      "desc": "Vind de juiste mensen via sociale kanalen. Employer branding, campagnes en kandidaatselectie.",
+      "label": "HR & RECRUITMENT"
+    },
+    "automation": {
+      "title": "Automatisering",
+      "desc": "Stroomlijn uw bedrijfsprocessen. Van trigger tot resultaat, volledig automatisch.",
+      "label": "AUTOMATISERING"
+    },
+    "legal": {
+      "title": "Juridisch & compliance",
+      "desc": "Contractbeheer, AVG-compliance en juridische controle. Alles op orde, altijd.",
+      "label": "JURIDISCH"
+    },
     "also": "En meer: automatiseringen, data-analyse, DevOps, contentproductie"
   },
   "dashboard": {
     "title": "Project Dashboard",
     "live": "Live",
+    "companyName": "Bakkerij van Dijk",
+    "companyType": "Klantportaal",
+    "greeting": "Goedemorgen",
+    "teamOnline": "Uw team is online",
+    "agentsLabel": "Uw team",
+    "inProgress": "Bezig",
+    "kpi": {
+      "visitors": "Website bezoekers",
+      "conversions": "Conversies",
+      "leads": "Leads",
+      "uptime": "Uptime",
+      "thisWeek": "deze week",
+      "allSystems": "Alle systemen operationeel"
+    },
     "sidebar": {
       "dashboard": "Dashboard",
       "projects": "Projecten",
-      "analytics": "Analyse",
-      "deployments": "Deployments",
-      "settings": "Instellingen"
+      "website": "Website",
+      "analytics": "Analytics",
+      "content": "Content",
+      "seo": "SEO",
+      "reports": "Rapportages",
+      "settings": "Instellingen",
+      "deployments": "Deployments"
     },
     "stats": {
       "activeProjects": "Actieve projecten",
@@ -93,22 +136,22 @@
     "agentActivity": [
       {
         "name": "Team",
-        "task": "Website v3.2 naar productie gedeployd",
+        "task": "Website update gepubliceerd",
         "time": "2 min geleden"
       },
       {
         "name": "SEO",
-        "task": "Maandelijkse SEO-rapport gegenereerd",
+        "task": "SEO rapport afgerond",
         "time": "8 min geleden"
       },
       {
         "name": "Dev",
-        "task": "API-koppeling met CRM afgerond",
+        "task": "Nieuwe lead via contactformulier",
         "time": "14 min geleden"
       },
       {
         "name": "Marketing",
-        "task": "Google Ads campagne geoptimaliseerd",
+        "task": "Content gepland voor volgende week",
         "time": "21 min geleden"
       }
     ]
@@ -118,7 +161,7 @@
     "items": [
       {
         "agent": "Dev",
-        "text": "Website update naar productie gedeployd",
+        "text": "Website update gepubliceerd",
         "time": "2 min geleden"
       },
       {
@@ -133,7 +176,7 @@
       },
       {
         "agent": "Dev",
-        "text": "Nieuwe feature naar staging gedeployd",
+        "text": "Nieuwe lead via contactformulier",
         "time": "12 min geleden"
       },
       {
@@ -236,10 +279,13 @@
     "secondary": "Bekijk onze inzichten",
     "trust1": "Vrijblijvend",
     "trust2": "Resultaat binnen een week",
-    "trust3": "Altijd opzegbaar"
+    "trust3": "Altijd opzegbaar",
+    "stat1": "snellere oplevering",
+    "stat2": "kostenbesparing",
+    "stat3": "beschikbaarheid"
   },
   "footer": {
-    "tagline": "Uw digitale partner in Amsterdam. Software, websites en marketing die werken.",
+    "tagline": "Uw digitale partner. Software, websites en marketing die werken.",
     "company": "Bedrijf",
     "servicesTitle": "Diensten",
     "resources": "Kennis",

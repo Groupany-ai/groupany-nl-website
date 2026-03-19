@@ -830,7 +830,7 @@ export default function Home() {
 
   /* Dashboard stat cards (translated) */
   const DASH_STATS = [
-    { label: t('dashboard.stats.activeAgents'), value: '5', icon: 'cpu' },
+    { label: t('dashboard.stats.activeProjects'), value: '5', icon: 'cpu' },
     { label: t('dashboard.stats.deployments'), value: String(taskCount), icon: 'layers' },
     { label: t('dashboard.stats.uptime'), value: '99.9%', icon: 'shield' },
     { label: t('dashboard.stats.avgResponse'), value: t('dashboard.stats.avgResponse'), icon: 'clock' },
@@ -866,8 +866,6 @@ export default function Home() {
           <div className="hero-shape hero-shape-3" />
 
           <div className="container-main">
-            <p className="hero-social-proof reveal" dangerouslySetInnerHTML={{ __html: t('hero.socialProof') }} />
-
             <h1 className="hero-h1 reveal reveal-delay-1">
               <span className="hero-word-your">{t('hero.headlinePre')}</span>{' '}
               <RotatingWord />{' '}
@@ -912,7 +910,7 @@ export default function Home() {
                     <span style={{background:'#ffbd2e',width:10,height:10,borderRadius:'50%',display:'inline-block'}} />
                     <span style={{background:'#28c840',width:10,height:10,borderRadius:'50%',display:'inline-block'}} />
                   </div>
-                  <span className="dash-chrome-title">app.groupany.ai</span>
+                  <span className="dash-chrome-title">project.groupany.nl</span>
                   <span className="dash-badge">LIVE</span>
                 </div>
 
@@ -927,8 +925,8 @@ export default function Home() {
                         </svg>
                       </div>
                       <div className="dash-company-info">
-                        <span className="dash-company-name">Groupany</span>
-                        <span className="dash-company-type">Control Center</span>
+                        <span className="dash-company-name">{t('dashboard.companyName')}</span>
+                        <span className="dash-company-type">{t('dashboard.companyType')}</span>
                       </div>
                       <span className="dash-company-chevron">&#9662;</span>
                     </div>
@@ -939,40 +937,31 @@ export default function Home() {
                     <div className="dash-menu">
                       <div className="dash-menu-item dash-menu-active">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-                        Dashboard
+                        {t('dashboard.sidebar.dashboard')}
                       </div>
                       <div className="dash-menu-item">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z"/></svg>
-                        Projects
+                        {t('dashboard.sidebar.projects')}
                       </div>
                       <div className="dash-menu-item">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-                        Chat
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                        {t('dashboard.sidebar.website')}
                       </div>
                       <div className="dash-menu-item">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                        Agents
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 3v18h18"/><path d="M7 16l4-8 4 4 4-12"/></svg>
+                        {t('dashboard.sidebar.analytics')}
                       </div>
                       <div className="dash-menu-item">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg>
-                        Docs
+                        {t('dashboard.sidebar.content')}
                       </div>
                       <div className="dash-menu-item">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                        Approvals
-                        <span className="dash-menu-badge">{kpis.approvals}</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                        {t('dashboard.sidebar.seo')}
                       </div>
                       <div className="dash-menu-item">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707"/></svg>
-                        Intelligence
-                      </div>
-                      <div className="dash-menu-item">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
-                        CRM
-                      </div>
-                      <div className="dash-menu-item">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-                        Teams
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+                        {t('dashboard.sidebar.reports')}
                       </div>
                     </div>
 
@@ -981,7 +970,7 @@ export default function Home() {
                     <div className="dash-menu">
                       <div className="dash-menu-item dash-menu-muted">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4"/></svg>
-                        Settings
+                        {t('dashboard.sidebar.settings')}
                       </div>
                     </div>
                   </div>
@@ -990,7 +979,7 @@ export default function Home() {
                   <div className="dash-main">
                     {/* Agent activity bar */}
                     <div className="dash-agents-bar">
-                      <span className="dash-agents-label">Active Agents</span>
+                      <span className="dash-agents-label">{t('dashboard.agentsLabel')}</span>
                       <div className="dash-agents-row">
                         {Object.entries(AGENTS).map(([name, agent]) => (
                           <div key={name} className={`dash-agent-chip ${name === activeAgent ? 'dash-agent-active' : ''}`}>
@@ -1013,29 +1002,29 @@ export default function Home() {
                           ))}
                         </div>
                       </div>
-                      <span className="dash-active-status">In progress</span>
+                      <span className="dash-active-status">{t('dashboard.inProgress')}</span>
                     </div>
                     {/* KPI cards */}
                     <div className="dash-kpis">
                       <div className="dash-kpi">
-                        <div className="dash-kpi-label">Revenue</div>
-                        <div className="dash-kpi-value" key={`rev-${kpis.revenue}`}>&euro;{kpis.revenue.toLocaleString()}</div>
-                        <div className="dash-kpi-change dash-kpi-positive">+12.5%</div>
+                        <div className="dash-kpi-label">{t('dashboard.kpi.visitors')}</div>
+                        <div className="dash-kpi-value" key={`rev-${kpis.revenue}`}>2.847</div>
+                        <div className="dash-kpi-change dash-kpi-positive">+18.3%</div>
                       </div>
                       <div className="dash-kpi">
-                        <div className="dash-kpi-label">Tasks Completed</div>
-                        <div className="dash-kpi-value" key={`tasks-${kpis.tasks}`}>{kpis.tasks}</div>
-                        <div className="dash-kpi-change dash-kpi-positive">+23 today</div>
+                        <div className="dash-kpi-label">{t('dashboard.kpi.conversions')}</div>
+                        <div className="dash-kpi-value" key={`tasks-${kpis.tasks}`}>156</div>
+                        <div className="dash-kpi-change dash-kpi-positive">+23 {t('dashboard.kpi.thisWeek')}</div>
                       </div>
                       <div className="dash-kpi">
-                        <div className="dash-kpi-label">Queued</div>
-                        <div className="dash-kpi-value" key={`q-${kpis.queued}`}>{kpis.queued}</div>
-                        <div className="dash-kpi-change dash-kpi-warning">3 urgent</div>
+                        <div className="dash-kpi-label">{t('dashboard.kpi.leads')}</div>
+                        <div className="dash-kpi-value" key={`q-${kpis.queued}`}>42</div>
+                        <div className="dash-kpi-change dash-kpi-positive">+8 {t('dashboard.kpi.thisWeek')}</div>
                       </div>
                       <div className="dash-kpi">
-                        <div className="dash-kpi-label">New Docs</div>
-                        <div className="dash-kpi-value" key={`docs-${kpis.docs}`}>{kpis.docs}</div>
-                        <div className="dash-kpi-change">this week</div>
+                        <div className="dash-kpi-label">{t('dashboard.kpi.uptime')}</div>
+                        <div className="dash-kpi-value" key={`docs-${kpis.docs}`}>99.9%</div>
+                        <div className="dash-kpi-change">{t('dashboard.kpi.allSystems')}</div>
                       </div>
                     </div>
 
@@ -1064,12 +1053,12 @@ export default function Home() {
                     <span style={{background:'#ffbd2e'}} />
                     <span style={{background:'#28c840'}} />
                   </div>
-                  <div className="chrome-url">app.groupany.ai</div>
+                  <div className="chrome-url">project.groupany.nl</div>
                 </div>
                 <div className="image-card-body">
                   <div className="mock-topbar">
-                    <span className="mock-greeting">Good morning, Bart</span>
-                    <span className="mock-badge">5 agents online</span>
+                    <span className="mock-greeting">{t('dashboard.greeting')}</span>
+                    <span className="mock-badge">{t('dashboard.teamOnline')}</span>
                   </div>
                   <div className="mock-stats-row">
                     <div className="mock-stat"><strong>12</strong><small>Active tasks</small></div>
@@ -1440,17 +1429,17 @@ export default function Home() {
                 <div className="cta-band-card">
                   <div className="cta-card-stat">
                     <span className="cta-card-number">10x</span>
-                    <span className="cta-card-label">faster delivery</span>
+                    <span className="cta-card-label">{t('ctaBand.stat1')}</span>
                   </div>
                   <div className="cta-card-divider" />
                   <div className="cta-card-stat">
                     <span className="cta-card-number">90%</span>
-                    <span className="cta-card-label">cost reduction</span>
+                    <span className="cta-card-label">{t('ctaBand.stat2')}</span>
                   </div>
                   <div className="cta-card-divider" />
                   <div className="cta-card-stat">
                     <span className="cta-card-number">24/7</span>
-                    <span className="cta-card-label">availability</span>
+                    <span className="cta-card-label">{t('ctaBand.stat3')}</span>
                   </div>
                 </div>
               </div>

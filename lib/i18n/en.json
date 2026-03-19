@@ -9,11 +9,11 @@
   "hero": {
     "socialProof": "Trusted by <strong>12 companies</strong> in the Netherlands",
     "headlinePre": "Your",
-    "headlinePost": "partner in Amsterdam.",
+    "headlinePost": "partner. Always at work.",
     "headlineLine2": "",
     "headline": "We build software, websites and marketing campaigns that deliver measurable results. Faster, smarter and more affordable.",
-    "subline": "Custom software, professional websites and data-driven marketing. Fixed prices, no surprises. Delivered on schedule.",
-    "ctaPrimary": "Schedule a call",
+    "subline": "We build software, websites, and marketing campaigns that deliver measurable results. Faster, smarter, and more affordable than traditional agencies.",
+    "ctaPrimary": "Book a meeting",
     "ctaSecondary": "View our services",
     "rotatingWords": [
       "software",
@@ -71,17 +71,60 @@
       "desc": "Digital strategy tailored to your business goals. Clear advice, concrete plans.",
       "label": "STRATEGY"
     },
+    "security": {
+      "title": "Security & monitoring",
+      "desc": "Continuous monitoring, security scans and compliance. Your data and systems are safe with us.",
+      "label": "SECURITY"
+    },
+    "research": {
+      "title": "Research & analysis",
+      "desc": "Market research, competitor analysis and data insights. Decisions based on facts.",
+      "label": "RESEARCH"
+    },
+    "hr": {
+      "title": "HR & recruitment",
+      "desc": "Find the right people via social channels. Employer branding, campaigns and candidate selection.",
+      "label": "HR & RECRUITMENT"
+    },
+    "automation": {
+      "title": "Automation",
+      "desc": "Streamline your business processes. From trigger to result, fully automated.",
+      "label": "AUTOMATION"
+    },
+    "legal": {
+      "title": "Legal & compliance",
+      "desc": "Contract management, GDPR compliance and legal review. Everything in order, always.",
+      "label": "LEGAL"
+    },
     "also": "And more: automations, data analysis, DevOps, content production"
   },
   "dashboard": {
     "title": "Project Dashboard",
     "live": "Live",
+    "companyName": "Bakkerij van Dijk",
+    "companyType": "Client portal",
+    "greeting": "Good morning",
+    "teamOnline": "Your team is online",
+    "agentsLabel": "Your team",
+    "inProgress": "In progress",
+    "kpi": {
+      "visitors": "Website visitors",
+      "conversions": "Conversions",
+      "leads": "Leads",
+      "uptime": "Uptime",
+      "thisWeek": "this week",
+      "allSystems": "All systems operational"
+    },
     "sidebar": {
       "dashboard": "Dashboard",
       "projects": "Projects",
+      "website": "Website",
       "analytics": "Analytics",
-      "deployments": "Deployments",
-      "settings": "Settings"
+      "content": "Content",
+      "seo": "SEO",
+      "reports": "Reports",
+      "settings": "Settings",
+      "deployments": "Deployments"
     },
     "stats": {
       "activeProjects": "Active projects",
@@ -93,22 +136,22 @@
     "agentActivity": [
       {
         "name": "Team",
-        "task": "Deployed website v3.2 to production",
+        "task": "Website update published",
         "time": "2m ago"
       },
       {
         "name": "SEO",
-        "task": "Generated monthly SEO report",
+        "task": "SEO report completed",
         "time": "8m ago"
       },
       {
         "name": "Dev",
-        "task": "Completed CRM API integration",
+        "task": "New lead via contact form",
         "time": "14m ago"
       },
       {
         "name": "Marketing",
-        "task": "Optimised Google Ads campaign",
+        "task": "Content scheduled for next week",
         "time": "21m ago"
       }
     ]
@@ -118,7 +161,7 @@
     "items": [
       {
         "agent": "Dev",
-        "text": "Website update deployed to production",
+        "text": "Website update published",
         "time": "2m ago"
       },
       {
@@ -133,7 +176,7 @@
       },
       {
         "agent": "Dev",
-        "text": "New feature deployed to staging",
+        "text": "New lead via contact form",
         "time": "12m ago"
       },
       {
@@ -225,21 +268,24 @@
   "cta": {
     "headline": "Ready to build together?",
     "subtitle": "Schedule a free 30-minute call. We will show you what we can do for your business.",
-    "primary": "Schedule a call",
+    "primary": "Book a meeting",
     "secondary": "View our insights"
   },
   "ctaBand": {
     "eyebrow": "GET STARTED",
     "headline": "Ready to build together?",
     "subline": "Schedule a free 30-minute call. We will show you what we can do for your business.",
-    "primary": "Schedule a call",
+    "primary": "Book a meeting",
     "secondary": "Read our insights",
     "trust1": "No commitment",
     "trust2": "Results within a week",
-    "trust3": "Cancel anytime"
+    "trust3": "Cancel anytime",
+    "stat1": "faster delivery",
+    "stat2": "cost reduction",
+    "stat3": "availability"
   },
   "footer": {
-    "tagline": "Your digital partner in Amsterdam. Software, websites and marketing that work.",
+    "tagline": "Your digital partner. Software, websites and marketing that work.",
     "company": "Company",
     "servicesTitle": "Services",
     "resources": "Knowledge",
