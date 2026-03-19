@@ -18,7 +18,7 @@ const inputStyle: React.CSSProperties = {
   background: "var(--color-bg)",
   color: "var(--color-text)",
   outline: "none",
-  transition: "border-color 200ms",
+  transition: "border-color 200ms, box-shadow 200ms",
 }
 
 export default function Contact({ lang }: ContactProps) {
@@ -40,7 +40,7 @@ export default function Contact({ lang }: ContactProps) {
     <section
       id="contact"
       className="section-pad"
-      style={{ background: "var(--color-bg-elevated)" }}
+      style={{ background: "var(--color-bg-alt)" }}
     >
       <div className="container">
         <ScrollReveal>
@@ -49,9 +49,10 @@ export default function Contact({ lang }: ContactProps) {
               {t.label}
             </span>
             <h2
-              className="serif"
               style={{
-                fontSize: "clamp(32px, 4.5vw, 48px)",
+                fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
+                fontWeight: 600,
+                letterSpacing: "-0.02em",
                 color: "var(--color-text)",
                 marginBottom: 12,
               }}
@@ -64,6 +65,7 @@ export default function Contact({ lang }: ContactProps) {
                 color: "var(--color-text-secondary)",
                 maxWidth: 520,
                 margin: "0 auto 48px",
+                lineHeight: 1.6,
               }}
             >
               {t.sub}
@@ -80,7 +82,6 @@ export default function Contact({ lang }: ContactProps) {
             margin: "0 auto",
           }}
         >
-          {/* Form */}
           <ScrollReveal>
             <form
               onSubmit={handleSubmit}
@@ -94,8 +95,8 @@ export default function Contact({ lang }: ContactProps) {
                   style={inputStyle}
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  onFocus={(e) => (e.target.style.borderColor = "var(--color-accent)")}
-                  onBlur={(e) => (e.target.style.borderColor = "var(--color-border)")}
+                  onFocus={(e) => { e.target.style.borderColor = "var(--color-accent)"; e.target.style.boxShadow = "0 0 0 3px rgba(37,99,235,0.06)"; }}
+                  onBlur={(e) => { e.target.style.borderColor = "var(--color-border)"; e.target.style.boxShadow = "none"; }}
                 />
                 <input
                   type="email"
@@ -104,8 +105,8 @@ export default function Contact({ lang }: ContactProps) {
                   style={inputStyle}
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  onFocus={(e) => (e.target.style.borderColor = "var(--color-accent)")}
-                  onBlur={(e) => (e.target.style.borderColor = "var(--color-border)")}
+                  onFocus={(e) => { e.target.style.borderColor = "var(--color-accent)"; e.target.style.boxShadow = "0 0 0 3px rgba(37,99,235,0.06)"; }}
+                  onBlur={(e) => { e.target.style.borderColor = "var(--color-border)"; e.target.style.boxShadow = "none"; }}
                 />
               </div>
               <input
@@ -114,8 +115,8 @@ export default function Contact({ lang }: ContactProps) {
                 style={inputStyle}
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                onFocus={(e) => (e.target.style.borderColor = "var(--color-accent)")}
-                onBlur={(e) => (e.target.style.borderColor = "var(--color-border)")}
+                onFocus={(e) => { e.target.style.borderColor = "var(--color-accent)"; e.target.style.boxShadow = "0 0 0 3px rgba(37,99,235,0.06)"; }}
+                onBlur={(e) => { e.target.style.borderColor = "var(--color-border)"; e.target.style.boxShadow = "none"; }}
               />
               <select
                 style={{
@@ -124,16 +125,12 @@ export default function Contact({ lang }: ContactProps) {
                 }}
                 value={formData.service}
                 onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                onFocus={(e) => (e.target.style.borderColor = "var(--color-accent)")}
-                onBlur={(e) => (e.target.style.borderColor = "var(--color-border)")}
+                onFocus={(e) => { e.target.style.borderColor = "var(--color-accent)"; e.target.style.boxShadow = "0 0 0 3px rgba(37,99,235,0.06)"; }}
+                onBlur={(e) => { e.target.style.borderColor = "var(--color-border)"; e.target.style.boxShadow = "none"; }}
               >
-                <option value="" disabled>
-                  {t.form.service}
-                </option>
+                <option value="" disabled>{t.form.service}</option>
                 {t.form.serviceOptions.map((opt) => (
-                  <option key={opt} value={opt}>
-                    {opt}
-                  </option>
+                  <option key={opt} value={opt}>{opt}</option>
                 ))}
               </select>
               <textarea
@@ -142,8 +139,8 @@ export default function Contact({ lang }: ContactProps) {
                 style={{ ...inputStyle, resize: "vertical", minHeight: 120 }}
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                onFocus={(e) => (e.target.style.borderColor = "var(--color-accent)")}
-                onBlur={(e) => (e.target.style.borderColor = "var(--color-border)")}
+                onFocus={(e) => { e.target.style.borderColor = "var(--color-accent)"; e.target.style.boxShadow = "0 0 0 3px rgba(37,99,235,0.06)"; }}
+                onBlur={(e) => { e.target.style.borderColor = "var(--color-border)"; e.target.style.boxShadow = "none"; }}
               />
               <button type="submit" className="btn-primary" style={{ alignSelf: "flex-start" }}>
                 {t.form.submit}
@@ -151,11 +148,10 @@ export default function Contact({ lang }: ContactProps) {
             </form>
           </ScrollReveal>
 
-          {/* Info */}
           <ScrollReveal delay={0.1}>
             <div
               style={{
-                background: "var(--color-bg)",
+                background: "var(--color-bg-elevated)",
                 border: "1px solid var(--color-border)",
                 borderRadius: "var(--radius-lg)",
                 padding: 32,
@@ -164,63 +160,29 @@ export default function Contact({ lang }: ContactProps) {
                 gap: 24,
               }}
             >
-              <h3 style={{ fontSize: 18, fontWeight: 700 }}>{t.info.title}</h3>
+              <h3 style={{ fontSize: 18, fontWeight: 600 }}>{t.info.title}</h3>
 
               <div>
-                <div
-                  style={{
-                    fontSize: 13,
-                    color: "var(--color-text-muted)",
-                    marginBottom: 4,
-                    fontWeight: 500,
-                  }}
-                >
+                <div style={{ fontSize: 13, color: "var(--color-text-muted)", marginBottom: 4, fontWeight: 500 }}>
                   {lang === "nl" ? "Adres" : "Address"}
                 </div>
                 <div style={{ fontSize: 15, lineHeight: 1.6, whiteSpace: "pre-line" }}>
-                  Groupany B.V.{"\n"}
-                  {t.info.address}
+                  Groupany B.V.{"\n"}{t.info.address}
                 </div>
               </div>
 
               <div>
-                <div
-                  style={{
-                    fontSize: 13,
-                    color: "var(--color-text-muted)",
-                    marginBottom: 4,
-                    fontWeight: 500,
-                  }}
-                >
-                  E-mail
-                </div>
-                <a
-                  href={`mailto:${t.info.email}`}
-                  style={{
-                    fontSize: 15,
-                    color: "var(--color-accent)",
-                    fontWeight: 500,
-                  }}
-                >
+                <div style={{ fontSize: 13, color: "var(--color-text-muted)", marginBottom: 4, fontWeight: 500 }}>E-mail</div>
+                <a href={`mailto:${t.info.email}`} style={{ fontSize: 15, color: "var(--color-accent)", fontWeight: 500 }}>
                   {t.info.email}
                 </a>
               </div>
 
               <div>
-                <div
-                  style={{
-                    fontSize: 13,
-                    color: "var(--color-text-muted)",
-                    marginBottom: 4,
-                    fontWeight: 500,
-                  }}
-                >
+                <div style={{ fontSize: 13, color: "var(--color-text-muted)", marginBottom: 4, fontWeight: 500 }}>
                   {lang === "nl" ? "Telefoon" : "Phone"}
                 </div>
-                <a
-                  href={`tel:${t.info.phone.replace(/\s/g, "")}`}
-                  style={{ fontSize: 15, fontWeight: 500 }}
-                >
+                <a href={`tel:${t.info.phone.replace(/\s/g, "")}`} style={{ fontSize: 15, fontWeight: 500 }}>
                   {t.info.phone}
                 </a>
               </div>

@@ -21,29 +21,103 @@ export default function Nav({ lang, setLang }: NavProps) {
   }, [])
 
   useEffect(() => {
-    if (mobileOpen) {
-      document.body.style.overflow = "hidden"
-    } else {
-      document.body.style.overflow = ""
-    }
+    document.body.style.overflow = mobileOpen ? "hidden" : ""
     return () => { document.body.style.overflow = "" }
   }, [mobileOpen])
 
   return (
     <>
-      <nav
+      {/* Top bar -- Moneybird-style */}
+      <div
         style={{
           position: "fixed",
           top: 0,
           left: 0,
           right: 0,
+          zIndex: 101,
+          height: 32,
+          background: "var(--color-bg-alt)",
+          borderBottom: "1px solid var(--color-border)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 24,
+          fontSize: 12,
+          fontWeight: 500,
+          color: "var(--color-text-secondary)",
+          padding: "0 24px",
+        }}
+      >
+        <a
+          href="#werkwijze"
+          className="hide-mobile"
+          style={{ transition: "color 0.15s" }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-text)")}
+          onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-text-secondary)")}
+        >
+          {lang === "nl" ? "Werkwijze" : "Process"}
+        </a>
+        <span className="hide-mobile" style={{ color: "var(--color-border)" }}>|</span>
+        <a
+          href="#resultaten"
+          className="hide-mobile"
+          style={{ transition: "color 0.15s" }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-text)")}
+          onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-text-secondary)")}
+        >
+          {lang === "nl" ? "Resultaten" : "Results"}
+        </a>
+        <span className="hide-mobile" style={{ color: "var(--color-border)" }}>|</span>
+        <a
+          href="#over-ons"
+          className="hide-mobile"
+          style={{ transition: "color 0.15s" }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-text)")}
+          onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-text-secondary)")}
+        >
+          {lang === "nl" ? "Over ons" : "About"}
+        </a>
+        <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: 4 }}>
+          {(["NL", "EN"] as const).map((l) => {
+            const val = l.toLowerCase() as Lang
+            const active = lang === val
+            return (
+              <button
+                key={l}
+                onClick={() => setLang(val)}
+                style={{
+                  padding: "2px 8px",
+                  borderRadius: 999,
+                  fontSize: 11,
+                  fontWeight: active ? 700 : 400,
+                  color: active ? "var(--color-text)" : "var(--color-text-muted)",
+                  background: active ? "var(--color-bg-elevated)" : "transparent",
+                  border: "none",
+                  cursor: "pointer",
+                }}
+              >
+                {l}
+              </button>
+            )
+          })}
+        </div>
+      </div>
+
+      {/* Main nav */}
+      <nav
+        style={{
+          position: "fixed",
+          top: 32,
+          left: 0,
+          right: 0,
           zIndex: 100,
-          padding: "0 clamp(1.25rem, 4vw, 2rem)",
-          transition: "background 300ms, box-shadow 300ms, backdrop-filter 300ms",
+          height: 64,
+          padding: "0 24px",
+          transition: "background 300ms, backdrop-filter 300ms",
           background: scrolled ? "var(--color-bg)" : "transparent",
           backdropFilter: scrolled ? "blur(16px) saturate(180%)" : "none",
           WebkitBackdropFilter: scrolled ? "blur(16px) saturate(180%)" : "none",
-          boxShadow: scrolled ? "0 1px 0 var(--color-border-subtle)" : "none",
+          borderBottom: scrolled ? "1px solid var(--color-border)" : "1px solid transparent",
         }}
       >
         <div
@@ -53,7 +127,7 @@ export default function Nav({ lang, setLang }: NavProps) {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            height: 64,
+            height: "100%",
           }}
         >
           {/* Logo */}
@@ -71,7 +145,7 @@ export default function Nav({ lang, setLang }: NavProps) {
 
           {/* Desktop links */}
           <div className="hide-mobile" style={{ display: "flex", alignItems: "center", gap: 32 }}>
-            {t.links.map((l) => (
+            {t.links.filter(l => l.href === "#diensten" || l.href === "#contact").map((l) => (
               <a
                 key={l.href}
                 href={l.href}
@@ -87,55 +161,29 @@ export default function Nav({ lang, setLang }: NavProps) {
                 {l.label}
               </a>
             ))}
+            <a
+              href="#resultaten"
+              style={{
+                fontSize: 14,
+                fontWeight: 500,
+                color: "var(--color-text-secondary)",
+                transition: "color 200ms",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-text)")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-text-secondary)")}
+            >
+              {lang === "nl" ? "Projecten" : "Projects"}
+            </a>
           </div>
 
           {/* Right side */}
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
             <ThemeToggle />
 
-            {/* Lang toggle */}
-            <div
-              className="hide-mobile"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 2,
-                padding: 3,
-                background: "var(--color-bg-alt)",
-                border: "1px solid var(--color-border)",
-                borderRadius: 999,
-              }}
-            >
-              {(["NL", "EN"] as const).map((l) => {
-                const val = l.toLowerCase() as Lang
-                const active = lang === val
-                return (
-                  <button
-                    key={l}
-                    onClick={() => setLang(val)}
-                    style={{
-                      padding: "4px 10px",
-                      borderRadius: 999,
-                      fontSize: 11,
-                      fontWeight: 700,
-                      color: active ? "var(--color-text)" : "var(--color-text-muted)",
-                      background: active ? "var(--color-bg-elevated)" : "transparent",
-                      border: "none",
-                      boxShadow: active ? "var(--shadow-sm)" : "none",
-                      transition: "all 200ms",
-                    }}
-                  >
-                    {l}
-                  </button>
-                )
-              })}
-            </div>
-
-            {/* Desktop CTA */}
             <a
               href="#contact"
               className="btn-primary hide-mobile"
-              style={{ padding: "10px 20px", fontSize: 14 }}
+              style={{ height: 36, padding: "0 16px", fontSize: 13, borderRadius: 999 }}
             >
               {t.cta}
             </a>
@@ -154,36 +202,9 @@ export default function Nav({ lang, setLang }: NavProps) {
                 border: "none",
               }}
             >
-              <span
-                style={{
-                  width: 22,
-                  height: 2,
-                  background: "var(--color-text)",
-                  borderRadius: 2,
-                  transition: "transform 300ms",
-                  transform: mobileOpen ? "rotate(45deg) translateY(7px)" : "none",
-                }}
-              />
-              <span
-                style={{
-                  width: 22,
-                  height: 2,
-                  background: "var(--color-text)",
-                  borderRadius: 2,
-                  transition: "opacity 200ms",
-                  opacity: mobileOpen ? 0 : 1,
-                }}
-              />
-              <span
-                style={{
-                  width: 22,
-                  height: 2,
-                  background: "var(--color-text)",
-                  borderRadius: 2,
-                  transition: "transform 300ms",
-                  transform: mobileOpen ? "rotate(-45deg) translateY(-7px)" : "none",
-                }}
-              />
+              <span style={{ width: 22, height: 2, background: "var(--color-text)", borderRadius: 2, transition: "transform 300ms", transform: mobileOpen ? "rotate(45deg) translateY(7px)" : "none" }} />
+              <span style={{ width: 22, height: 2, background: "var(--color-text)", borderRadius: 2, transition: "opacity 200ms", opacity: mobileOpen ? 0 : 1 }} />
+              <span style={{ width: 22, height: 2, background: "var(--color-text)", borderRadius: 2, transition: "transform 300ms", transform: mobileOpen ? "rotate(-45deg) translateY(-7px)" : "none" }} />
             </button>
           </div>
         </div>
@@ -195,7 +216,7 @@ export default function Nav({ lang, setLang }: NavProps) {
           style={{
             position: "fixed",
             inset: 0,
-            top: 64,
+            top: 96,
             zIndex: 99,
             background: "var(--color-bg)",
             display: "flex",
@@ -215,39 +236,9 @@ export default function Nav({ lang, setLang }: NavProps) {
               {l.label}
             </a>
           ))}
-          <a
-            href="#contact"
-            onClick={() => setMobileOpen(false)}
-            className="btn-primary"
-            style={{ marginTop: 16 }}
-          >
+          <a href="#contact" onClick={() => setMobileOpen(false)} className="btn-primary" style={{ marginTop: 16 }}>
             {t.cta}
           </a>
-          <div style={{ display: "flex", gap: 12, marginTop: 8 }}>
-            {(["NL", "EN"] as const).map((l) => {
-              const val = l.toLowerCase() as Lang
-              return (
-                <button
-                  key={l}
-                  onClick={() => {
-                    setLang(val)
-                    setMobileOpen(false)
-                  }}
-                  style={{
-                    padding: "8px 16px",
-                    borderRadius: 999,
-                    fontSize: 14,
-                    fontWeight: 700,
-                    color: lang === val ? "#fff" : "var(--color-text-secondary)",
-                    background: lang === val ? "var(--color-accent)" : "var(--color-bg-alt)",
-                    border: "1px solid var(--color-border)",
-                  }}
-                >
-                  {l}
-                </button>
-              )
-            })}
-          </div>
         </div>
       )}
     </>

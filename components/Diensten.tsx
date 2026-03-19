@@ -7,6 +7,13 @@ interface DienstenProps {
   lang: Lang
 }
 
+const SERVICE_ICONS = [
+  <svg key="0" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>,
+  <svg key="1" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><polyline points="16,18 22,12 16,6"/><polyline points="8,6 2,12 8,18"/></svg>,
+  <svg key="2" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>,
+  <svg key="3" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>,
+]
+
 export default function Diensten({ lang }: DienstenProps) {
   const t = copy.diensten[lang]
 
@@ -14,7 +21,7 @@ export default function Diensten({ lang }: DienstenProps) {
     <section
       id="diensten"
       className="section-pad"
-      style={{ background: "var(--color-bg-elevated)" }}
+      style={{ background: "var(--color-bg)" }}
     >
       <div className="container">
         <ScrollReveal>
@@ -23,9 +30,10 @@ export default function Diensten({ lang }: DienstenProps) {
               {t.label}
             </span>
             <h2
-              className="serif"
               style={{
-                fontSize: "clamp(32px, 4.5vw, 48px)",
+                fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
+                fontWeight: 600,
+                letterSpacing: "-0.02em",
                 color: "var(--color-text)",
                 marginBottom: 12,
               }}
@@ -38,6 +46,7 @@ export default function Diensten({ lang }: DienstenProps) {
                 color: "var(--color-text-secondary)",
                 maxWidth: 500,
                 margin: "0 auto",
+                lineHeight: 1.6,
               }}
             >
               {t.sub}
@@ -58,21 +67,29 @@ export default function Diensten({ lang }: DienstenProps) {
                 className="card"
                 style={{ display: "flex", flexDirection: "column", height: "100%" }}
               >
-                <div
-                  style={{
-                    fontSize: 13,
-                    fontWeight: 700,
-                    color: "var(--color-accent)",
-                    letterSpacing: "0.02em",
-                    marginBottom: 16,
-                  }}
-                >
-                  {s.num}
+                <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+                  <div
+                    style={{
+                      width: 40,
+                      height: 40,
+                      borderRadius: "var(--radius-md)",
+                      background: "var(--color-accent-subtle)",
+                      color: "var(--color-accent)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    {SERVICE_ICONS[i]}
+                  </div>
+                  <span style={{ fontSize: 13, fontWeight: 700, color: "var(--color-accent)" }}>
+                    {s.num}
+                  </span>
                 </div>
                 <h3
                   style={{
                     fontSize: 20,
-                    fontWeight: 700,
+                    fontWeight: 600,
                     marginBottom: 10,
                     letterSpacing: "-0.01em",
                     color: "var(--color-text)",

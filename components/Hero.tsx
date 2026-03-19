@@ -1,136 +1,254 @@
 "use client"
 
 import ScrollReveal from "./ScrollReveal"
-import { copy, type Lang } from "@/lib/i18n"
+import { type Lang } from "@/lib/i18n"
 
 interface HeroProps {
   lang: Lang
 }
 
-/* Tech logos for marquee */
 const TECH_LOGOS = [
-  "Next.js", "React", "TypeScript", "PostgreSQL", "Stripe", "Cloudflare",
+  "Next.js", "React", "TypeScript", "PostgreSQL", "Stripe", "Cloudflare", "Hetzner", "Docker",
 ]
 
-/* Deliverable cards for the right column visual */
-const DELIVERABLES_NL = [
-  { icon: "globe", label: "Website", status: "Live", color: "#22c55e" },
-  { icon: "chart", label: "Analytics", status: "Actief", color: "#3b82f6" },
-  { icon: "code", label: "API koppeling", status: "Deployed", color: "#a855f7" },
-  { icon: "mail", label: "Email campagne", status: "Verzonden", color: "#f59e0b" },
+const PROJECTS_NL = [
+  { icon: "globe", label: "Website redesign", status: "Live", progress: 100, color: "#22c55e" },
+  { icon: "code", label: "CRM koppeling", status: "In ontwikkeling", progress: 72, color: "#3b82f6" },
+  { icon: "chart", label: "SEO campagne", status: "Actief", progress: 85, color: "#a855f7" },
+  { icon: "mail", label: "Email automatisering", status: "Gepland", progress: 30, color: "#f59e0b" },
 ]
 
-const DELIVERABLES_EN = [
-  { icon: "globe", label: "Website", status: "Live", color: "#22c55e" },
-  { icon: "chart", label: "Analytics", status: "Active", color: "#3b82f6" },
-  { icon: "code", label: "API integration", status: "Deployed", color: "#a855f7" },
-  { icon: "mail", label: "Email campaign", status: "Sent", color: "#f59e0b" },
+const PROJECTS_EN = [
+  { icon: "globe", label: "Website redesign", status: "Live", progress: 100, color: "#22c55e" },
+  { icon: "code", label: "CRM integration", status: "In development", progress: 72, color: "#3b82f6" },
+  { icon: "chart", label: "SEO campaign", status: "Active", progress: 85, color: "#a855f7" },
+  { icon: "mail", label: "Email automation", status: "Planned", progress: 30, color: "#f59e0b" },
 ]
-
-const ICONS: Record<string, string> = {
-  globe: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z",
-  chart: "M3 13h2v8H3v-8zm4-4h2v12H7V9zm4-4h2v16h-2V5zm4 8h2v8h-2v-8zm4-4h2v12h-2V9z",
-  code: "M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z",
-  mail: "M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z",
-}
 
 export default function Hero({ lang }: HeroProps) {
-  const t = copy.hero[lang]
-  const deliverables = lang === "nl" ? DELIVERABLES_NL : DELIVERABLES_EN
+  const projects = lang === "nl" ? PROJECTS_NL : PROJECTS_EN
 
   return (
     <>
-      {/* Hero section */}
-      <section className="hero-grid-nl">
+      <section
+        style={{
+          paddingTop: "clamp(130px, 16vw, 180px)",
+          paddingBottom: "clamp(60px, 8vw, 96px)",
+          paddingLeft: "clamp(20px, 4vw, 32px)",
+          paddingRight: "clamp(20px, 4vw, 32px)",
+          minHeight: "90vh",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
         <div className="container" style={{ width: "100%" }}>
-          <div className="hero-columns-nl">
-            {/* Left column */}
-            <div className="hero-left-nl">
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1.1fr 0.9fr",
+              gap: "clamp(32px, 4vw, 64px)",
+              alignItems: "center",
+            }}
+          >
+            {/* Left column: Copy */}
+            <div>
               <ScrollReveal>
-                <span className="hero-eyebrow-nl">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.7 }}>
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
-                    <circle cx="12" cy="10" r="3" />
-                  </svg>
-                  {lang === "nl" ? "Gevestigd aan de Keizersgracht, Amsterdam" : "Based on the Keizersgracht, Amsterdam"}
-                </span>
+                <p
+                  style={{
+                    fontSize: 14,
+                    fontWeight: 500,
+                    color: "var(--color-text-secondary)",
+                    marginBottom: 24,
+                  }}
+                >
+                  {lang === "nl"
+                    ? <>Vertrouwd door <strong style={{ color: "var(--color-text)" }}>meerdere bedrijven</strong> in Nederland</>
+                    : <>Trusted by <strong style={{ color: "var(--color-text)" }}>multiple companies</strong> in the Netherlands</>
+                  }
+                </p>
               </ScrollReveal>
 
               <ScrollReveal delay={0.1}>
-                <h1 className="hero-h1-nl serif">
+                <h1
+                  style={{
+                    fontSize: "clamp(2.5rem, 5vw, 4rem)",
+                    fontWeight: 700,
+                    lineHeight: 1.1,
+                    letterSpacing: "-0.03em",
+                    color: "var(--color-text)",
+                    margin: "0 0 24px",
+                    maxWidth: 560,
+                  }}
+                >
                   {lang === "nl"
-                    ? "Software, websites en marketing die resultaat opleveren"
-                    : "Software, websites and marketing that deliver results"}
+                    ? "Uw zakelijke groei begint hier."
+                    : "Your business growth starts here."
+                  }
                 </h1>
               </ScrollReveal>
 
               <ScrollReveal delay={0.15}>
-                <p className="hero-sub-nl">
+                <p
+                  style={{
+                    fontSize: "clamp(1rem, 1.3vw, 1.125rem)",
+                    lineHeight: 1.7,
+                    color: "var(--color-text-secondary)",
+                    maxWidth: 480,
+                    margin: "0 0 32px",
+                  }}
+                >
                   {lang === "nl"
-                    ? "Wij zijn uw technologiepartner. Van software op maat tot resultaatgerichte marketing. Sneller, slimmer en betaalbaarder dan traditionele bureaus."
-                    : "We are your technology partner. From custom software to results-driven marketing. Faster, smarter and more affordable than traditional agencies."}
+                    ? "Software op maat, professionele websites en resultaatgerichte marketing. Van concept tot oplevering, alles onder een dak."
+                    : "Custom software, professional websites and results-driven marketing. From concept to delivery, everything under one roof."
+                  }
                 </p>
               </ScrollReveal>
 
               <ScrollReveal delay={0.2}>
-                <div className="hero-cta-group-nl">
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginBottom: 20 }}>
                   <a href="#contact" className="btn-primary">
-                    {lang === "nl" ? "Vraag een offerte aan" : "Request a quote"}
+                    {lang === "nl" ? "Gratis kennismaken" : "Free introduction"}
                   </a>
                   <a href="#diensten" className="btn-secondary">
-                    {lang === "nl" ? "Bekijk onze diensten" : "View our services"}
+                    {lang === "nl" ? "Onze diensten" : "Our services"}
                   </a>
                 </div>
               </ScrollReveal>
 
               <ScrollReveal delay={0.25}>
-                <p className="hero-trust-nl">
-                  KVK 93.847.291 · Keizersgracht 520, Amsterdam
-                </p>
+                <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                  {/* Avatar stack */}
+                  <div style={{ display: "flex" }}>
+                    {["B", "M", "S", "J"].map((letter, i) => (
+                      <div
+                        key={letter}
+                        style={{
+                          width: 28,
+                          height: 28,
+                          borderRadius: "50%",
+                          background: i === 0 ? "var(--color-accent)" : "var(--color-bg-alt)",
+                          border: i === 0 ? "2px solid var(--color-bg)" : "2px solid var(--color-bg)",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          fontSize: 11,
+                          fontWeight: 700,
+                          color: i === 0 ? "#fff" : "var(--color-text-muted)",
+                          marginLeft: i === 0 ? 0 : -8,
+                          zIndex: 4 - i,
+                          position: "relative",
+                        }}
+                      >
+                        {letter}
+                      </div>
+                    ))}
+                  </div>
+                  <span style={{ fontSize: 13, color: "var(--color-text-secondary)" }}>
+                    {lang === "nl"
+                      ? "Meer dan 10 projecten opgeleverd"
+                      : "More than 10 projects delivered"
+                    }
+                  </span>
+                </div>
               </ScrollReveal>
             </div>
 
-            {/* Right column: Deliverables visual */}
-            <div className="hero-right-nl">
+            {/* Right column: Project visual */}
+            <div>
               <ScrollReveal delay={0.2}>
-                <div className="hero-visual-nl">
-                  {/* Visual header */}
-                  <div className="visual-header-nl">
-                    <div className="visual-dots-nl">
-                      <span style={{ background: "#ef4444" }} />
-                      <span style={{ background: "#f59e0b" }} />
-                      <span style={{ background: "#22c55e" }} />
+                <div
+                  style={{
+                    background: "var(--color-bg-elevated)",
+                    border: "1px solid var(--color-border)",
+                    borderRadius: "var(--radius-xl)",
+                    overflow: "hidden",
+                    boxShadow: "0 4px 6px rgba(0,0,0,0.02), 0 12px 40px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.03)",
+                  }}
+                >
+                  {/* Browser chrome */}
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 8,
+                      padding: "12px 16px",
+                      borderBottom: "1px solid var(--color-border)",
+                      background: "var(--color-bg-alt)",
+                    }}
+                  >
+                    <div style={{ display: "flex", gap: 6 }}>
+                      <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#ef4444" }} />
+                      <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#f59e0b" }} />
+                      <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#22c55e" }} />
                     </div>
-                    <span className="visual-title-nl">
-                      {lang === "nl" ? "Project overzicht" : "Project overview"}
-                    </span>
+                    <div
+                      style={{
+                        flex: 1,
+                        height: 24,
+                        background: "var(--color-bg)",
+                        borderRadius: 6,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        fontSize: 11,
+                        color: "var(--color-text-muted)",
+                      }}
+                    >
+                      mijnproject.nl
+                    </div>
                   </div>
 
-                  {/* Deliverable cards */}
-                  <div className="visual-cards-nl">
-                    {deliverables.map((item, i) => (
+                  {/* Project cards */}
+                  <div style={{ padding: 16, display: "flex", flexDirection: "column", gap: 8 }}>
+                    {projects.map((item, i) => (
                       <div
                         key={item.label}
-                        className="visual-card-nl"
-                        style={{ animationDelay: `${0.6 + i * 0.12}s` }}
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: 12,
+                          padding: "12px 14px",
+                          background: "var(--color-bg)",
+                          border: "1px solid var(--color-border-subtle)",
+                          borderRadius: "var(--radius-sm)",
+                          opacity: 0,
+                          transform: "translateY(8px)",
+                          animation: "cardIn 0.4s ease forwards",
+                          animationDelay: `${0.6 + i * 0.12}s`,
+                        }}
                       >
-                        <div className="visual-card-icon-nl" style={{ color: item.color }}>
-                          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d={ICONS[item.icon]} />
+                        <div
+                          style={{
+                            width: 32,
+                            height: 32,
+                            borderRadius: "var(--radius-sm)",
+                            background: "var(--color-border-subtle)",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            color: item.color,
+                            flexShrink: 0,
+                          }}
+                        >
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            {item.icon === "globe" && <><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></>}
+                            {item.icon === "code" && <><polyline points="16,18 22,12 16,6"/><polyline points="8,6 2,12 8,18"/></>}
+                            {item.icon === "chart" && <><path d="M18 20V10M12 20V4M6 20v-6"/></>}
+                            {item.icon === "mail" && <><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></>}
                           </svg>
                         </div>
-                        <div className="visual-card-info-nl">
-                          <span className="visual-card-label-nl">{item.label}</span>
-                          <span className="visual-card-status-nl" style={{ color: item.color }}>
-                            {item.status}
-                          </span>
+                        <div style={{ flex: 1, minWidth: 0 }}>
+                          <div style={{ fontSize: 13, fontWeight: 600, color: "var(--color-text)" }}>{item.label}</div>
+                          <div style={{ fontSize: 11, fontWeight: 500, color: item.color }}>{item.status}</div>
                         </div>
-                        <div className="visual-card-bar-nl">
+                        <div style={{ width: 60, height: 4, background: "var(--color-border-subtle)", borderRadius: 2, overflow: "hidden", flexShrink: 0 }}>
                           <div
-                            className="visual-card-bar-fill-nl"
                             style={{
+                              height: "100%",
+                              width: `${item.progress}%`,
                               background: item.color,
-                              animationDelay: `${0.9 + i * 0.12}s`,
+                              borderRadius: 2,
+                              transition: "width 1s ease",
                             }}
                           />
                         </div>
@@ -138,42 +256,114 @@ export default function Hero({ lang }: HeroProps) {
                     ))}
                   </div>
 
-                  {/* Mini stats row */}
-                  <div className="visual-stats-nl">
-                    <div className="visual-stat-nl">
-                      <span className="visual-stat-value-nl">99.9%</span>
-                      <span className="visual-stat-label-nl">Uptime</span>
-                    </div>
-                    <div className="visual-stat-nl">
-                      <span className="visual-stat-value-nl">&lt; 4 uur</span>
-                      <span className="visual-stat-label-nl">{lang === "nl" ? "Reactietijd" : "Response"}</span>
-                    </div>
-                    <div className="visual-stat-nl">
-                      <span className="visual-stat-value-nl">100%</span>
-                      <span className="visual-stat-label-nl">{lang === "nl" ? "Vaste prijs" : "Fixed price"}</span>
-                    </div>
+                  {/* Stats bar */}
+                  <div
+                    style={{
+                      display: "flex",
+                      borderTop: "1px solid var(--color-border)",
+                    }}
+                  >
+                    {[
+                      { value: "99.9%", label: "Uptime" },
+                      { value: "< 4h", label: lang === "nl" ? "Reactietijd" : "Response" },
+                      { value: "100%", label: lang === "nl" ? "Vaste prijs" : "Fixed price" },
+                    ].map((stat, i) => (
+                      <div
+                        key={stat.label}
+                        style={{
+                          flex: 1,
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center",
+                          gap: 2,
+                          padding: "14px 8px",
+                          borderLeft: i > 0 ? "1px solid var(--color-border)" : "none",
+                        }}
+                      >
+                        <span style={{ fontSize: 14, fontWeight: 700, color: "var(--color-text)" }}>{stat.value}</span>
+                        <span style={{ fontSize: 10, color: "var(--color-text-muted)", textTransform: "uppercase", letterSpacing: "0.04em" }}>{stat.label}</span>
+                      </div>
+                    ))}
                   </div>
+
+                  {/* Floating cards overlay effect */}
                 </div>
               </ScrollReveal>
             </div>
           </div>
         </div>
+
+        <style>{`
+          @keyframes cardIn {
+            to { opacity: 1; transform: translateY(0); }
+          }
+          @media (max-width: 900px) {
+            section > div > div[style*="grid-template-columns: 1.1fr"] {
+              grid-template-columns: 1fr !important;
+            }
+          }
+        `}</style>
       </section>
 
-      {/* Logo marquee strip */}
-      <section className="logo-strip-nl">
-        <p className="logo-strip-label-nl">
-          {lang === "nl" ? "Technologie die wij gebruiken" : "Technology we use"}
+      {/* Logo strip */}
+      <section
+        style={{
+          borderTop: "1px solid var(--color-border)",
+          borderBottom: "1px solid var(--color-border)",
+          padding: "20px 0",
+          overflow: "hidden",
+        }}
+      >
+        <p
+          style={{
+            fontSize: 11,
+            letterSpacing: "0.08em",
+            textTransform: "uppercase",
+            fontWeight: 600,
+            color: "var(--color-text-muted)",
+            textAlign: "center",
+            margin: "0 0 14px",
+          }}
+        >
+          {lang === "nl" ? "Technologie en partners" : "Technology and partners"}
         </p>
-        <div className="logo-marquee-wrapper-nl">
-          <div className="logo-marquee-nl">
+        <div
+          style={{
+            overflow: "hidden",
+            maskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+            WebkitMaskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              gap: 48,
+              animation: "marqueeScroll 25s linear infinite",
+              width: "max-content",
+            }}
+          >
             {[...TECH_LOGOS, ...TECH_LOGOS].map((name, i) => (
-              <span key={`${name}-${i}`} className="logo-marquee-item-nl">
+              <span
+                key={`${name}-${i}`}
+                style={{
+                  fontSize: 13,
+                  fontWeight: 500,
+                  color: "var(--color-text-muted)",
+                  whiteSpace: "nowrap",
+                  flexShrink: 0,
+                }}
+              >
                 {name}
               </span>
             ))}
           </div>
         </div>
+        <style>{`
+          @keyframes marqueeScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+        `}</style>
       </section>
     </>
   )

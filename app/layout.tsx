@@ -29,8 +29,7 @@ export const metadata: Metadata = {
     url: BASE_URL,
     siteName: "Groupany",
     title: "Groupany | Uw technologiepartner in Amsterdam",
-    description:
-      "Websites, software en marketing die echt werken. Vaste prijzen, geen verrassingen.",
+    description: "Websites, software en marketing die echt werken. Vaste prijzen, geen verrassingen.",
   },
   twitter: {
     card: "summary_large_image",
@@ -39,6 +38,8 @@ export const metadata: Metadata = {
   },
   robots: { index: true, follow: true },
 }
+
+const themeScript = `(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.classList.add('dark')}}catch(e){}})();`
 
 export default function RootLayout({
   children,
@@ -49,22 +50,12 @@ export default function RootLayout({
     <html lang="nl" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.ico" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var theme = localStorage.getItem('theme');
-                  if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                    document.documentElement.classList.add('dark');
-                  }
-                } catch(e) {}
-              })();
-            `,
-          }}
-        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet" />
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body className="antialiased">{children}</body>
+      <body>{children}</body>
     </html>
   )
 }

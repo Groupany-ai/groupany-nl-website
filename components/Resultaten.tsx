@@ -10,13 +10,6 @@ interface ResultatenProps {
 export default function Resultaten({ lang }: ResultatenProps) {
   const t = copy.resultaten[lang]
 
-  const metricColors = [
-    "var(--color-accent)",
-    "var(--color-success)",
-    "var(--color-warm)",
-    "var(--color-accent)",
-  ]
-
   return (
     <section
       id="resultaten"
@@ -30,9 +23,10 @@ export default function Resultaten({ lang }: ResultatenProps) {
               {t.label}
             </span>
             <h2
-              className="serif"
               style={{
-                fontSize: "clamp(32px, 4.5vw, 48px)",
+                fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
+                fontWeight: 600,
+                letterSpacing: "-0.02em",
                 color: "var(--color-text)",
               }}
             >
@@ -62,12 +56,11 @@ export default function Resultaten({ lang }: ResultatenProps) {
                 }}
               >
                 <div
-                  className="serif"
                   style={{
                     fontSize: "clamp(28px, 3.5vw, 40px)",
-                    fontWeight: 400,
-                    color: metricColors[i],
-                    letterSpacing: "-0.02em",
+                    fontWeight: 700,
+                    color: i % 2 === 0 ? "var(--color-accent)" : "var(--color-text)",
+                    letterSpacing: "-0.03em",
                     lineHeight: 1.1,
                     marginBottom: 8,
                   }}
@@ -106,7 +99,7 @@ export default function Resultaten({ lang }: ResultatenProps) {
             <h3
               style={{
                 fontSize: "clamp(24px, 3vw, 32px)",
-                fontWeight: 700,
+                fontWeight: 600,
                 marginBottom: 4,
                 letterSpacing: "-0.02em",
               }}
@@ -196,9 +189,7 @@ export default function Resultaten({ lang }: ResultatenProps) {
           }
         }
         @media (max-width: 480px) {
-          #resultaten [style*="grid-template-columns: repeat(4"] {
-            grid-template-columns: 1fr !important;
-          }
+          #resultaten [style*="grid-template-columns: repeat(4"],
           #resultaten [style*="grid-template-columns: repeat(3"] {
             grid-template-columns: 1fr !important;
           }

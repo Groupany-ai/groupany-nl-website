@@ -14,7 +14,7 @@ export default function Werkwijze({ lang }: WerkwijzeProps) {
     <section
       id="werkwijze"
       className="section-pad"
-      style={{ background: "var(--color-bg-elevated)" }}
+      style={{ background: "var(--color-bg-alt)" }}
     >
       <div className="container">
         <ScrollReveal>
@@ -23,9 +23,10 @@ export default function Werkwijze({ lang }: WerkwijzeProps) {
               {t.label}
             </span>
             <h2
-              className="serif"
               style={{
-                fontSize: "clamp(32px, 4.5vw, 48px)",
+                fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
+                fontWeight: 600,
+                letterSpacing: "-0.02em",
                 color: "var(--color-text)",
               }}
             >
@@ -45,7 +46,6 @@ export default function Werkwijze({ lang }: WerkwijzeProps) {
                   position: "relative",
                 }}
               >
-                {/* Timeline */}
                 <div
                   style={{
                     display: "flex",
@@ -60,7 +60,7 @@ export default function Werkwijze({ lang }: WerkwijzeProps) {
                       width: 48,
                       height: 48,
                       borderRadius: "50%",
-                      background: i === 0 ? "var(--color-accent)" : "var(--color-bg-alt)",
+                      background: i === 0 ? "var(--color-accent)" : "var(--color-bg-elevated)",
                       border: i === 0 ? "none" : "2px solid var(--color-border)",
                       display: "flex",
                       alignItems: "center",
@@ -85,12 +85,11 @@ export default function Werkwijze({ lang }: WerkwijzeProps) {
                   )}
                 </div>
 
-                {/* Content */}
                 <div style={{ paddingTop: 8 }}>
                   <h3
                     style={{
                       fontSize: 20,
-                      fontWeight: 700,
+                      fontWeight: 600,
                       marginBottom: 8,
                       letterSpacing: "-0.01em",
                       color: "var(--color-text)",

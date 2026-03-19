@@ -23,9 +23,10 @@ export default function OverOns({ lang }: OverOnsProps) {
               {t.label}
             </span>
             <h2
-              className="serif"
               style={{
-                fontSize: "clamp(32px, 4.5vw, 48px)",
+                fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
+                fontWeight: 600,
+                letterSpacing: "-0.02em",
                 color: "var(--color-text)",
                 maxWidth: 600,
                 margin: "0 auto",
@@ -67,20 +68,6 @@ export default function OverOns({ lang }: OverOnsProps) {
         </ScrollReveal>
 
         {/* Differentiators */}
-        <ScrollReveal delay={0.15}>
-          <h3
-            style={{
-              fontSize: 20,
-              fontWeight: 700,
-              textAlign: "center",
-              marginBottom: 24,
-              color: "var(--color-text)",
-            }}
-          >
-            {t.diffTitle}
-          </h3>
-        </ScrollReveal>
-
         <div
           style={{
             display: "grid",
@@ -90,7 +77,7 @@ export default function OverOns({ lang }: OverOnsProps) {
           }}
         >
           {t.diffs.map((d, i) => (
-            <ScrollReveal key={i} delay={i * 0.08 + 0.15}>
+            <ScrollReveal key={i} delay={i * 0.08}>
               <div
                 style={{
                   background: "var(--color-bg-elevated)",
@@ -102,7 +89,7 @@ export default function OverOns({ lang }: OverOnsProps) {
                 <h4
                   style={{
                     fontSize: 17,
-                    fontWeight: 700,
+                    fontWeight: 600,
                     marginBottom: 8,
                     color: "var(--color-text)",
                   }}
@@ -134,12 +121,11 @@ export default function OverOns({ lang }: OverOnsProps) {
               margin: "0 auto",
             }}
           >
-            {/* Team */}
             <div>
               <h3
                 style={{
                   fontSize: 18,
-                  fontWeight: 700,
+                  fontWeight: 600,
                   marginBottom: 20,
                   color: "var(--color-text)",
                 }}
@@ -202,7 +188,6 @@ export default function OverOns({ lang }: OverOnsProps) {
               </div>
             </div>
 
-            {/* Address */}
             <div
               style={{
                 background: "var(--color-bg-elevated)",
@@ -214,36 +199,14 @@ export default function OverOns({ lang }: OverOnsProps) {
                 justifyContent: "center",
               }}
             >
-              <div
-                style={{
-                  fontSize: 14,
-                  color: "var(--color-text-muted)",
-                  marginBottom: 8,
-                  fontWeight: 500,
-                }}
-              >
+              <div style={{ fontSize: 14, color: "var(--color-text-muted)", marginBottom: 8, fontWeight: 500 }}>
                 {lang === "nl" ? "Adres" : "Address"}
               </div>
-              <div style={{ fontSize: 15, fontWeight: 600, lineHeight: 1.6 }}>
-                Groupany B.V.
-              </div>
-              <div
-                style={{
-                  fontSize: 15,
-                  color: "var(--color-text-secondary)",
-                  lineHeight: 1.6,
-                  whiteSpace: "pre-line",
-                }}
-              >
+              <div style={{ fontSize: 15, fontWeight: 600, lineHeight: 1.6 }}>Groupany B.V.</div>
+              <div style={{ fontSize: 15, color: "var(--color-text-secondary)", lineHeight: 1.6, whiteSpace: "pre-line" }}>
                 {t.address}
               </div>
-              <div
-                style={{
-                  marginTop: 16,
-                  fontSize: 13,
-                  color: "var(--color-text-muted)",
-                }}
-              >
+              <div style={{ marginTop: 16, fontSize: 13, color: "var(--color-text-muted)" }}>
                 KVK 93.847.291
               </div>
             </div>

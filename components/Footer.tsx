@@ -14,7 +14,7 @@ export default function Footer({ lang }: FooterProps) {
       style={{
         background: "var(--color-bg)",
         borderTop: "1px solid var(--color-border)",
-        padding: "64px clamp(1.25rem, 4vw, 2rem) 32px",
+        padding: "64px clamp(20px, 4vw, 32px) 32px",
       }}
     >
       <div className="container">
@@ -26,7 +26,6 @@ export default function Footer({ lang }: FooterProps) {
             marginBottom: 56,
           }}
         >
-          {/* Brand */}
           <div>
             <div
               style={{
@@ -48,15 +47,36 @@ export default function Footer({ lang }: FooterProps) {
             >
               {t.tagline}
             </p>
+            <div style={{ display: "flex", gap: 16, marginTop: 16 }}>
+              <a
+                href="https://linkedin.com/company/groupany"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ fontSize: 13, color: "var(--color-text-muted)", transition: "color 0.15s" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-text)")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-text-muted)")}
+              >
+                LinkedIn
+              </a>
+              <a
+                href="https://github.com/Groupany-ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ fontSize: 13, color: "var(--color-text-muted)", transition: "color 0.15s" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-text)")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-text-muted)")}
+              >
+                GitHub
+              </a>
+            </div>
           </div>
 
-          {/* Link columns */}
           {t.columns.map((col, i) => (
             <div key={i}>
               <div
                 style={{
                   fontSize: 13,
-                  fontWeight: 700,
+                  fontWeight: 600,
                   letterSpacing: "0.04em",
                   textTransform: "uppercase",
                   color: "var(--color-text-muted)",
@@ -75,12 +95,8 @@ export default function Footer({ lang }: FooterProps) {
                       color: "var(--color-text-secondary)",
                       transition: "color 200ms",
                     }}
-                    onMouseEnter={(e) =>
-                      (e.currentTarget.style.color = "var(--color-text)")
-                    }
-                    onMouseLeave={(e) =>
-                      (e.currentTarget.style.color = "var(--color-text-secondary)")
-                    }
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-text)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-text-secondary)")}
                   >
                     {link.label}
                   </a>
@@ -90,7 +106,6 @@ export default function Footer({ lang }: FooterProps) {
           ))}
         </div>
 
-        {/* Bottom bar */}
         <div
           style={{
             borderTop: "1px solid var(--color-border)",
