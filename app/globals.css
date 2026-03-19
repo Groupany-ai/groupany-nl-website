@@ -1268,7 +1268,7 @@ html.dark .notification-feed {
    ═══════════════════════════════════════════════════════════════════════════ */
 
 .stats-dashboard-card {
-  max-width: 900px;
+  max-width: 1100px;
   margin: 0 auto;
   background: var(--bg);
   border: 1px solid var(--border);
@@ -5448,11 +5448,11 @@ html.dark .client-logo-img {
   border: 1px solid rgba(255, 255, 255, 0.15);
   transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   width: auto;
-  max-width: 900px;
+  max-width: 1100px;
 }
 
 .nav-inner {
-  max-width: none;
+  max-width: 1200px;
   margin: 0 auto;
   width: 100%;
   display: flex;
@@ -5644,24 +5644,24 @@ html.dark .reveal-glow.visible {
   max-width: 200px;
 }
 
-/* Hero text centered with narrow content */
+/* Hero text left-aligned within 1200px container (same as nav content position) */
 .hero-fullwidth-content .container-main {
-  text-align: center;
-  max-width: 760px;
-  margin: 0 auto;
+  text-align: left;
+  max-width: 1200px;
+  padding-left: 24px;
+  padding-right: 24px;
 }
 .hero-fw-h1 {
-  text-align: center;
+  text-align: left;
+  max-width: 650px;
 }
 .hero-fw-sub {
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 560px;
+  text-align: left;
+  max-width: 500px;
 }
 .hero-fw-ctas {
-  justify-content: center;
+  justify-content: flex-start;
 }
 .hero-fw-tagline {
-  text-align: center;
+  text-align: left;
 }
