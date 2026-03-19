@@ -1268,7 +1268,7 @@ html.dark .notification-feed {
    ═══════════════════════════════════════════════════════════════════════════ */
 
 .stats-dashboard-card {
-  max-width: 1100px;
+  max-width: 70%;
   margin: 0 auto;
   background: var(--bg);
   border: 1px solid var(--border);
@@ -5093,7 +5093,7 @@ html.dark .hero-slide-label {
   display: flex;
   align-items: center;
   overflow: hidden;
-  margin: 8px 16px;
+  margin: 8px 24px;
   border-radius: 20px;
 }
 
@@ -5448,11 +5448,11 @@ html.dark .client-logo-img {
   border: 1px solid rgba(255, 255, 255, 0.15);
   transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   width: auto;
-  max-width: 1100px;
+  max-width: 70%;
 }
 
 .nav-inner {
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
   width: 100%;
   display: flex;
@@ -5644,12 +5644,13 @@ html.dark .reveal-glow.visible {
   max-width: 200px;
 }
 
-/* Hero text left-aligned within 1200px container (same as nav content position) */
+/* Hero content 70% width centered (matches nav width) */
 .hero-fullwidth-content .container-main {
   text-align: left;
-  max-width: 1200px;
-  padding-left: 24px;
-  padding-right: 24px;
+  max-width: 70%;
+  margin: 0 auto;
+  padding-left: 0;
+  padding-right: 0;
 }
 .hero-fw-h1 {
   text-align: left;
