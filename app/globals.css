@@ -5127,7 +5127,7 @@ html.dark .hero-slide-label {
 .hero-fullwidth-content {
   position: relative;
   z-index: 5;
-  padding-top: 80px; /* space for floating nav */
+  padding-top: 100px;
   padding: clamp(120px, 15vh, 180px) 0 clamp(80px, 10vh, 120px);
 }
 
@@ -5434,23 +5434,25 @@ html.dark .client-logo-img {
 .nav-bar {
   position: fixed;
   top: 12px;
-  left: 16px;
-  right: 16px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 100;
   height: 52px;
   display: flex;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 24px;
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.15);
   transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  width: fit-content;
+  max-width: calc(100% - 32px);
 }
 
 .nav-inner {
-  max-width: 1200px;
+  max-width: none;
   margin: 0 auto;
   width: 100%;
   display: flex;
@@ -5640,4 +5642,23 @@ html.dark .reveal-glow.visible {
 .section-divider.visible {
   width: 100%;
   max-width: 200px;
+}
+
+/* Hero text left-aligned to match nav logo position */
+.hero-fullwidth-content .container-main {
+  text-align: left;
+}
+.hero-fw-h1 {
+  text-align: left;
+}
+.hero-fw-sub {
+  text-align: left;
+  margin-left: 0;
+  margin-right: auto;
+}
+.hero-fw-ctas {
+  justify-content: flex-start;
+}
+.hero-fw-tagline {
+  text-align: left;
 }
