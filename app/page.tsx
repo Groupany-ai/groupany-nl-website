@@ -859,7 +859,10 @@ export default function Home() {
               {/* Medium cards row */}
               <div className="impact-card impact-card-md reveal reveal-glow reveal-delay-1">
                 <div className="impact-card-content">
-                  <span className="impact-label">WEBSITES</span>
+                  <div style={{display:'flex',alignItems:'center',gap:8,marginBottom:8}}>
+              <img src="/logos/wordpress.svg" alt="WordPress" style={{height:16,opacity:0.5,filter:'grayscale(100%)'}} />
+              <span className="impact-label">WEBSITES</span>
+            </div>
                   <h3 className="impact-title">{t('impact.websites.title')}</h3>
                   <p className="impact-desc">{t('impact.websites.desc')}</p>
                 </div>
@@ -867,7 +870,10 @@ export default function Home() {
 
               <div className="impact-card impact-card-md reveal reveal-glow reveal-delay-2">
                 <div className="impact-card-content">
-                  <span className="impact-label">SEO</span>
+                  <div style={{display:'flex',alignItems:'center',gap:8,marginBottom:8}}>
+              <img src="/logos/google.svg" alt="Google" style={{height:16,opacity:0.5,filter:'grayscale(100%)'}} />
+              <span className="impact-label">SEO</span>
+            </div>
                   <h3 className="impact-title">{t('impact.seo.title')}</h3>
                   <p className="impact-desc">{t('impact.seo.desc')}</p>
                 </div>
@@ -875,7 +881,10 @@ export default function Home() {
 
               <div className="impact-card impact-card-md reveal reveal-glow reveal-delay-3">
                 <div className="impact-card-content">
-                  <span className="impact-label">RECRUITMENT</span>
+                  <div style={{display:'flex',alignItems:'center',gap:8,marginBottom:8}}>
+              <img src="/logos/linkedin.svg" alt="LinkedIn" style={{height:16,opacity:0.5,filter:'grayscale(100%)'}} />
+              <span className="impact-label">RECRUITMENT</span>
+            </div>
                   <h3 className="impact-title">{t('impact.recruitment.title')}</h3>
                   <p className="impact-desc">{t('impact.recruitment.desc')}</p>
                 </div>

@@ -1931,7 +1931,7 @@ html.dark .blog-card:hover {
 
 .blog-category {
   position: absolute;
-  top: 20px;
+  top: 24px;
   left: 12px;
   font-size: 0.6875rem;
   font-weight: 600;
@@ -2450,7 +2450,7 @@ html.dark .team-card:hover {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  margin-top: 20px;
+  margin-top: 24px;
   padding: 3px 10px;
   font-size: 0.6875rem;
   font-weight: 600;
@@ -4481,7 +4481,7 @@ html.dark .floating-notif-text { color: #999; }
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 12px;
-  margin-top: 20px;
+  margin-top: 24px;
 }
 .dash-panel {
   background: #fff;
@@ -5485,7 +5485,7 @@ html.dark .pkg-title { color: #f5f5f5; }
 
 .nav-bar {
   position: fixed;
-  top: 20px;
+  top: 24px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 100;
@@ -5748,21 +5748,21 @@ html.dark .reveal-glow.visible {
 
 
 
-/* Language switcher - minimal pill */
+/* Language switcher - toggle style */
 .lang-container {
   display: flex;
   align-items: center;
   gap: 0;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);
   border-radius: 8px;
-  padding: 2px;
+  padding: 3px;
+  border: none;
 }
 .lang-btn {
-  padding: 4px 10px;
+  padding: 5px 12px;
   font-size: 0.6875rem;
   font-weight: 500;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255,255,255,0.35);
   background: transparent;
   border: none;
   border-radius: 6px;
@@ -5770,21 +5770,39 @@ html.dark .reveal-glow.visible {
   transition: all 0.2s ease;
   letter-spacing: 0.03em;
 }
-.lang-btn:hover { color: rgba(255,255,255,0.8); }
+.lang-btn:hover { color: rgba(255,255,255,0.7); }
 .lang-btn-active {
   font-weight: 700;
   color: #ffffff;
-  background: rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.18);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
 }
+
+/* Scrolled - light bg toggle */
 .nav-scrolled .lang-container {
-  background: var(--bg-alt);
-  border-color: var(--border);
+  background: #F0F2F5;
+  border: none;
 }
-.nav-scrolled .lang-btn { color: var(--text-tertiary); }
-.nav-scrolled .lang-btn:hover { color: var(--text-secondary); }
+html.dark .nav-scrolled .lang-container {
+  background: rgba(255,255,255,0.06);
+}
+.nav-scrolled .lang-btn {
+  color: #8898AA;
+}
+.nav-scrolled .lang-btn:hover {
+  color: #425466;
+}
 .nav-scrolled .lang-btn-active {
-  color: var(--text);
-  background: var(--bg-elevated);
+  color: #0A2540;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+html.dark .nav-scrolled .lang-btn { color: #666; }
+html.dark .nav-scrolled .lang-btn:hover { color: #999; }
+html.dark .nav-scrolled .lang-btn-active {
+  color: #f5f5f5;
+  background: rgba(255,255,255,0.1);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 
 /* Hero border glow animation on scroll */
