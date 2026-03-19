@@ -1,246 +1,125 @@
-"use client"
+'use client'
 
-import { useState, useEffect } from "react"
-import { copy, type Lang } from "@/lib/i18n"
-import ThemeToggle from "./ThemeToggle"
+import Link from 'next/link'
+import { useState, useEffect } from 'react'
+import { useTranslation, type Locale } from '@/lib/i18n/useTranslation'
+import ThemeToggle from './ThemeToggle'
 
-interface NavProps {
-  lang: Lang
-  setLang: (lang: Lang) => void
-}
+const LOCALES: { code: Locale; label: string }[] = [
+  { code: 'nl', label: 'NL' },
+  { code: 'en', label: 'EN' },
+]
 
-export default function Nav({ lang, setLang }: NavProps) {
-  const [scrolled, setScrolled] = useState(false)
+export default function Nav() {
+  const { t, locale, setLocale } = useTranslation()
   const [mobileOpen, setMobileOpen] = useState(false)
-  const t = copy.nav[lang]
+  const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener("scroll", onScroll, { passive: true })
-    return () => window.removeEventListener("scroll", onScroll)
+    const handleScroll = () => setScrolled(window.scrollY > 20)
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : ""
-    return () => { document.body.style.overflow = "" }
+    document.body.style.overflow = mobileOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
   }, [mobileOpen])
+
+  const NAV_LINKS = [
+    { href: '/diensten', label: t('nav.services') },
+    { href: '/inzichten', label: t('footer.insights') },
+    { href: '/over-ons', label: t('nav.about') },
+    { href: '/contact', label: t('nav.contact') },
+  ]
 
   return (
     <>
-      {/* Top bar -- Moneybird-style */}
-      <div
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
-          zIndex: 101,
-          height: 32,
-          background: "var(--color-bg-alt)",
-          borderBottom: "1px solid var(--color-border)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: 24,
-          fontSize: 12,
-          fontWeight: 500,
-          color: "var(--color-text-secondary)",
-          padding: "0 24px",
-        }}
-      >
-        <a
-          href="#werkwijze"
-          className="hide-mobile"
-          style={{ transition: "color 0.15s" }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-text)")}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-text-secondary)")}
-        >
-          {lang === "nl" ? "Werkwijze" : "Process"}
-        </a>
-        <span className="hide-mobile" style={{ color: "var(--color-border)" }}>|</span>
-        <a
-          href="#resultaten"
-          className="hide-mobile"
-          style={{ transition: "color 0.15s" }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-text)")}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-text-secondary)")}
-        >
-          {lang === "nl" ? "Resultaten" : "Results"}
-        </a>
-        <span className="hide-mobile" style={{ color: "var(--color-border)" }}>|</span>
-        <a
-          href="#over-ons"
-          className="hide-mobile"
-          style={{ transition: "color 0.15s" }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-text)")}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-text-secondary)")}
-        >
-          {lang === "nl" ? "Over ons" : "About"}
-        </a>
-        <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: 4 }}>
-          {(["NL", "EN"] as const).map((l) => {
-            const val = l.toLowerCase() as Lang
-            const active = lang === val
-            return (
-              <button
-                key={l}
-                onClick={() => setLang(val)}
-                style={{
-                  padding: "2px 8px",
-                  borderRadius: 999,
-                  fontSize: 11,
-                  fontWeight: active ? 700 : 400,
-                  color: active ? "var(--color-text)" : "var(--color-text-muted)",
-                  background: active ? "var(--color-bg-elevated)" : "transparent",
-                  border: "none",
-                  cursor: "pointer",
-                }}
-              >
-                {l}
-              </button>
-            )
-          })}
-        </div>
-      </div>
-
-      {/* Main nav */}
       <nav
         style={{
-          position: "fixed",
-          top: 32,
-          left: 0,
-          right: 0,
-          zIndex: 100,
-          height: 64,
-          padding: "0 24px",
-          transition: "background 300ms, backdrop-filter 300ms",
-          background: scrolled ? "var(--color-bg)" : "transparent",
-          backdropFilter: scrolled ? "blur(16px) saturate(180%)" : "none",
-          WebkitBackdropFilter: scrolled ? "blur(16px) saturate(180%)" : "none",
-          borderBottom: scrolled ? "1px solid var(--color-border)" : "1px solid transparent",
+          position: scrolled ? 'fixed' : 'absolute',
+          top: 0, left: 0, right: 0, zIndex: 50, height: 64,
+          background: scrolled ? 'var(--bg-nav)' : 'transparent',
+          backdropFilter: scrolled ? 'blur(20px) saturate(180%)' : 'none',
+          WebkitBackdropFilter: scrolled ? 'blur(20px) saturate(180%)' : 'none',
+          borderBottom: scrolled ? '1px solid var(--border)' : '1px solid transparent',
+          transition: 'background 0.3s ease, border-color 0.3s ease',
         }}
       >
-        <div
-          style={{
-            maxWidth: 1200,
-            margin: "0 auto",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            height: "100%",
-          }}
-        >
-          {/* Logo */}
-          <a
-            href="#"
-            style={{
-              fontSize: 20,
-              fontWeight: 700,
-              color: "var(--color-text)",
-              letterSpacing: "-0.03em",
-            }}
-          >
+        <div className="container-main" style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <Link href="/" style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text)', textDecoration: 'none', letterSpacing: '-0.03em' }}>
             Groupany
-          </a>
+          </Link>
 
-          {/* Desktop links */}
-          <div className="hide-mobile" style={{ display: "flex", alignItems: "center", gap: 32 }}>
-            {t.links.filter(l => l.href === "#diensten" || l.href === "#contact").map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                style={{
-                  fontSize: 14,
-                  fontWeight: 500,
-                  color: "var(--color-text-secondary)",
-                  transition: "color 200ms",
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-text)")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-text-secondary)")}
-              >
-                {l.label}
-              </a>
+          <div className="hidden md:flex items-center gap-8">
+            {NAV_LINKS.map(({ href, label }) => (
+              <Link key={href} href={href} style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.875rem', fontWeight: 500, transition: 'color 0.15s ease' }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text)')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}>
+                {label}
+              </Link>
             ))}
-            <a
-              href="#resultaten"
-              style={{
-                fontSize: 14,
-                fontWeight: 500,
-                color: "var(--color-text-secondary)",
-                transition: "color 200ms",
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-text)")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-text-secondary)")}
-            >
-              {lang === "nl" ? "Projecten" : "Projects"}
-            </a>
           </div>
 
-          {/* Right side */}
-          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <div className="hidden md:flex items-center gap-3">
+            <div style={{ display: 'flex', alignItems: 'center', gap: 2, padding: 3, background: 'var(--bg-alt)', border: '1px solid var(--border)', borderRadius: 'var(--radius-full)', marginRight: 4 }}>
+              {LOCALES.map(({ code, label }) => (
+                <button key={code} onClick={() => setLocale(code)} style={{
+                  padding: '3px 8px', fontSize: '0.6875rem', fontWeight: locale === code ? 700 : 400,
+                  color: locale === code ? 'var(--text)' : 'var(--text-tertiary)',
+                  background: locale === code ? 'var(--bg-elevated)' : 'transparent',
+                  border: 'none', borderRadius: 'var(--radius-full)', cursor: 'pointer',
+                  transition: 'all 0.15s ease', letterSpacing: '0.04em',
+                  boxShadow: locale === code ? '0 1px 3px rgba(0,0,0,0.06)' : 'none',
+                }}>{label}</button>
+              ))}
+            </div>
             <ThemeToggle />
+            <Link href="/contact" className="btn-primary" style={{ height: 36, padding: '0 16px', fontSize: '0.8125rem', borderRadius: 'var(--radius-full)' }}>
+              {t('nav.getStarted')}
+            </Link>
+          </div>
 
-            <a
-              href="#contact"
-              className="btn-primary hide-mobile"
-              style={{ height: 36, padding: "0 16px", fontSize: 13, borderRadius: 999 }}
-            >
-              {t.cta}
-            </a>
-
-            {/* Mobile hamburger */}
-            <button
-              className="show-mobile-only"
-              onClick={() => setMobileOpen(!mobileOpen)}
-              aria-label="Menu"
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 5,
-                padding: 8,
-                background: "none",
-                border: "none",
-              }}
-            >
-              <span style={{ width: 22, height: 2, background: "var(--color-text)", borderRadius: 2, transition: "transform 300ms", transform: mobileOpen ? "rotate(45deg) translateY(7px)" : "none" }} />
-              <span style={{ width: 22, height: 2, background: "var(--color-text)", borderRadius: 2, transition: "opacity 200ms", opacity: mobileOpen ? 0 : 1 }} />
-              <span style={{ width: 22, height: 2, background: "var(--color-text)", borderRadius: 2, transition: "transform 300ms", transform: mobileOpen ? "rotate(-45deg) translateY(-7px)" : "none" }} />
+          <div className="md:hidden flex items-center gap-2">
+            <ThemeToggle />
+            <button onClick={() => setMobileOpen(!mobileOpen)} aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+              style={{ width: 36, height: 36, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--text-secondary)', background: 'none', border: 'none', cursor: 'pointer' }}>
+              {mobileOpen ? (
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 3L15 15M15 3L3 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>
+              ) : (
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 5h14M2 9h14M2 13h14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>
+              )}
             </button>
           </div>
         </div>
       </nav>
 
-      {/* Mobile menu */}
-      {mobileOpen && (
-        <div
-          style={{
-            position: "fixed",
-            inset: 0,
-            top: 96,
-            zIndex: 99,
-            background: "var(--color-bg)",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: 32,
-          }}
-        >
-          {t.links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              onClick={() => setMobileOpen(false)}
-              style={{ fontSize: 24, fontWeight: 600, color: "var(--color-text)" }}
-            >
-              {l.label}
-            </a>
+      <div className="fixed inset-0 z-40 md:hidden" style={{ background: 'var(--bg)', paddingTop: 80, opacity: mobileOpen ? 1 : 0, pointerEvents: mobileOpen ? 'auto' : 'none', transition: 'opacity 0.25s ease' }}>
+        <div className="container-main" style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          {NAV_LINKS.map(({ href, label }) => (
+            <Link key={href} href={href} onClick={() => setMobileOpen(false)}
+              style={{ display: 'block', padding: '16px 0', fontSize: 'clamp(1.75rem, 5vw, 2.5rem)', fontWeight: 600, color: 'var(--text)', textDecoration: 'none', borderBottom: '1px solid var(--border)', letterSpacing: '-0.02em' }}>
+              {label}
+            </Link>
           ))}
-          <a href="#contact" onClick={() => setMobileOpen(false)} className="btn-primary" style={{ marginTop: 16 }}>
-            {t.cta}
-          </a>
+          <div style={{ display: 'flex', gap: 12, marginTop: 24 }}>
+            {LOCALES.map(({ code, label }) => (
+              <button key={code} onClick={() => setLocale(code)} style={{
+                padding: '8px 16px', fontSize: '0.875rem', fontWeight: locale === code ? 700 : 400,
+                color: locale === code ? 'var(--text)' : 'var(--text-tertiary)',
+                background: locale === code ? 'var(--bg-alt)' : 'transparent',
+                border: locale === code ? '1px solid var(--border)' : '1px solid transparent',
+                borderRadius: 'var(--radius-sm)', cursor: 'pointer',
+              }}>{label}</button>
+            ))}
+          </div>
+          <div style={{ marginTop: 24 }}>
+            <Link href="/contact" className="btn-primary" onClick={() => setMobileOpen(false)} style={{ fontSize: '1rem', padding: '0 32px' }}>
+              {t('nav.getStarted')}
+            </Link>
+          </div>
         </div>
-      )}
+      </div>
     </>
   )
 }

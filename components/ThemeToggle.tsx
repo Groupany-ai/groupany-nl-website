@@ -1,6 +1,6 @@
-"use client"
+'use client'
 
-import { useState, useEffect } from "react"
+import { useEffect, useState } from 'react'
 
 export default function ThemeToggle() {
   const [dark, setDark] = useState(false)
@@ -8,51 +8,44 @@ export default function ThemeToggle() {
 
   useEffect(() => {
     setMounted(true)
-    setDark(document.documentElement.classList.contains("dark"))
+    setDark(document.documentElement.classList.contains('dark'))
   }, [])
 
   const toggle = () => {
     const next = !dark
     setDark(next)
-    document.documentElement.classList.toggle("dark", next)
-    localStorage.setItem("theme", next ? "dark" : "light")
+    document.documentElement.classList.toggle('dark', next)
+    localStorage.setItem('groupany-theme', next ? 'dark' : 'light')
   }
 
-  if (!mounted) return <div style={{ width: 36, height: 36 }} />
+  if (!mounted) {
+    return <div style={{ width: 32, height: 32 }} />
+  }
 
   return (
     <button
       onClick={toggle}
-      aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
+      aria-label={dark ? 'Switch to light theme' : 'Switch to dark theme'}
+      className="w-8 h-8 flex items-center justify-center"
       style={{
-        width: 36,
-        height: 36,
-        borderRadius: "50%",
-        border: "1px solid var(--color-border)",
-        background: "var(--color-bg-elevated)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        fontSize: 16,
-        transition: "border-color 200ms, background 200ms",
-        flexShrink: 0,
+        color: 'var(--text-tertiary)',
+        background: 'none',
+        border: 'none',
+        cursor: 'pointer',
+        transition: 'color 0.15s ease',
+        borderRadius: 'var(--radius-sm)',
       }}
+      onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text)')}
+      onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-tertiary)')}
     >
       {dark ? (
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="12" cy="12" r="5" />
-          <line x1="12" y1="1" x2="12" y2="3" />
-          <line x1="12" y1="21" x2="12" y2="23" />
-          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-          <line x1="1" y1="12" x2="3" y2="12" />
-          <line x1="21" y1="12" x2="23" y2="12" />
-          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <circle cx="8" cy="8" r="3" stroke="currentColor" strokeWidth="1.25" />
+          <path d="M8 1v1.5M8 13.5V15M1 8h1.5M13.5 8H15M3.05 3.05l1.06 1.06M11.89 11.89l1.06 1.06M3.05 12.95l1.06-1.06M11.89 4.11l1.06-1.06" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" />
         </svg>
       ) : (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M13.5 10A6 6 0 0 1 6 2.5a6 6 0 1 0 7.5 7.5z" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       )}
     </button>

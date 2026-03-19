@@ -1,0 +1,443 @@
+{
+  "nav": {
+    "services": "Services",
+    "work": "Work",
+    "about": "About",
+    "contact": "Contact",
+    "getStarted": "Get in touch"
+  },
+  "hero": {
+    "socialProof": "Trusted by <strong>12 companies</strong> in the Netherlands",
+    "headlinePre": "Your",
+    "headlinePost": "partner in Amsterdam.",
+    "headlineLine2": "",
+    "headline": "We build software, websites and marketing campaigns that deliver measurable results. Faster, smarter and more affordable.",
+    "subline": "Custom software, professional websites and data-driven marketing. Fixed prices, no surprises. Delivered on schedule.",
+    "ctaPrimary": "Schedule a call",
+    "ctaSecondary": "View our services",
+    "rotatingWords": [
+      "software",
+      "marketing",
+      "website",
+      "recruitment",
+      "strategy",
+      "SEO",
+      "content",
+      "development",
+      "growth",
+      "digital"
+    ]
+  },
+  "proof": {
+    "label": "Our technology"
+  },
+  "services": {
+    "label": "What we do",
+    "gridHeadline": "Everything your business needs",
+    "gridSubline": "From software to websites to marketing. Under one roof.",
+    "learnMore": "Learn more",
+    "software": {
+      "title": "Custom software",
+      "desc": "From idea to working application in weeks, not months. Web apps, integrations and automations.",
+      "label": "SOFTWARE"
+    },
+    "websites": {
+      "title": "Websites that convert",
+      "desc": "Professional websites built on modern technology. Fast, responsive and SEO-optimised.",
+      "label": "WEBSITES"
+    },
+    "marketing": {
+      "title": "Marketing & growth",
+      "desc": "More leads, more customers, more revenue. Google Ads, social media and conversion optimisation.",
+      "label": "MARKETING"
+    },
+    "seo": {
+      "title": "SEO & content",
+      "desc": "Higher in Google, more organic traffic, better content that speaks to your audience.",
+      "label": "SEO"
+    },
+    "recruitment": {
+      "title": "Social recruitment",
+      "desc": "Find the right candidates via social channels. Without agency fees, measurable and effective.",
+      "label": "RECRUITMENT"
+    },
+    "support": {
+      "title": "Maintenance & support",
+      "desc": "24/7 monitoring, updates and technical support. Your systems always running.",
+      "label": "SUPPORT"
+    },
+    "strategy": {
+      "title": "Consulting & strategy",
+      "desc": "Digital strategy tailored to your business goals. Clear advice, concrete plans.",
+      "label": "STRATEGY"
+    },
+    "also": "And more: automations, data analysis, DevOps, content production"
+  },
+  "dashboard": {
+    "title": "Project Dashboard",
+    "live": "Live",
+    "sidebar": {
+      "dashboard": "Dashboard",
+      "projects": "Projects",
+      "analytics": "Analytics",
+      "deployments": "Deployments",
+      "settings": "Settings"
+    },
+    "stats": {
+      "activeProjects": "Active projects",
+      "deployments": "Deployments",
+      "uptime": "Uptime",
+      "avgResponse": "< 4h"
+    },
+    "recentActivity": "Recent activity",
+    "agentActivity": [
+      {
+        "name": "Team",
+        "task": "Deployed website v3.2 to production",
+        "time": "2m ago"
+      },
+      {
+        "name": "SEO",
+        "task": "Generated monthly SEO report",
+        "time": "8m ago"
+      },
+      {
+        "name": "Dev",
+        "task": "Completed CRM API integration",
+        "time": "14m ago"
+      },
+      {
+        "name": "Marketing",
+        "task": "Optimised Google Ads campaign",
+        "time": "21m ago"
+      }
+    ]
+  },
+  "notifications": {
+    "liveActivity": "Live activity",
+    "items": [
+      {
+        "agent": "Dev",
+        "text": "Website update deployed to production",
+        "time": "2m ago"
+      },
+      {
+        "agent": "SEO",
+        "text": "Organic traffic +23% this month",
+        "time": "5m ago"
+      },
+      {
+        "agent": "Marketing",
+        "text": "Google Ads campaign optimised",
+        "time": "8m ago"
+      },
+      {
+        "agent": "Dev",
+        "text": "New feature deployed to staging",
+        "time": "12m ago"
+      },
+      {
+        "agent": "Support",
+        "text": "All systems operational - 99.9% uptime",
+        "time": "15m ago"
+      }
+    ]
+  },
+  "stats": {
+    "headerLabel": "Live project status",
+    "companiesRunning": "Active projects",
+    "allHealthy": "All healthy",
+    "tasksCompleted": "Tasks completed",
+    "today": "this week",
+    "uptime": "Uptime",
+    "allSystems": "All systems operational",
+    "agentsOnline": "Team members online"
+  },
+  "socialProof": {
+    "eyebrow": "What clients say",
+    "headline": "Trusted by ambitious companies",
+    "googleReview": "4.9/5 on Google",
+    "trustpilotReview": "Excellent on Trustpilot",
+    "testimonials": [
+      {
+        "quote": "Groupany delivered our website and software in record time. Professional, reliable and always reachable.",
+        "author": "Jan Klaassen",
+        "role": "Director, TechBedrijf B.V."
+      },
+      {
+        "quote": "Within three weeks we had a working webshop. Other agencies would have needed months.",
+        "author": "Lisa de Vries",
+        "role": "Owner, ModeWinkel.nl"
+      },
+      {
+        "quote": "The combination of technical expertise and marketing knowledge makes the difference. They think along at a strategic level.",
+        "author": "Mark Jansen",
+        "role": "COO, GroeiPartners"
+      }
+    ]
+  },
+  "differentiator": {
+    "label": "Why us",
+    "headline": "We build it ourselves too. That makes the difference.",
+    "propty": "Propty: 420,000 lines of code, a complete property platform built and maintained by our team.",
+    "webgroeiers": "Webgroeiers: our own web agency delivering dozens of SME websites per year.",
+    "autoranq": "Autoranq: our own SEO tool, built on the same technology we deploy for you.",
+    "gcc": "All managed through our internal platform. When we say something works, we have the proof.",
+    "closing": "We are not an agency that only advises. We build, manage and grow alongside you."
+  },
+  "process": {
+    "label": "How we work",
+    "step1": {
+      "title": "Introduction",
+      "desc": "A short 20-minute call. No sales pitch. We listen to what you need."
+    },
+    "step2": {
+      "title": "Proposal & price",
+      "desc": "Within 48 hours a clear proposal with fixed price, timeline and scope."
+    },
+    "step3": {
+      "title": "Delivery",
+      "desc": "Weekly updates, your feedback, our processing. No surprises at final delivery."
+    }
+  },
+  "blog": {
+    "eyebrow": "Insights & Cases",
+    "headline": "Read how we help businesses grow",
+    "readMore": "Read more",
+    "articles": [
+      {
+        "category": "Case Study",
+        "title": "How we manage a 420,000-line property platform",
+        "desc": "From startup to mature SaaS platform with automated processes and continuous development."
+      },
+      {
+        "category": "Blog",
+        "title": "Why a good website delivers more than you think",
+        "desc": "The ROI of a professional website for SMEs. With real numbers and examples."
+      },
+      {
+        "category": "Guide",
+        "title": "The complete guide to online visibility in 2026",
+        "desc": "SEO, Google Ads, social media and content. Everything you need to know to get found."
+      }
+    ]
+  },
+  "cta": {
+    "headline": "Ready to build together?",
+    "subtitle": "Schedule a free 30-minute call. We will show you what we can do for your business.",
+    "primary": "Schedule a call",
+    "secondary": "View our insights"
+  },
+  "ctaBand": {
+    "eyebrow": "GET STARTED",
+    "headline": "Ready to build together?",
+    "subline": "Schedule a free 30-minute call. We will show you what we can do for your business.",
+    "primary": "Schedule a call",
+    "secondary": "Read our insights",
+    "trust1": "No commitment",
+    "trust2": "Results within a week",
+    "trust3": "Cancel anytime"
+  },
+  "footer": {
+    "tagline": "Your digital partner in Amsterdam. Software, websites and marketing that work.",
+    "company": "Company",
+    "servicesTitle": "Services",
+    "resources": "Knowledge",
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms",
+    "insights": "Insights",
+    "softwareDev": "Custom Software",
+    "websites": "Websites",
+    "marketingGrowth": "Marketing & SEO",
+    "recruitment": "Recruitment",
+    "allServices": "All services",
+    "team": "About us",
+    "teamLink": "Team",
+    "contactLink": "Contact",
+    "werkwijze": "Process",
+    "vacatures": "Careers",
+    "investeerders": "Investors",
+    "projects": "Cases",
+    "cases": "Cases",
+    "blog": "Blog",
+    "status": "Status",
+    "faq": "FAQ"
+  },
+  "about": {
+    "headline": "A digital agency that builds, markets and grows with you.",
+    "story": "Groupany was founded in Amsterdam with a simple conviction: the best digital agency is one that does it themselves too. We build, manage and grow alongside your business.",
+    "storyP2": "We run multiple companies on the same technology we deploy for our clients. This is not a side project. It is our proof. Every system we build for you has been tested on ourselves first.",
+    "storyP3": "Our team combines human expertise with the latest technology. This way we deliver results normally only available to large companies.",
+    "teamLabel": "The team",
+    "techLabel": "Our technology",
+    "techBody": "Our stack is modern, reliable and European-hosted. Next.js, React, TypeScript, PostgreSQL, Prisma. Hosted on Hetzner. Protected by Cloudflare. No vendor lock-in. Everything we build is yours.",
+    "valuesLabel": "What we stand for",
+    "value1": "Results over promises. We talk about what gets delivered, not about tools.",
+    "value2": "Ownership over dependency. Everything we build, you control. No hidden traps.",
+    "value3": "Growth over one-time. Every project is an investment that pays for itself.",
+    "milestoneLabel": "Key milestones",
+    "milestone1": "2024: Founded in Amsterdam by Bart Korpershoek",
+    "milestone2": "2024: First client projects delivered",
+    "milestone3": "2025: Team expanded, multiple companies active",
+    "milestone4": "2025: 50+ projects successfully delivered",
+    "milestone5": "2026: Trusted by 12+ companies, 99.9% uptime",
+    "locationLabel": "Where to find us",
+    "locationDesc": "Our office is located in the heart of Amsterdam, on one of the most iconic canals in the city.",
+    "bartBio": "Entrepreneur and technologist. Built multiple companies on the same technology infrastructure.",
+    "maxBio": "Coordinates all operations, manages priorities and ensures everything is delivered on time.",
+    "samBio": "Responsible for the full technical stack. From architecture to production.",
+    "jessicaBio": "Drives growth through content, campaigns, SEO and lead generation.",
+    "leviBio": "Builds features, solves problems and delivers code for all projects.",
+    "alexBio": "Monitors infrastructure, runs security scans and keeps systems protected."
+  },
+  "contact": {
+    "headline": "Start a conversation.",
+    "subline": "No sales pitch. Tell us what you need, and we will tell you honestly if we can help.",
+    "name": "Name",
+    "email": "Email",
+    "company": "Company",
+    "service": "How can we help?",
+    "servicePlaceholder": "Select a service",
+    "serviceSoftware": "Custom software",
+    "serviceWebsites": "Websites & webshops",
+    "serviceMarketing": "Marketing & SEO",
+    "serviceRecruitment": "Recruitment",
+    "serviceOther": "Something else",
+    "message": "Message",
+    "messagePlaceholder": "Tell us about your project, timeline and what success looks like.",
+    "submit": "Send message",
+    "sending": "Sending...",
+    "sent": "Thank you! We will get back to you within 24 hours.",
+    "error": "Something went wrong. Please try again or email us at info@groupany.nl.",
+    "address": "Keizersgracht 520, 1017 EK Amsterdam",
+    "emailAddress": "info@groupany.nl",
+    "faqLabel": "Frequently asked questions",
+    "faq1q": "How quickly can you start?",
+    "faq1a": "Most projects start within a week of agreement. We scope, plan and begin quickly.",
+    "faq2q": "What does a typical collaboration look like?",
+    "faq2a": "We start with a clear proposal and deliver weekly. You get real work product, not status updates.",
+    "faq3q": "Do I own the code and deliverables?",
+    "faq3a": "Yes, completely. Everything we build is yours. No hidden dependencies or lock-in.",
+    "faq4q": "How does pricing work?",
+    "faq4a": "Fixed prices per project. You know the cost upfront. No hourly billing, no surprises.",
+    "officeHours": "Monday to Friday, 09:00 to 18:00 CET",
+    "officeHoursLabel": "Office hours",
+    "phoneLabel": "Phone",
+    "phone": "+31 (0)20 123 4567"
+  },
+  "servicePages": {
+    "software": {
+      "title": "Custom Software",
+      "headline": "From idea to working software in weeks, not months.",
+      "description": "Web applications, API integrations and automations. Built by a team that uses the same technology daily for their own companies.",
+      "capabilitiesLabel": "What we build",
+      "cap1": "Web applications and dashboards",
+      "cap2": "API integrations and connections",
+      "cap3": "Automations and workflows",
+      "cap4": "Cloud infrastructure and hosting",
+      "cap5": "Database architecture and optimisation",
+      "cap6": "Migration from existing systems",
+      "processLabel": "How it works",
+      "proc1title": "Introduction",
+      "proc1desc": "We understand your business, your users and your needs. No 40-page document. A clear conversation.",
+      "proc2title": "Design",
+      "proc2desc": "We design the system before we start building. Technology that grows with your business.",
+      "proc3title": "Build & test",
+      "proc3desc": "Weekly delivery with real results. You review, give feedback, we process it.",
+      "proc4title": "Maintenance",
+      "proc4desc": "We do not deliver and disappear. Monitoring, updates and continuous development.",
+      "deliverablesLabel": "What you get",
+      "del1": "Working software that is completely yours",
+      "del2": "Documentation your team can actually use",
+      "del3": "Hosting on European servers (Hetzner, Cloudflare)",
+      "del4": "Ongoing support and updates",
+      "ctaHeadline": "Ready to get started?",
+      "ctaPrimary": "Start your project",
+      "techLabel": "Technology"
+    },
+    "marketing": {
+      "title": "Marketing & Growth",
+      "headline": "Marketing that delivers measurable results.",
+      "description": "Google Ads, SEO, social media and content. Transparent, measurable and focused on growth.",
+      "capabilitiesLabel": "What we do",
+      "cap1": "SEO and organic growth",
+      "cap2": "Google Ads and paid campaigns",
+      "cap3": "Social media strategy and execution",
+      "cap4": "Content marketing and copywriting",
+      "cap5": "Conversion optimisation",
+      "cap6": "Analytics and monthly reporting",
+      "processLabel": "How it works",
+      "proc1title": "Analysis",
+      "proc1desc": "We analyse your current situation, competitors and market. Honest and clear.",
+      "proc2title": "Strategy",
+      "proc2desc": "A concrete plan with clear priorities. What first, what to measure, what success looks like.",
+      "proc3title": "Execution",
+      "proc3desc": "Our team creates and publishes. Content, campaigns, optimisations. Weekly reporting.",
+      "proc4title": "Optimisation",
+      "proc4desc": "Data-driven improvement. More of what works, stop what does not.",
+      "deliverablesLabel": "What you get",
+      "del1": "Measurable growth in leads and revenue",
+      "del2": "Content that ranks and converts",
+      "del3": "Transparent reporting with real numbers",
+      "del4": "A growth engine, not a one-off campaign",
+      "ctaHeadline": "Ready to grow?",
+      "ctaPrimary": "Start your marketing",
+      "metricsLabel": "Results that matter",
+      "metric1": "70% faster delivery",
+      "metric2": "3x more organic traffic",
+      "metric3": "45% lower cost per lead",
+      "metric4": "Weekly reporting"
+    },
+    "research": {
+      "title": "Consulting & Strategy",
+      "headline": "Digital strategy that keeps you ahead of competitors.",
+      "description": "Market analysis, competitor research and strategic advice. Clear, concrete and actionable.",
+      "capabilitiesLabel": "What we research",
+      "cap1": "Competitor analysis",
+      "cap2": "Market research and opportunities",
+      "cap3": "Technical audits",
+      "cap4": "Digital strategy",
+      "cap5": "Pricing and positioning advice",
+      "cap6": "Custom growth plans",
+      "processLabel": "How it works",
+      "proc1title": "Intake",
+      "proc1desc": "We determine exactly what you need and why. Focused and efficient.",
+      "proc2title": "Research",
+      "proc2desc": "Thorough research into your market, competitors and opportunities. With modern tools and experience.",
+      "proc3title": "Advice",
+      "proc3desc": "Clear reports with concrete recommendations. Not 200 slides, but actionable insights.",
+      "proc4title": "Guidance",
+      "proc4desc": "We help with implementation. Not just a report, but also the execution.",
+      "deliverablesLabel": "What you get",
+      "del1": "Clear strategic reports",
+      "del2": "Concrete recommendations and action points",
+      "del3": "Market insights backed by data",
+      "del4": "Guidance during implementation",
+      "ctaHeadline": "Ready for an advantage?",
+      "ctaPrimary": "Start your strategy",
+      "techLabel": "Analysis tools"
+    }
+  },
+  "toolbox": {
+    "eyebrow": "Our Toolbox",
+    "headline": "100+ tools and integrations",
+    "subline": "We work with the best tools for development, marketing, hosting and analytics. Everything connected, nothing siloed."
+  },
+  "deliverables": {
+    "eyebrow": "Real output",
+    "headline": "What we deliver in a typical week",
+    "deployments": "47 deployments",
+    "deploymentsDesc": "Tested code to production",
+    "outreach": "156 marketing actions",
+    "outreachDesc": "Campaigns, content and optimisations",
+    "reports": "12 reports",
+    "reportsDesc": "SEO analyses, performance reports and insights",
+    "audits": "3 security scans",
+    "auditsDesc": "Updates, checks and compliance"
+  },
+  "bottomCta": {
+    "text": "Questions? Let's talk. No strings attached.",
+    "button": "Get in touch"
+  }
+}

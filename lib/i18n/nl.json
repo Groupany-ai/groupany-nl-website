@@ -1,0 +1,443 @@
+{
+  "nav": {
+    "services": "Diensten",
+    "work": "Werk",
+    "about": "Over ons",
+    "contact": "Contact",
+    "getStarted": "Neem contact op"
+  },
+  "hero": {
+    "socialProof": "Vertrouwd door <strong>12 bedrijven</strong> in Nederland",
+    "headlinePre": "Uw",
+    "headlinePost": "partner in Amsterdam.",
+    "headlineLine2": "",
+    "headline": "Wij bouwen software, websites en marketingcampagnes die meetbaar resultaat opleveren. Sneller, slimmer en betaalbaarder.",
+    "subline": "Software op maat, professionele websites en datagedreven marketing. Vaste prijzen, geen verrassingen. Opgeleverd wanneer afgesproken.",
+    "ctaPrimary": "Plan een gesprek",
+    "ctaSecondary": "Bekijk onze diensten",
+    "rotatingWords": [
+      "software",
+      "marketing",
+      "websites",
+      "recruitment",
+      "strategie",
+      "SEO",
+      "content",
+      "development",
+      "groei",
+      "digitale"
+    ]
+  },
+  "proof": {
+    "label": "Onze technologie"
+  },
+  "services": {
+    "label": "Wat wij doen",
+    "gridHeadline": "Alles wat uw bedrijf nodig heeft",
+    "gridSubline": "Van software tot websites tot marketing. Onder een dak.",
+    "learnMore": "Meer informatie",
+    "software": {
+      "title": "Software op maat",
+      "desc": "Van idee tot werkende applicatie in weken, niet maanden. Web apps, koppelingen en automatiseringen.",
+      "label": "SOFTWARE"
+    },
+    "websites": {
+      "title": "Websites die converteren",
+      "desc": "Professionele websites gebouwd op moderne technologie. Snel, responsive en SEO-geoptimaliseerd.",
+      "label": "WEBSITES"
+    },
+    "marketing": {
+      "title": "Marketing & groei",
+      "desc": "Meer leads, meer klanten, meer omzet. Google Ads, social media en conversie-optimalisatie.",
+      "label": "MARKETING"
+    },
+    "seo": {
+      "title": "SEO & content",
+      "desc": "Hoger in Google, meer organisch verkeer, betere content die uw doelgroep aanspreekt.",
+      "label": "SEO"
+    },
+    "recruitment": {
+      "title": "Social recruitment",
+      "desc": "Vind de juiste kandidaten via sociale kanalen. Zonder bureau-fees, meetbaar en effectief.",
+      "label": "RECRUITMENT"
+    },
+    "support": {
+      "title": "Onderhoud & support",
+      "desc": "24/7 monitoring, updates en technische ondersteuning. Uw systemen draaien altijd.",
+      "label": "SUPPORT"
+    },
+    "strategy": {
+      "title": "Advies & strategie",
+      "desc": "Digitale strategie op maat van uw bedrijfsdoelen. Helder advies, concrete plannen.",
+      "label": "STRATEGIE"
+    },
+    "also": "En meer: automatiseringen, data-analyse, DevOps, contentproductie"
+  },
+  "dashboard": {
+    "title": "Project Dashboard",
+    "live": "Live",
+    "sidebar": {
+      "dashboard": "Dashboard",
+      "projects": "Projecten",
+      "analytics": "Analyse",
+      "deployments": "Deployments",
+      "settings": "Instellingen"
+    },
+    "stats": {
+      "activeProjects": "Actieve projecten",
+      "deployments": "Deployments",
+      "uptime": "Uptime",
+      "avgResponse": "< 4u"
+    },
+    "recentActivity": "Recente activiteit",
+    "agentActivity": [
+      {
+        "name": "Team",
+        "task": "Website v3.2 naar productie gedeployd",
+        "time": "2 min geleden"
+      },
+      {
+        "name": "SEO",
+        "task": "Maandelijkse SEO-rapport gegenereerd",
+        "time": "8 min geleden"
+      },
+      {
+        "name": "Dev",
+        "task": "API-koppeling met CRM afgerond",
+        "time": "14 min geleden"
+      },
+      {
+        "name": "Marketing",
+        "task": "Google Ads campagne geoptimaliseerd",
+        "time": "21 min geleden"
+      }
+    ]
+  },
+  "notifications": {
+    "liveActivity": "Live activiteit",
+    "items": [
+      {
+        "agent": "Dev",
+        "text": "Website update naar productie gedeployd",
+        "time": "2 min geleden"
+      },
+      {
+        "agent": "SEO",
+        "text": "Organisch verkeer +23% deze maand",
+        "time": "5 min geleden"
+      },
+      {
+        "agent": "Marketing",
+        "text": "Google Ads campagne geoptimaliseerd",
+        "time": "8 min geleden"
+      },
+      {
+        "agent": "Dev",
+        "text": "Nieuwe feature naar staging gedeployd",
+        "time": "12 min geleden"
+      },
+      {
+        "agent": "Support",
+        "text": "Alle systemen operationeel - uptime 99.9%",
+        "time": "15 min geleden"
+      }
+    ]
+  },
+  "stats": {
+    "headerLabel": "Live projectstatus",
+    "companiesRunning": "Actieve projecten",
+    "allHealthy": "Alles gezond",
+    "tasksCompleted": "Taken afgerond",
+    "today": "deze week",
+    "uptime": "Uptime",
+    "allSystems": "Alle systemen operationeel",
+    "agentsOnline": "Teamleden online"
+  },
+  "socialProof": {
+    "eyebrow": "Wat klanten zeggen",
+    "headline": "Vertrouwd door ambitieuze bedrijven",
+    "googleReview": "4.9/5 op Google",
+    "trustpilotReview": "Excellent op Trustpilot",
+    "testimonials": [
+      {
+        "quote": "Groupany heeft onze website en software in recordtijd opgeleverd. Professioneel, betrouwbaar en altijd bereikbaar.",
+        "author": "Jan Klaassen",
+        "role": "Directeur, TechBedrijf B.V."
+      },
+      {
+        "quote": "Binnen drie weken hadden we een werkende webshop. Andere bureaus hadden maanden nodig gehad.",
+        "author": "Lisa de Vries",
+        "role": "Eigenaar, ModeWinkel.nl"
+      },
+      {
+        "quote": "De combinatie van technisch vakmanschap en marketingkennis maakt het verschil. Ze denken mee op strategisch niveau.",
+        "author": "Mark Jansen",
+        "role": "COO, GroeiPartners"
+      }
+    ]
+  },
+  "differentiator": {
+    "label": "Waarom wij",
+    "headline": "Wij bouwen het zelf ook. Dat maakt het verschil.",
+    "propty": "Propty: 420.000 regels code, een volledig vastgoedplatform gebouwd en onderhouden door ons team.",
+    "webgroeiers": "Webgroeiers: ons eigen webbureau dat tientallen MKB-websites per jaar oplevert.",
+    "autoranq": "Autoranq: onze eigen SEO-tool, gebouwd op dezelfde technologie die wij voor u inzetten.",
+    "gcc": "Allemaal beheerd via ons interne platform. Als wij zeggen dat iets werkt, hebben wij het bewijs.",
+    "closing": "Wij zijn geen bureau dat alleen adviseert. Wij bouwen, beheren en groeien mee."
+  },
+  "process": {
+    "label": "Zo werken wij",
+    "step1": {
+      "title": "Kennismaking",
+      "desc": "Een kort gesprek van 20 minuten. Geen verkooppraatje. Wij luisteren naar wat u nodig heeft."
+    },
+    "step2": {
+      "title": "Voorstel & prijs",
+      "desc": "Binnen 48 uur een helder voorstel met vaste prijs, planning en duidelijke scope."
+    },
+    "step3": {
+      "title": "Oplevering",
+      "desc": "Wekelijkse updates, uw feedback, onze verwerking. Geen verrassingen bij de eindoplevering."
+    }
+  },
+  "blog": {
+    "eyebrow": "Inzichten & Cases",
+    "headline": "Lees hoe wij bedrijven helpen groeien",
+    "readMore": "Lees meer",
+    "articles": [
+      {
+        "category": "Case study",
+        "title": "Hoe wij een vastgoedplatform van 420.000 regels code beheren",
+        "desc": "Van startup tot volwassen SaaS-platform met geautomatiseerde processen en continue doorontwikkeling."
+      },
+      {
+        "category": "Blog",
+        "title": "Waarom een goede website meer oplevert dan u denkt",
+        "desc": "De ROI van een professionele website voor het MKB. Met concrete cijfers en voorbeelden."
+      },
+      {
+        "category": "Gids",
+        "title": "De complete gids voor online zichtbaarheid in 2026",
+        "desc": "SEO, Google Ads, social media en content. Alles wat u moet weten om gevonden te worden."
+      }
+    ]
+  },
+  "cta": {
+    "headline": "Klaar om samen te bouwen?",
+    "subtitle": "Plan een vrijblijvend gesprek van 30 minuten. Wij laten u zien wat wij voor uw bedrijf kunnen betekenen.",
+    "primary": "Plan een gesprek",
+    "secondary": "Bekijk onze inzichten"
+  },
+  "ctaBand": {
+    "eyebrow": "AAN DE SLAG",
+    "headline": "Klaar om samen te bouwen?",
+    "subline": "Plan een vrijblijvend gesprek van 30 minuten. Wij laten u zien wat wij voor uw bedrijf kunnen betekenen.",
+    "primary": "Plan een gesprek",
+    "secondary": "Bekijk onze inzichten",
+    "trust1": "Vrijblijvend",
+    "trust2": "Resultaat binnen een week",
+    "trust3": "Altijd opzegbaar"
+  },
+  "footer": {
+    "tagline": "Uw digitale partner in Amsterdam. Software, websites en marketing die werken.",
+    "company": "Bedrijf",
+    "servicesTitle": "Diensten",
+    "resources": "Kennis",
+    "legal": "Juridisch",
+    "privacy": "Privacybeleid",
+    "terms": "Voorwaarden",
+    "insights": "Inzichten",
+    "softwareDev": "Software op maat",
+    "websites": "Websites",
+    "marketingGrowth": "Marketing & SEO",
+    "recruitment": "Recruitment",
+    "allServices": "Alle diensten",
+    "team": "Over ons",
+    "teamLink": "Team",
+    "contactLink": "Contact",
+    "werkwijze": "Werkwijze",
+    "vacatures": "Vacatures",
+    "investeerders": "Investeerders",
+    "projects": "Cases",
+    "cases": "Cases",
+    "blog": "Blog",
+    "status": "Status",
+    "faq": "FAQ"
+  },
+  "about": {
+    "headline": "Een digitaal bureau dat bouwt, market en meegroeit.",
+    "story": "Groupany is opgericht in Amsterdam met een simpele overtuiging: het beste digitale bureau is er een dat het zelf ook doet. Wij bouwen, beheren en groeien mee met uw bedrijf.",
+    "storyP2": "Wij runnen meerdere bedrijven op dezelfde technologie die wij voor onze klanten inzetten. Dit is geen zijproject. Het is ons bewijs. Elk systeem dat wij voor u bouwen, is eerst op onszelf getest.",
+    "storyP3": "Ons team combineert menselijke expertise met de nieuwste technologie. Zo leveren wij resultaten die normaal alleen voor grote bedrijven zijn weggelegd.",
+    "teamLabel": "Het team",
+    "techLabel": "Onze technologie",
+    "techBody": "Onze stack is modern, betrouwbaar en Europees gehost. Next.js, React, TypeScript, PostgreSQL, Prisma. Gehost op Hetzner. Beveiligd door Cloudflare. Geen vendor lock-in. Alles wat wij bouwen is van u.",
+    "valuesLabel": "Waar wij voor staan",
+    "value1": "Resultaat boven beloftes. Wij praten over wat er opgeleverd wordt, niet over tools.",
+    "value2": "Eigenaarschap boven afhankelijkheid. Alles wat wij bouwen, beheert u. Geen verborgen valkuilen.",
+    "value3": "Groei boven eenmalig. Elk project is een investering die zich terugverdient.",
+    "milestoneLabel": "Belangrijke mijlpalen",
+    "milestone1": "2024: Opgericht in Amsterdam door Bart Korpershoek",
+    "milestone2": "2024: Eerste klantprojecten opgeleverd",
+    "milestone3": "2025: Team uitgebreid, meerdere bedrijven actief",
+    "milestone4": "2025: 50+ projecten succesvol opgeleverd",
+    "milestone5": "2026: Vertrouwd door 12+ bedrijven, 99.9% uptime",
+    "locationLabel": "Waar u ons vindt",
+    "locationDesc": "Ons kantoor bevindt zich in het hart van Amsterdam, aan een van de meest iconische grachten van de stad.",
+    "bartBio": "Ondernemer en technoloog. Bouwde meerdere bedrijven op dezelfde technologische infrastructuur.",
+    "maxBio": "Coordineert alle operaties, beheert prioriteiten en zorgt dat alles op tijd wordt opgeleverd.",
+    "samBio": "Verantwoordelijk voor de volledige technische stack. Van architectuur tot productie.",
+    "jessicaBio": "Stimuleert groei door content, campagnes, SEO en leadgeneratie.",
+    "leviBio": "Bouwt features, lost problemen op en levert code op voor alle projecten.",
+    "alexBio": "Monitort infrastructuur, voert beveiligingsscans uit en houdt systemen beschermd."
+  },
+  "contact": {
+    "headline": "Begin een gesprek.",
+    "subline": "Geen verkooppraatje. Vertel ons wat u nodig heeft, en wij vertellen eerlijk of wij kunnen helpen.",
+    "name": "Naam",
+    "email": "E-mail",
+    "company": "Bedrijf",
+    "service": "Waar kunnen we u mee helpen?",
+    "servicePlaceholder": "Selecteer een dienst",
+    "serviceSoftware": "Software op maat",
+    "serviceWebsites": "Websites & webshops",
+    "serviceMarketing": "Marketing & SEO",
+    "serviceRecruitment": "Recruitment",
+    "serviceOther": "Iets anders",
+    "message": "Bericht",
+    "messagePlaceholder": "Vertel ons over uw project, tijdlijn en wat succes voor u betekent.",
+    "submit": "Verstuur bericht",
+    "sending": "Versturen...",
+    "sent": "Bedankt! Wij nemen binnen 24 uur contact met u op.",
+    "error": "Er ging iets mis. Probeer het opnieuw of mail ons op info@groupany.nl.",
+    "address": "Keizersgracht 520, 1017 EK Amsterdam",
+    "emailAddress": "info@groupany.nl",
+    "faqLabel": "Veelgestelde vragen",
+    "faq1q": "Hoe snel kunnen jullie beginnen?",
+    "faq1a": "De meeste projecten starten binnen een week na akkoord. Wij scopen, plannen en beginnen snel.",
+    "faq2q": "Hoe ziet een typische samenwerking eruit?",
+    "faq2a": "Wij starten met een helder voorstel en leveren wekelijks op. U krijgt echt werkproduct, geen statusupdates.",
+    "faq3q": "Ben ik eigenaar van de code en het werk?",
+    "faq3a": "Ja, volledig. Alles wat wij bouwen is van u. Geen verborgen afhankelijkheden of lock-in.",
+    "faq4q": "Hoe werkt de prijsstelling?",
+    "faq4a": "Vaste prijzen per project. U weet vooraf wat het kost. Geen uurtje-factuurtje, geen verrassingen.",
+    "officeHours": "Maandag tot vrijdag, 09:00 tot 18:00 CET",
+    "officeHoursLabel": "Kantooruren",
+    "phoneLabel": "Telefoon",
+    "phone": "+31 (0)20 123 4567"
+  },
+  "servicePages": {
+    "software": {
+      "title": "Software op maat",
+      "headline": "Van idee tot werkende software in weken, niet maanden.",
+      "description": "Web applicaties, API-koppelingen en automatiseringen. Gebouwd door een team dat dezelfde technologie dagelijks voor eigen bedrijven inzet.",
+      "capabilitiesLabel": "Wat wij bouwen",
+      "cap1": "Webapplicaties en dashboards",
+      "cap2": "API-koppelingen en integraties",
+      "cap3": "Automatiseringen en workflows",
+      "cap4": "Cloud-infrastructuur en hosting",
+      "cap5": "Database-architectuur en optimalisatie",
+      "cap6": "Migratie van bestaande systemen",
+      "processLabel": "Hoe het werkt",
+      "proc1title": "Kennismaking",
+      "proc1desc": "Wij begrijpen uw bedrijf, uw gebruikers en uw wensen. Geen document van 40 paginas. Een helder gesprek.",
+      "proc2title": "Ontwerp",
+      "proc2desc": "Wij ontwerpen het systeem voordat we beginnen met bouwen. Technologie die meegroeit met uw bedrijf.",
+      "proc3title": "Bouwen & testen",
+      "proc3desc": "Wekelijkse oplevering met echte resultaten. U beoordeelt, geeft feedback, wij verwerken het.",
+      "proc4title": "Onderhoud",
+      "proc4desc": "Wij leveren niet op en verdwijnen. Monitoring, updates en doorontwikkeling.",
+      "deliverablesLabel": "Wat u krijgt",
+      "del1": "Werkende software die volledig van u is",
+      "del2": "Documentatie die uw team kan gebruiken",
+      "del3": "Hosting op Europese servers (Hetzner, Cloudflare)",
+      "del4": "Doorlopende ondersteuning en updates",
+      "ctaHeadline": "Klaar om te beginnen?",
+      "ctaPrimary": "Start uw project",
+      "techLabel": "Technologie"
+    },
+    "marketing": {
+      "title": "Marketing & Groei",
+      "headline": "Marketing die meetbaar resultaat oplevert.",
+      "description": "Google Ads, SEO, social media en content. Transparant, meetbaar en gericht op groei.",
+      "capabilitiesLabel": "Wat wij doen",
+      "cap1": "SEO en organische groei",
+      "cap2": "Google Ads en betaalde campagnes",
+      "cap3": "Social media strategie en uitvoering",
+      "cap4": "Content marketing en copywriting",
+      "cap5": "Conversie-optimalisatie",
+      "cap6": "Analytics en maandelijkse rapportage",
+      "processLabel": "Hoe het werkt",
+      "proc1title": "Analyse",
+      "proc1desc": "Wij analyseren uw huidige situatie, uw concurrenten en uw markt. Eerlijk en helder.",
+      "proc2title": "Strategie",
+      "proc2desc": "Een concreet plan met duidelijke prioriteiten. Wat eerst, wat meten, hoe succes eruitziet.",
+      "proc3title": "Uitvoering",
+      "proc3desc": "Ons team maakt en publiceert. Content, campagnes, optimalisaties. Wekelijkse rapportage.",
+      "proc4title": "Optimalisatie",
+      "proc4desc": "Data-gedreven verbetering. Meer van wat werkt, stoppen met wat niet werkt.",
+      "deliverablesLabel": "Wat u krijgt",
+      "del1": "Meetbare groei in leads en omzet",
+      "del2": "Content die rankt en converteert",
+      "del3": "Transparante rapportage met echte cijfers",
+      "del4": "Een groeimotor, geen eenmalige campagne",
+      "ctaHeadline": "Klaar om te groeien?",
+      "ctaPrimary": "Start uw marketing",
+      "metricsLabel": "Resultaten die ertoe doen",
+      "metric1": "70% snellere oplevering",
+      "metric2": "3x meer organisch verkeer",
+      "metric3": "45% lagere kosten per lead",
+      "metric4": "Wekelijkse rapportage"
+    },
+    "research": {
+      "title": "Advies & Strategie",
+      "headline": "Digitale strategie die uw concurrenten voorblijft.",
+      "description": "Marktanalyse, concurrentieonderzoek en strategisch advies. Helder, concreet en uitvoerbaar.",
+      "capabilitiesLabel": "Wat wij onderzoeken",
+      "cap1": "Concurrentie-analyse",
+      "cap2": "Marktonderzoek en kansen",
+      "cap3": "Technische audits",
+      "cap4": "Digitale strategie",
+      "cap5": "Prijs- en positioneringsadvies",
+      "cap6": "Groeiplannen op maat",
+      "processLabel": "Hoe het werkt",
+      "proc1title": "Intake",
+      "proc1desc": "Wij bepalen precies wat u nodig heeft en waarom. Gericht en efficient.",
+      "proc2title": "Onderzoek",
+      "proc2desc": "Grondig onderzoek naar uw markt, concurrenten en kansen. Met moderne tools en ervaring.",
+      "proc3title": "Advies",
+      "proc3desc": "Heldere rapporten met concrete aanbevelingen. Geen 200 slides, maar bruikbare inzichten.",
+      "proc4title": "Begeleiding",
+      "proc4desc": "Wij helpen bij de uitvoering. Niet alleen een rapport, maar ook de implementatie.",
+      "deliverablesLabel": "Wat u krijgt",
+      "del1": "Heldere strategische rapporten",
+      "del2": "Concrete aanbevelingen en actiepunten",
+      "del3": "Marktinzichten onderbouwd met data",
+      "del4": "Begeleiding bij de uitvoering",
+      "ctaHeadline": "Klaar voor een voorsprong?",
+      "ctaPrimary": "Start uw strategie",
+      "techLabel": "Analyse-tools"
+    }
+  },
+  "toolbox": {
+    "eyebrow": "Onze Toolbox",
+    "headline": "100+ tools en integraties",
+    "subline": "Wij werken met de beste tools voor development, marketing, hosting en analyse. Alles verbonden, niets in silo's."
+  },
+  "deliverables": {
+    "eyebrow": "Concrete output",
+    "headline": "Wat wij opleveren in een gemiddelde week",
+    "deployments": "47 deployments",
+    "deploymentsDesc": "Geteste code naar productie",
+    "outreach": "156 marketingacties",
+    "outreachDesc": "Campagnes, content en optimalisaties",
+    "reports": "12 rapporten",
+    "reportsDesc": "SEO-analyses, prestatie-rapportages en inzichten",
+    "audits": "3 beveiligingsscans",
+    "auditsDesc": "Updates, controles en compliance-checks"
+  },
+  "bottomCta": {
+    "text": "Vragen? Laten we praten. Geheel vrijblijvend.",
+    "button": "Neem contact op"
+  }
+}
