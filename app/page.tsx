@@ -633,10 +633,12 @@ export default function Home() {
 
   /* Parallax-lite on the hero slideshow */
   const [heroParallax, setHeroParallax] = useState(0);
+  const [heroGlow, setHeroGlow] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY < window.innerHeight) {
         setHeroParallax(window.scrollY * 0.15);
+      setHeroGlow(window.scrollY > 50);
       }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -736,7 +738,7 @@ export default function Home() {
 
       <main ref={revealRef}>
         {/* HERO — Full-width video/slideshow with overlaid content */}
-        <section className="hero-fullwidth">
+        <section className={"hero-fullwidth" + (heroGlow ? " hero-glow" : "")}>
           {/* Background: slideshow (swap for video when ready) */}
           <div className="hero-video-bg" style={{ transform: `translateY(${heroParallax}px)` }}>
             <div className="hero-slide hero-slide-1" />
