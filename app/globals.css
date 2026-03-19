@@ -124,6 +124,7 @@ body {
 .section-py {
   padding-top: 96px;
   padding-bottom: 96px;
+  transition: background-color 0.8s ease;
 }
 
 .section-alt {
@@ -5088,12 +5089,11 @@ html.dark .hero-slide-label {
 
 .hero-fullwidth {
   position: relative;
-  min-height: 85vh;
+  min-height: 90vh;
   display: flex;
   align-items: center;
   overflow: hidden;
-  max-width: 1200px;
-  margin: 12px auto;
+  margin: 8px 16px;
   border-radius: 20px;
 }
 
@@ -5431,39 +5431,70 @@ html.dark .client-logo-img {
    ═══════════════════════════════════════════════════════════════════════════ */
 
 .nav-bar {
-  max-width: 1200px;
-  margin: 0 auto;
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  z-index: 50;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
   height: 56px;
-  background: rgba(255, 255, 255, 0.08) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
-  transition: background 0.3s ease, border-color 0.3s ease, position 0s;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  max-width: none;
+  margin: 0;
 }
 
-.nav-bar.nav-scrolled {
-  position: fixed;
-  background: rgba(255, 255, 255, 0.85) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+.nav-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-html.dark .nav-bar.nav-scrolled {
-  background: rgba(26, 26, 30, 0.85) !important;
-  border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+
+/* On hero (transparent) */
+.nav-bar:not(.nav-scrolled) {
+  background: transparent;
+  border-bottom: 1px solid transparent;
+}
+.nav-bar:not(.nav-scrolled) a,
+.nav-bar:not(.nav-scrolled) .nav-logo {
+  color: rgba(255, 255, 255, 0.9);
+}
+.nav-bar:not(.nav-scrolled) .nav-cta {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+.nav-bar:not(.nav-scrolled) .nav-cta:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Scrolled past hero (solid) */
+.nav-scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid #E8EEF4;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+html.dark .nav-scrolled {
+  background: rgba(26, 26, 30, 0.95);
+  border-bottom-color: #2a2a2e;
+}
+.nav-scrolled a,
+.nav-scrolled .nav-logo {
+  color: var(--text);
+}
+.nav-scrolled .nav-cta {
+  background: var(--accent);
+  color: white;
+  border: 1px solid var(--accent);
 }
 
 /* Nav link colors */
-.nav-bar:not(.nav-scrolled) .nav-logo {
-  color: rgba(255, 255, 255, 0.95);
-}
-.nav-bar.nav-scrolled .nav-logo {
-  color: var(--text);
-}
-
 .nav-bar:not(.nav-scrolled) .nav-link {
   color: rgba(255, 255, 255, 0.85);
   transition: color 0.15s ease;
@@ -5471,21 +5502,12 @@ html.dark .nav-bar.nav-scrolled {
 .nav-bar:not(.nav-scrolled) .nav-link:hover {
   color: rgba(255, 255, 255, 1);
 }
-.nav-bar.nav-scrolled .nav-link {
+.nav-scrolled .nav-link {
   color: var(--text-secondary);
   transition: color 0.15s ease;
 }
-.nav-bar.nav-scrolled .nav-link:hover {
+.nav-scrolled .nav-link:hover {
   color: var(--text);
-}
-
-.nav-bar:not(.nav-scrolled) .nav-cta {
-  background: rgba(255, 255, 255, 0.15) !important;
-  color: white !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-}
-.nav-bar:not(.nav-scrolled) .nav-cta:hover {
-  background: rgba(255, 255, 255, 0.25) !important;
 }
 
 /* Mobile hamburger color on hero */
@@ -5569,13 +5591,48 @@ html.dark .impact-desc { color: rgba(255,255,255,0.5); }
 
 
 /* Performance fixes */
-.nav-bar {
-  will-change: background-color, border-color;
-  transition: background-color 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
-}
 .hero-slide {
   will-change: opacity, transform;
 }
 .reveal {
   will-change: opacity, transform;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SCROLL EFFECTS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* A. Card reveal glow */
+.reveal-glow {
+  border-color: transparent;
+  transition: border-color 0.6s ease, box-shadow 0.6s ease;
+}
+.reveal-glow.visible {
+  border-color: rgba(37, 99, 235, 0.15);
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.06);
+  animation: glowFade 1.5s ease forwards;
+}
+@keyframes glowFade {
+  0% { border-color: rgba(37, 99, 235, 0.2); box-shadow: 0 0 20px rgba(37, 99, 235, 0.08); }
+  100% { border-color: rgba(0,0,0,0.04); box-shadow: 0 1px 2px rgba(0,0,0,0.04); }
+}
+html.dark .reveal-glow.visible {
+  animation: glowFadeDark 1.5s ease forwards;
+}
+@keyframes glowFadeDark {
+  0% { border-color: rgba(37, 99, 235, 0.25); box-shadow: 0 0 20px rgba(37, 99, 235, 0.1); }
+  100% { border-color: rgba(255,255,255,0.06); box-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+}
+
+/* C. Section divider that draws itself */
+.section-divider {
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  margin: 0 auto;
+  transition: width 1s cubic-bezier(.25, 1, .5, 1);
+}
+.section-divider.visible {
+  width: 100%;
+  max-width: 200px;
 }

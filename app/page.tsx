@@ -631,6 +631,18 @@ export default function Home() {
 
   // scroll tilt removed
 
+  /* Parallax-lite on the hero slideshow */
+  const [heroParallax, setHeroParallax] = useState(0);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY < window.innerHeight) {
+        setHeroParallax(window.scrollY * 0.15);
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   
   
 
@@ -726,7 +738,7 @@ export default function Home() {
         {/* HERO — Full-width video/slideshow with overlaid content */}
         <section className="hero-fullwidth">
           {/* Background: slideshow (swap for video when ready) */}
-          <div className="hero-video-bg">
+          <div className="hero-video-bg" style={{ transform: `translateY(${heroParallax}px)` }}>
             <div className="hero-slide hero-slide-1" />
             <div className="hero-slide hero-slide-2" />
             <div className="hero-slide hero-slide-3" />
@@ -785,6 +797,8 @@ export default function Home() {
           </div>
         </section>
 
+        <div className="section-divider reveal" />
+
         {/* IMPACT — Stripe bento style */}
         <section className="section-py">
           <div className="container-main">
@@ -795,7 +809,7 @@ export default function Home() {
 
             <div className="impact-grid">
               {/* Large card: Software */}
-              <div className="impact-card impact-card-lg reveal reveal-delay-1">
+              <div className="impact-card impact-card-lg reveal reveal-glow reveal-delay-1">
                 <div className="impact-card-content">
                   <span className="impact-label">SOFTWARE</span>
                   <h3 className="impact-title">{t('impact.software.title')}</h3>
@@ -818,7 +832,7 @@ export default function Home() {
               </div>
 
               {/* Large card: Marketing */}
-              <div className="impact-card impact-card-lg reveal reveal-delay-2">
+              <div className="impact-card impact-card-lg reveal reveal-glow reveal-delay-2">
                 <div className="impact-card-content">
                   <span className="impact-label">MARKETING</span>
                   <h3 className="impact-title">{t('impact.marketing.title')}</h3>
@@ -841,7 +855,7 @@ export default function Home() {
               </div>
 
               {/* Medium cards row */}
-              <div className="impact-card impact-card-md reveal reveal-delay-1">
+              <div className="impact-card impact-card-md reveal reveal-glow reveal-delay-1">
                 <div className="impact-card-content">
                   <span className="impact-label">WEBSITES</span>
                   <h3 className="impact-title">{t('impact.websites.title')}</h3>
@@ -849,7 +863,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="impact-card impact-card-md reveal reveal-delay-2">
+              <div className="impact-card impact-card-md reveal reveal-glow reveal-delay-2">
                 <div className="impact-card-content">
                   <span className="impact-label">SEO</span>
                   <h3 className="impact-title">{t('impact.seo.title')}</h3>
@@ -857,7 +871,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="impact-card impact-card-md reveal reveal-delay-3">
+              <div className="impact-card impact-card-md reveal reveal-glow reveal-delay-3">
                 <div className="impact-card-content">
                   <span className="impact-label">RECRUITMENT</span>
                   <h3 className="impact-title">{t('impact.recruitment.title')}</h3>
@@ -867,6 +881,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <div className="section-divider reveal" />
 
         {/* TOOLBOX */}
         <ToolboxSection />
@@ -882,7 +898,7 @@ export default function Home() {
 
             <div className="packages-grid">
               {/* Package 1: Website */}
-              <div className="package-card reveal reveal-delay-1">
+              <div className="package-card reveal reveal-glow reveal-delay-1">
                 <div className="package-icon">&#127760;</div>
                 <h3 className="package-title">{t('packages.website.title')}</h3>
                 <p className="package-desc">{t('packages.website.desc')}</p>
@@ -901,7 +917,7 @@ export default function Home() {
               </div>
 
               {/* Package 2: Webshop */}
-              <div className="package-card package-card-featured reveal reveal-delay-2">
+              <div className="package-card package-card-featured reveal reveal-glow reveal-delay-2">
                 <div className="package-badge">{t('packages.popular')}</div>
                 <div className="package-icon">&#128722;</div>
                 <h3 className="package-title">{t('packages.webshop.title')}</h3>
@@ -922,7 +938,7 @@ export default function Home() {
               </div>
 
               {/* Package 3: Software op maat */}
-              <div className="package-card reveal reveal-delay-3">
+              <div className="package-card reveal reveal-glow reveal-delay-3">
                 <div className="package-icon">&#9889;</div>
                 <h3 className="package-title">{t('packages.custom.title')}</h3>
                 <p className="package-desc">{t('packages.custom.desc')}</p>
@@ -942,7 +958,7 @@ export default function Home() {
               </div>
 
               {/* Package 4: Marketing */}
-              <div className="package-card reveal reveal-delay-4">
+              <div className="package-card reveal reveal-glow reveal-delay-4">
                 <div className="package-icon">&#128200;</div>
                 <h3 className="package-title">{t('packages.marketing.title')}</h3>
                 <p className="package-desc">{t('packages.marketing.desc')}</p>
@@ -966,6 +982,8 @@ export default function Home() {
             </p>
           </div>
         </section>
+
+        <div className="section-divider reveal" />
 
         {/* SOCIAL PROOF */}
         <section className="section-py">
@@ -1018,6 +1036,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <div className="section-divider reveal" />
 
         {/* PREMIUM CTA BAND */}
         <section className="cta-band">

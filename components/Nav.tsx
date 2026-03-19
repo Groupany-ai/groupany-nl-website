@@ -38,7 +38,7 @@ export default function Nav() {
       <nav
         className={`nav-bar ${scrolled ? 'nav-scrolled' : ''}`}
       >
-        <div className="container-main" style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div className="nav-inner">
           <Link href="/" className='nav-logo' style={{ fontSize: '1.25rem', fontWeight: 700, textDecoration: 'none', letterSpacing: '-0.03em' }}>
             Groupany
           </Link>
