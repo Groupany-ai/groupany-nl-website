@@ -757,7 +757,7 @@ export default function Home() {
 
           {/* Content overlaid */}
           <div className="hero-fullwidth-content">
-            <div className="container-main">
+            <div className="hero-container">
               <h1 className="hero-fw-h1">
                 <span className="hero-word-your">{t('hero.headlinePre')}</span>{' '}
                 <span className="rotating-word-container">
