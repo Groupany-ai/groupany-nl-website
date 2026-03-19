@@ -25,6 +25,7 @@ export default function RootLayout({
   return (
     <html lang="nl">
       <head>
+        <link rel="icon" href="/favicon.ico" />
         {/* Plausible Analytics — privacy-first, no cookies, no consent banner needed */}
         <script
           defer
