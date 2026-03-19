@@ -489,5 +489,30 @@
   },
   "clients": {
     "label": "ONZE KLANTEN"
+  },
+  "packages": {
+    "eyebrow": "ONZE PAKKETTEN",
+    "headline": "Duidelijke oplossingen, vaste prijzen",
+    "subline": "Kies het pakket dat past bij uw ambitie. Alles inclusief, geen verrassingen.",
+    "from": "Vanaf",
+    "cta": "Offerte aanvragen",
+    "popular": "Populair",
+    "note": "Alle prijzen zijn exclusief BTW. Maatwerk altijd mogelijk na overleg.",
+    "website": {
+      "title": "Professionele Website",
+      "desc": "Een snelle, mooie website die converteert. Gebouwd op moderne technologie."
+    },
+    "webshop": {
+      "title": "Webshop",
+      "desc": "Verkoop online met een complete webshop. Van productpagina tot afrekenen."
+    },
+    "custom": {
+      "title": "Software op Maat",
+      "desc": "Een applicatie die precies doet wat u nodig heeft. Van concept tot productie."
+    },
+    "marketing": {
+      "title": "Marketing Pakket",
+      "desc": "Meer zichtbaarheid, meer leads, meer klanten. Meetbaar en transparant."
+    }
   }
 }

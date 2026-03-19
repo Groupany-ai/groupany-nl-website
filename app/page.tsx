@@ -590,9 +590,41 @@ function ChatTyping({ activeAgent }: { activeAgent: string }) {
   );
 }
 
+/* -- Client logos -------------------------------------------------- */
+const CLIENTS: { name: string; logo?: string; hasLogo: boolean }[] = [
+  { name: 'KLM', logo: '/logos/klm.svg', hasLogo: true },
+  { name: 'NS', logo: '/logos/ns.svg', hasLogo: true },
+  { name: 'Qarin', hasLogo: false },
+  { name: 'Fuse', hasLogo: false },
+  { name: 'Eye Wish', hasLogo: false },
+  { name: 'Ultimate Rentals', hasLogo: false },
+  { name: 'Gratisverhuizen', hasLogo: false },
+  { name: 'Jaro Groep', hasLogo: false },
+  { name: 'Propty', hasLogo: false },
+  { name: 'Autoranq', hasLogo: false },
+  { name: 'Webgroeiers', hasLogo: false },
+];
+
 export default function Home() {
-  const { t } = useTranslation()
+  const { t, tArray } = useTranslation()
   const revealRef = useReveal()
+
+  /* Rotating words for full-width hero */
+  const words = tArray('hero.rotatingWords')
+  const [wordIndex, setWordIndex] = useState(0)
+  const [isAnimating, setIsAnimating] = useState(false)
+  const currentWord = words[wordIndex] || ''
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsAnimating(true)
+      setTimeout(() => {
+        setWordIndex((prev) => (prev + 1) % words.length)
+        setIsAnimating(false)
+      }, 400)
+    }, 3000)
+    return () => clearInterval(interval)
+  }, [words.length])
 
   /* Scroll-based tilt for hero dashboard */
   // tilt removed
@@ -691,54 +723,63 @@ export default function Home() {
       <Nav />
 
       <main ref={revealRef}>
-        {/* HERO */}
-        <section className="hero-split">
-          <div className="hero-split-content">
-            <h1 className="hero-split-h1 reveal reveal-delay-1">
-              <span className="hero-word-your">{t('hero.headlinePre')}</span>{' '}
-              <RotatingWord />{' '}
-              <span className="hero-rest">{t('hero.headlinePost')} {t('hero.headlineLine2')}</span>
-            </h1>
-            <p className="hero-split-sub reveal reveal-delay-2">
-              {t('hero.subline')}
-            </p>
-            <div className="hero-split-ctas reveal reveal-delay-3">
-              <Link href="/contact" className="btn-primary">
-                {t('cta.primary')}
-              </Link>
-              <Link href="/diensten" className="btn-secondary">
-                {t('hero.ctaSecondary')}
-              </Link>
-            </div>
-            <p className="hero-split-tagline reveal reveal-delay-4">{t('hero.tagline')}</p>
+        {/* HERO — Full-width video/slideshow with overlaid content */}
+        <section className="hero-fullwidth">
+          {/* Background: slideshow (swap for video when ready) */}
+          <div className="hero-video-bg">
+            <div className="hero-slide hero-slide-1" />
+            <div className="hero-slide hero-slide-2" />
+            <div className="hero-slide hero-slide-3" />
+            <div className="hero-slide hero-slide-4" />
+            {/* Uncomment when real video is available:
+            <video
+              autoPlay muted loop playsInline
+              className="hero-video-element"
+              poster="/images/slide-city.jpg"
+            >
+              <source src="/videos/hero.mp4" type="video/mp4" />
+            </video>
+            */}
+            <div className="hero-video-overlay" />
           </div>
 
-          <div className="hero-split-visual">
-            <div className="hero-slideshow">
-              <div className="hero-slide hero-slide-1" />
-              <div className="hero-slide hero-slide-2" />
-              <div className="hero-slide hero-slide-3" />
-              <div className="hero-slide hero-slide-4" />
-            </div>
-            <div className="hero-slide-overlay" />
-            <div className="hero-slide-text">
-              <span className="hero-slide-label">Best practice first. AI-native approach.</span>
+          {/* Content overlaid */}
+          <div className="hero-fullwidth-content">
+            <div className="container-main">
+              <h1 className="hero-fw-h1">
+                <span className="hero-word-your">{t('hero.headlinePre')}</span>{' '}
+                <span className="rotating-word-container">
+                  <span className={`rotating-word-pill rotating-word-pill-light ${isAnimating ? 'rotating-out' : 'rotating-in'}`}>
+                    {currentWord}
+                  </span>
+                </span>{' '}
+                <span className="hero-rest">{t('hero.headlinePost')} {t('hero.headlineLine2')}</span>
+              </h1>
+              <p className="hero-fw-sub">{t('hero.subline')}</p>
+              <div className="hero-fw-ctas">
+                <Link href="/contact" className="hero-fw-btn-primary">{t('cta.primary')}</Link>
+                <Link href="/diensten" className="hero-fw-btn-secondary">{t('hero.ctaSecondary')}</Link>
+              </div>
+              <p className="hero-fw-tagline">{t('hero.tagline')}</p>
             </div>
           </div>
         </section>
 
         {/* CLIENT LOGOS */}
-        <section className="logo-strip">
+        <section className="clients-strip">
           <div className="container-main" style={{textAlign:'center'}}>
-            <p className="logo-strip-label">{t('clients.label')}</p>
-            <div className="logo-marquee-wrapper">
-              <div className="logo-marquee">
-                <span className="client-logo-text">Propty</span>
-                <span className="client-logo-text">Autoranq</span>
-                <span className="client-logo-text">Webgroeiers</span>
-                <span className="client-logo-text">Propty</span>
-                <span className="client-logo-text">Autoranq</span>
-                <span className="client-logo-text">Webgroeiers</span>
+            <p className="clients-label">{t('clients.label')}</p>
+            <div className="clients-marquee-container">
+              <div className="clients-marquee-track">
+                {[...CLIENTS, ...CLIENTS].map((client, i) => (
+                  <div key={i} className="client-item">
+                    {client.hasLogo ? (
+                      <img src={client.logo} alt={client.name} className="client-logo-img" />
+                    ) : (
+                      <span className="client-logo-text">{client.name}</span>
+                    )}
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -985,6 +1026,102 @@ export default function Home() {
 
         {/* TOOLBOX */}
         <ToolboxSection />
+
+        {/* SERVICE PACKAGES */}
+        <section className="section-py">
+          <div className="container-main">
+            <div style={{textAlign:'center', marginBottom:64}}>
+              <p className="feature-eyebrow reveal">{t('packages.eyebrow')}</p>
+              <h2 className="feature-h2 reveal reveal-delay-1" style={{textAlign:'center'}}>{t('packages.headline')}</h2>
+              <p className="feature-sub reveal reveal-delay-2" style={{textAlign:'center', maxWidth:600, margin:'0 auto'}}>{t('packages.subline')}</p>
+            </div>
+
+            <div className="packages-grid">
+              {/* Package 1: Website */}
+              <div className="package-card reveal reveal-delay-1">
+                <div className="package-icon">&#127760;</div>
+                <h3 className="package-title">{t('packages.website.title')}</h3>
+                <p className="package-desc">{t('packages.website.desc')}</p>
+                <ul className="package-features">
+                  <li>Responsive design</li>
+                  <li>CMS integratie</li>
+                  <li>SEO geoptimaliseerd</li>
+                  <li>Analytics dashboard</li>
+                  <li>SSL & hosting</li>
+                </ul>
+                <div className="package-price">
+                  <span className="package-from">{t('packages.from')}</span>
+                  <span className="package-amount">&euro;2.500</span>
+                </div>
+                <a href="/contact" className="package-cta">{t('packages.cta')}</a>
+              </div>
+
+              {/* Package 2: Webshop */}
+              <div className="package-card package-card-featured reveal reveal-delay-2">
+                <div className="package-badge">{t('packages.popular')}</div>
+                <div className="package-icon">&#128722;</div>
+                <h3 className="package-title">{t('packages.webshop.title')}</h3>
+                <p className="package-desc">{t('packages.webshop.desc')}</p>
+                <ul className="package-features">
+                  <li>Product catalogus</li>
+                  <li>Betaalintegratie (iDEAL, Stripe)</li>
+                  <li>Voorraadbeheer</li>
+                  <li>Order management</li>
+                  <li>Klantportaal</li>
+                  <li>Email automatisering</li>
+                </ul>
+                <div className="package-price">
+                  <span className="package-from">{t('packages.from')}</span>
+                  <span className="package-amount">&euro;5.000</span>
+                </div>
+                <a href="/contact" className="package-cta">{t('packages.cta')}</a>
+              </div>
+
+              {/* Package 3: Software op maat */}
+              <div className="package-card reveal reveal-delay-3">
+                <div className="package-icon">&#9889;</div>
+                <h3 className="package-title">{t('packages.custom.title')}</h3>
+                <p className="package-desc">{t('packages.custom.desc')}</p>
+                <ul className="package-features">
+                  <li>API development</li>
+                  <li>Database architectuur</li>
+                  <li>Admin dashboard</li>
+                  <li>Gebruikersportaal</li>
+                  <li>CI/CD pipeline</li>
+                  <li>24/7 monitoring</li>
+                </ul>
+                <div className="package-price">
+                  <span className="package-from">{t('packages.from')}</span>
+                  <span className="package-amount">&euro;10.000</span>
+                </div>
+                <a href="/contact" className="package-cta">{t('packages.cta')}</a>
+              </div>
+
+              {/* Package 4: Marketing */}
+              <div className="package-card reveal reveal-delay-4">
+                <div className="package-icon">&#128200;</div>
+                <h3 className="package-title">{t('packages.marketing.title')}</h3>
+                <p className="package-desc">{t('packages.marketing.desc')}</p>
+                <ul className="package-features">
+                  <li>SEO strategie & uitvoering</li>
+                  <li>Content marketing</li>
+                  <li>Social media management</li>
+                  <li>Google Ads campagnes</li>
+                  <li>Maandelijkse rapportage</li>
+                </ul>
+                <div className="package-price">
+                  <span className="package-from">{t('packages.from')}</span>
+                  <span className="package-amount">&euro;1.500<span style={{fontSize:'0.6em',fontWeight:400}}>/mnd</span></span>
+                </div>
+                <a href="/contact" className="package-cta">{t('packages.cta')}</a>
+              </div>
+            </div>
+
+            <p className="packages-note reveal" style={{textAlign:'center', marginTop:32, fontSize:'0.875rem', color:'var(--text-tertiary)'}}>
+              {t('packages.note')}
+            </p>
+          </div>
+        </section>
 
         {/* SOCIAL PROOF */}
         <section className="section-py">

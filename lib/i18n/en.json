@@ -489,5 +489,30 @@
   },
   "clients": {
     "label": "OUR CLIENTS"
+  },
+  "packages": {
+    "eyebrow": "OUR PACKAGES",
+    "headline": "Clear solutions, fixed pricing",
+    "subline": "Choose the package that matches your ambition. All-inclusive, no surprises.",
+    "from": "Starting at",
+    "cta": "Request a quote",
+    "popular": "Popular",
+    "note": "All prices exclude VAT. Custom solutions always available.",
+    "website": {
+      "title": "Professional Website",
+      "desc": "A fast, beautiful website that converts. Built on modern technology."
+    },
+    "webshop": {
+      "title": "Webshop",
+      "desc": "Sell online with a complete webshop. From product page to checkout."
+    },
+    "custom": {
+      "title": "Custom Software",
+      "desc": "An application that does exactly what you need. From concept to production."
+    },
+    "marketing": {
+      "title": "Marketing Package",
+      "desc": "More visibility, more leads, more clients. Measurable and transparent."
+    }
   }
 }
