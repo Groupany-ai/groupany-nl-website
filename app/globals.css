@@ -4885,3 +4885,200 @@ html.dark .dash-toast-text { color: #999; }
 html.dark .team-avatar-img {
   border-color: var(--border);
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   HERO SPLIT SCREEN LAYOUT
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.hero-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: calc(100vh - 64px);
+  padding-top: 64px;
+}
+
+.hero-split-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(40px, 6vw, 80px);
+  padding-right: clamp(32px, 4vw, 64px);
+}
+
+.hero-split-h1 {
+  font-size: clamp(2.25rem, 4vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+
+.hero-split-sub {
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 480px;
+  margin-bottom: 32px;
+}
+
+.hero-split-ctas {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.hero-split-tagline {
+  font-size: 0.8125rem;
+  color: var(--text-tertiary);
+  font-style: italic;
+}
+
+/* Visual / Video side */
+.hero-split-visual {
+  position: relative;
+  overflow: hidden;
+  background: #0A2540;
+}
+
+/* Ken Burns slideshow */
+.hero-slideshow {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  animation: kenBurns 24s linear infinite;
+  transform: scale(1);
+}
+
+.hero-slide-1 {
+  background-image: url(/images/slide-city.jpg);
+  animation-delay: 0s;
+}
+.hero-slide-2 {
+  background-image: url(/images/slide-street.jpg);
+  animation-delay: 6s;
+}
+.hero-slide-3 {
+  background-image: url(/images/slide-highway.jpg);
+  animation-delay: 12s;
+}
+.hero-slide-4 {
+  background-image: url(/images/slide-fields.jpg);
+  animation-delay: 18s;
+}
+
+@keyframes kenBurns {
+  0% { opacity: 0; transform: scale(1); }
+  4% { opacity: 1; }
+  25% { opacity: 1; transform: scale(1.08); }
+  29% { opacity: 0; transform: scale(1.08); }
+  100% { opacity: 0; transform: scale(1); }
+}
+
+/* Overlay */
+.hero-slide-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(10, 37, 64, 0.3) 0%, rgba(10, 37, 64, 0.1) 100%);
+  z-index: 2;
+}
+
+/* Text overlay on video */
+.hero-slide-text {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  right: 40px;
+  z-index: 3;
+}
+.hero-slide-label {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.9);
+  color: #0A2540;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  backdrop-filter: blur(8px);
+}
+html.dark .hero-slide-label {
+  background: rgba(26, 26, 30, 0.9);
+  color: #f5f5f5;
+}
+
+/* Client logo text style */
+.client-logo-text {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+  opacity: 0.3;
+  padding: 0 40px;
+  white-space: nowrap;
+  letter-spacing: -0.02em;
+}
+
+/* Mobile: stack hero */
+@media (max-width: 768px) {
+  .hero-split {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding-top: 64px;
+  }
+  .hero-split-visual {
+    height: 300px;
+    order: -1;
+  }
+  .hero-split-content {
+    padding: 32px 20px;
+  }
+  .hero-split-h1 {
+    font-size: 2rem;
+    line-height: 1.3;
+    text-align: center;
+  }
+  .hero-split-sub {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-split-ctas {
+    justify-content: center;
+  }
+  .hero-split-tagline {
+    text-align: center;
+  }
+  .hero-word-your {
+    display: block;
+  }
+  .hero-rest {
+    display: block;
+  }
+  .rotating-word-container {
+    display: block;
+    margin: 8px auto;
+    min-width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-split-visual {
+    height: 220px;
+  }
+  .hero-split-h1 {
+    font-size: 1.75rem;
+  }
+  .hero-split-ctas .btn-primary,
+  .hero-split-ctas .btn-secondary {
+    font-size: 0.8125rem;
+    padding: 0 16px;
+    height: 44px;
+    white-space: nowrap;
+  }
+}

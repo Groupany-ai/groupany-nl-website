@@ -26,7 +26,8 @@
       "development",
       "groei",
       "digitale"
-    ]
+    ],
+    "tagline": "Best practice first. AI-native approach."
   },
   "proof": {
     "label": "Onze technologie"
@@ -485,5 +486,8 @@
   "bottomCta": {
     "text": "Vragen? Laten we praten. Geheel vrijblijvend.",
     "button": "Neem contact op"
+  },
+  "clients": {
+    "label": "ONZE KLANTEN"
   }
 }

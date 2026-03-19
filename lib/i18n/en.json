@@ -26,7 +26,8 @@
       "development",
       "growth",
       "digital"
-    ]
+    ],
+    "tagline": "Best practice first. AI-native approach."
   },
   "proof": {
     "label": "Our technology"
@@ -485,5 +486,8 @@
   "bottomCta": {
     "text": "Questions? Let's talk. No strings attached.",
     "button": "Get in touch"
+  },
+  "clients": {
+    "label": "OUR CLIENTS"
   }
 }

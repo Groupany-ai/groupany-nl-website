@@ -186,173 +186,6 @@ function NotificationFeed() {
 }
 
 
-/* -- Neural Mesh Background --------------------------------------- */
-function NeuralMesh() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-    
-    let animationId: number;
-    let time = 0;
-    
-    const resize = () => {
-      canvas.width = canvas.offsetWidth * 2;
-      canvas.height = canvas.offsetHeight * 2;
-    };
-    resize();
-    window.addEventListener('resize', resize);
-    
-    const NODES = 80;
-    const nodes: { x: number; y: number; vx: number; vy: number; baseX: number; baseY: number }[] = [];
-    
-    for (let i = 0; i < NODES; i++) {
-      const x = Math.random() * canvas.width;
-      const y = Math.random() * canvas.height;
-      nodes.push({
-        x, y,
-        baseX: x, baseY: y,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
-      });
-    }
-    
-    const draw = () => {
-      time += 0.005;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
-      nodes.forEach((node, i) => {
-        node.x = node.baseX + Math.sin(time + i * 0.3) * 30 + Math.cos(time * 0.7 + i * 0.5) * 20;
-        node.y = node.baseY + Math.cos(time + i * 0.4) * 25 + Math.sin(time * 0.6 + i * 0.3) * 15;
-        
-        node.baseX += node.vx;
-        node.baseY += node.vy;
-        
-        if (node.baseX < -50) node.baseX = canvas.width + 50;
-        if (node.baseX > canvas.width + 50) node.baseX = -50;
-        if (node.baseY < -50) node.baseY = canvas.height + 50;
-        if (node.baseY > canvas.height + 50) node.baseY = -50;
-      });
-      
-      const maxDist = 200;
-      
-      for (let i = 0; i < nodes.length; i++) {
-        for (let j = i + 1; j < nodes.length; j++) {
-          const dx = nodes[i].x - nodes[j].x;
-          const dy = nodes[i].y - nodes[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          
-          if (dist < maxDist) {
-            const opacity = (1 - dist / maxDist) * 0.12;
-            ctx.strokeStyle = `rgba(37, 99, 235, ${opacity})`;
-            ctx.lineWidth = 1;
-            ctx.beginPath();
-            ctx.moveTo(nodes[i].x, nodes[i].y);
-            ctx.lineTo(nodes[j].x, nodes[j].y);
-            ctx.stroke();
-          }
-        }
-      }
-      
-      nodes.forEach((node) => {
-        ctx.beginPath();
-        ctx.arc(node.x, node.y, 2, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(37, 99, 235, 0.15)';
-        ctx.fill();
-      });
-      
-      for (let w = 0; w < 5; w++) {
-        ctx.beginPath();
-        ctx.strokeStyle = `rgba(37, 99, 235, ${0.03 + w * 0.01})`;
-        ctx.lineWidth = 0.5;
-        for (let x = 0; x < canvas.width; x += 4) {
-          const y = canvas.height * (0.2 + w * 0.15) + 
-            Math.sin(x * 0.003 + time * 2 + w) * 40 +
-            Math.cos(x * 0.005 + time * 1.5 + w * 2) * 25;
-          if (x === 0) ctx.moveTo(x, y);
-          else ctx.lineTo(x, y);
-        }
-        ctx.stroke();
-      }
-      
-      animationId = requestAnimationFrame(draw);
-    };
-    
-    draw();
-    
-    return () => {
-      cancelAnimationFrame(animationId);
-      window.removeEventListener('resize', resize);
-    };
-  }, []);
-  
-  return (
-    <canvas
-      ref={canvasRef}
-      className="neural-mesh-canvas"
-      style={{
-        position: 'absolute',
-        inset: 0,
-        width: '100%',
-        height: '100%',
-        borderRadius: '24px',
-        pointerEvents: 'none',
-      }}
-    />
-  );
-}
-
-/* -- Floating Notification Cards ---------------------------------- */
-function FloatingNotifications() {
-  const [activeNotif, setActiveNotif] = useState(0);
-  
-  const notifications = [
-    { agent: 'Sam', text: 'Deployed API v2.4 to production' },
-    { agent: 'Jessica', text: 'New lead qualified: TechStartup BV' },
-    { agent: 'Max', text: 'Sprint planning completed' },
-    { agent: 'Alex', text: 'Security scan passed' },
-    { agent: 'Levi', text: 'Frontend build optimized by 23%' },
-    { agent: 'Jessica', text: 'Campaign report: +340% traffic' },
-    { agent: 'Sam', text: 'Database migration successful' },
-    { agent: 'Max', text: 'New client onboarded' },
-  ];
-  
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveNotif(prev => (prev + 1) % notifications.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
-  
-  const current = notifications[activeNotif];
-  const positions: Record<string, string>[] = [
-    { top: '8px', right: '8px' },
-    { bottom: '8px', left: '8px' },
-    { top: '8px', left: '8px' },
-    { bottom: '8px', right: '8px' },
-    { top: '50%', right: '6px' },
-    { top: '50%', left: '6px' },
-    { top: '8px', left: '50%' },
-    { bottom: '8px', left: '50%' },
-  ];
-  const pos = positions[activeNotif % positions.length];
-  
-  return (
-    <div className="floating-notif" key={activeNotif} style={{ position: 'absolute', ...pos, zIndex: 5 }}>
-      <div className="floating-notif-card">
-        <img src={AGENTS[current.agent]?.avatar || ''} alt="" className="floating-notif-avatar" />
-        <div>
-          <div className="floating-notif-agent">{current.agent}</div>
-          <div className="floating-notif-text">{current.text}</div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 /* -- Counter animation for stats ----------------------------------- */
 function AnimatedCounter({ target, suffix = '' }: { target: number; suffix?: string }) {
   const [count, setCount] = useState(0)
@@ -859,24 +692,17 @@ export default function Home() {
 
       <main ref={revealRef}>
         {/* HERO */}
-        <section className="hero-section">
-          {/* Animated background shapes */}
-          <div className="hero-shape hero-shape-1" />
-          <div className="hero-shape hero-shape-2" />
-          <div className="hero-shape hero-shape-3" />
-
-          <div className="container-main">
-            <h1 className="hero-h1 reveal reveal-delay-1">
+        <section className="hero-split">
+          <div className="hero-split-content">
+            <h1 className="hero-split-h1 reveal reveal-delay-1">
               <span className="hero-word-your">{t('hero.headlinePre')}</span>{' '}
               <RotatingWord />{' '}
               <span className="hero-rest">{t('hero.headlinePost')} {t('hero.headlineLine2')}</span>
             </h1>
-
-            <p className="hero-sub reveal reveal-delay-2">
+            <p className="hero-split-sub reveal reveal-delay-2">
               {t('hero.subline')}
             </p>
-
-            <div className="hero-cta-group reveal reveal-delay-3">
+            <div className="hero-split-ctas reveal reveal-delay-3">
               <Link href="/contact" className="btn-primary">
                 {t('cta.primary')}
               </Link>
@@ -884,219 +710,36 @@ export default function Home() {
                 {t('hero.ctaSecondary')}
               </Link>
             </div>
+            <p className="hero-split-tagline reveal reveal-delay-4">{t('hero.tagline')}</p>
+          </div>
 
-            <div
-              className="hero-dashboard-wrapper reveal reveal-delay-4"
-              style={{
-                position: 'relative',
-                background: '#0A2540',
-                backgroundImage: 'url(/images/hero-gradient.png)',
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundBlendMode: 'soft-light',
-                padding: '48px 40px',
-                borderRadius: '24px',
-                overflow: 'hidden',
-              }}
-            >
-              <NeuralMesh />
-              <div 
-                className="hero-dashboard"
-                style={{ position: 'relative', zIndex: 3 }}
-              >
-                <div className="dash-chrome">
-                  <div className="dash-dots">
-                    <span style={{background:'#ff5f57',width:10,height:10,borderRadius:'50%',display:'inline-block'}} />
-                    <span style={{background:'#ffbd2e',width:10,height:10,borderRadius:'50%',display:'inline-block'}} />
-                    <span style={{background:'#28c840',width:10,height:10,borderRadius:'50%',display:'inline-block'}} />
-                  </div>
-                  <span className="dash-chrome-title">project.groupany.nl</span>
-                  <span className="dash-badge">LIVE</span>
-                </div>
-
-                <div className="dash-body">
-                  {/* Sidebar */}
-                  <div className="dash-sidebar">
-                    {/* Company switcher */}
-                    <div className="dash-company">
-                      <div className="dash-company-logo" style={{background:'#2563eb'}}>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M13 2L3 14h9l-1 10 10-12h-9l1-10z" />
-                        </svg>
-                      </div>
-                      <div className="dash-company-info">
-                        <span className="dash-company-name">{t('dashboard.companyName')}</span>
-                        <span className="dash-company-type">{t('dashboard.companyType')}</span>
-                      </div>
-                      <span className="dash-company-chevron">&#9662;</span>
-                    </div>
-
-                    <div className="dash-sidebar-divider" />
-
-                    {/* Menu items */}
-                    <div className="dash-menu">
-                      <div className="dash-menu-item dash-menu-active">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-                        {t('dashboard.sidebar.dashboard')}
-                      </div>
-                      <div className="dash-menu-item">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z"/></svg>
-                        {t('dashboard.sidebar.projects')}
-                      </div>
-                      <div className="dash-menu-item">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-                        {t('dashboard.sidebar.website')}
-                      </div>
-                      <div className="dash-menu-item">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 3v18h18"/><path d="M7 16l4-8 4 4 4-12"/></svg>
-                        {t('dashboard.sidebar.analytics')}
-                      </div>
-                      <div className="dash-menu-item">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg>
-                        {t('dashboard.sidebar.content')}
-                      </div>
-                      <div className="dash-menu-item">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-                        {t('dashboard.sidebar.seo')}
-                      </div>
-                      <div className="dash-menu-item">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
-                        {t('dashboard.sidebar.reports')}
-                      </div>
-                    </div>
-
-                    <div className="dash-sidebar-divider" />
-
-                    <div className="dash-menu">
-                      <div className="dash-menu-item dash-menu-muted">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4"/></svg>
-                        {t('dashboard.sidebar.settings')}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Main content */}
-                  <div className="dash-main">
-                    {/* Agent activity bar */}
-                    <div className="dash-agents-bar">
-                      <span className="dash-agents-label">{t('dashboard.agentsLabel')}</span>
-                      <div className="dash-agents-row">
-                        {Object.entries(AGENTS).map(([name, agent]) => (
-                          <div key={name} className={`dash-agent-chip ${name === activeAgent ? 'dash-agent-active' : ''}`}>
-                            <img src={agent.avatar} alt={name} className="dash-agent-avatar" />
-                            <span className="dash-agent-status" />
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Active task indicator */}
-                    <div className="dash-active-task">
-                      <img src={AGENTS[activeAgent]?.avatar} alt="" className="dash-active-avatar" />
-                      <div className="dash-active-info">
-                        <span className="dash-active-name">{activeAgent}</span>
-                        <span className="dash-active-action">{currentAction}</span>
-                        <div className="dash-active-tools">
-                          {agentTools[activeAgent]?.map(slug => (
-                            <img key={slug} src={`/logos/${slug}.svg`} alt="" className="dash-active-tool-logo" />
-                          ))}
-                        </div>
-                      </div>
-                      <span className="dash-active-status">{t('dashboard.inProgress')}</span>
-                    </div>
-                    {/* KPI cards */}
-                    <div className="dash-kpis">
-                      <div className="dash-kpi">
-                        <div className="dash-kpi-label">{t('dashboard.kpi.visitors')}</div>
-                        <div className="dash-kpi-value" key={`rev-${kpis.revenue}`}>2.847</div>
-                        <div className="dash-kpi-change dash-kpi-positive">+18.3%</div>
-                      </div>
-                      <div className="dash-kpi">
-                        <div className="dash-kpi-label">{t('dashboard.kpi.conversions')}</div>
-                        <div className="dash-kpi-value" key={`tasks-${kpis.tasks}`}>156</div>
-                        <div className="dash-kpi-change dash-kpi-positive">+23 {t('dashboard.kpi.thisWeek')}</div>
-                      </div>
-                      <div className="dash-kpi">
-                        <div className="dash-kpi-label">{t('dashboard.kpi.leads')}</div>
-                        <div className="dash-kpi-value" key={`q-${kpis.queued}`}>42</div>
-                        <div className="dash-kpi-change dash-kpi-positive">+8 {t('dashboard.kpi.thisWeek')}</div>
-                      </div>
-                      <div className="dash-kpi">
-                        <div className="dash-kpi-label">{t('dashboard.kpi.uptime')}</div>
-                        <div className="dash-kpi-value" key={`docs-${kpis.docs}`}>99.9%</div>
-                        <div className="dash-kpi-change">{t('dashboard.kpi.allSystems')}</div>
-                      </div>
-                    </div>
-
-                    {/* Live Activity Feed */}
-                    <LiveFeed activeAgent={activeAgent} />
-
-                    {/* Toast notification */}
-                    <DashToast activeAgent={activeAgent} />
-                  </div>
-
-                </div>
-              </div>
+          <div className="hero-split-visual">
+            <div className="hero-slideshow">
+              <div className="hero-slide hero-slide-1" />
+              <div className="hero-slide hero-slide-2" />
+              <div className="hero-slide hero-slide-3" />
+              <div className="hero-slide hero-slide-4" />
             </div>
-
-            {/* Mobile-only: compact activity feed (replaces dashboard on small screens) */}
-            <div className="hero-mobile-activity" style={{ display: 'none' }}>
-              {/* hidden - replaced by hero-mobile-visual below */}
+            <div className="hero-slide-overlay" />
+            <div className="hero-slide-text">
+              <span className="hero-slide-label">Best practice first. AI-native approach.</span>
             </div>
-
-            {/* Mobile-only: product screenshot card */}
-            <div className="hero-mobile-visual">
-              <div className="hero-image-card">
-                <div className="image-card-chrome">
-                  <div className="chrome-dots">
-                    <span style={{background:'#ff5f57'}} />
-                    <span style={{background:'#ffbd2e'}} />
-                    <span style={{background:'#28c840'}} />
-                  </div>
-                  <div className="chrome-url">project.groupany.nl</div>
-                </div>
-                <div className="image-card-body">
-                  <div className="mock-topbar">
-                    <span className="mock-greeting">{t('dashboard.greeting')}</span>
-                    <span className="mock-badge">{t('dashboard.teamOnline')}</span>
-                  </div>
-                  <div className="mock-stats-row">
-                    <div className="mock-stat"><strong>12</strong><small>Active tasks</small></div>
-                    <div className="mock-stat"><strong>847</strong><small>Completed</small></div>
-                    <div className="mock-stat"><strong>99.9%</strong><small>Uptime</small></div>
-                  </div>
-                  <div className="mock-feed">
-                    <div className="mock-feed-item">
-                      <span className="mock-dot" style={{background:'#2563eb'}} />
-                      <span>Sam deployed API v2.4</span>
-                      <span className="mock-time">2m</span>
-                    </div>
-                    <div className="mock-feed-item">
-                      <span className="mock-dot" style={{background:'#059669'}} />
-                      <span>Jessica sent 24 outreach emails</span>
-                      <span className="mock-time">5m</span>
-                    </div>
-                    <div className="mock-feed-item">
-                      <span className="mock-dot" style={{background:'#d97757'}} />
-                      <span>Max reviewed pull request #47</span>
-                      <span className="mock-time">8m</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
           </div>
         </section>
 
-        {/* LOGO MARQUEE */}
+        {/* CLIENT LOGOS */}
         <section className="logo-strip">
-          <p className="logo-strip-label">{t('proof.label')}</p>
-          <div className="logo-marquee-wrapper">
-            <div className="logo-marquee">
-              {[...ALL_TECH_LOGOS, ...ALL_TECH_LOGOS].map((item, i) => (
-                <TechLogo key={`${item.name}-${i}`} name={item.name} slug={item.slug} />
-              ))}
+          <div className="container-main" style={{textAlign:'center'}}>
+            <p className="logo-strip-label">{t('clients.label')}</p>
+            <div className="logo-marquee-wrapper">
+              <div className="logo-marquee">
+                <span className="client-logo-text">Propty</span>
+                <span className="client-logo-text">Autoranq</span>
+                <span className="client-logo-text">Webgroeiers</span>
+                <span className="client-logo-text">Propty</span>
+                <span className="client-logo-text">Autoranq</span>
+                <span className="client-logo-text">Webgroeiers</span>
+              </div>
             </div>
           </div>
         </section>
