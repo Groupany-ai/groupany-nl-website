@@ -148,7 +148,7 @@ body {
   justify-content: center;
   gap: 8px;
   height: 48px;
-  padding: 0 24px;
+  padding: 0 36px;
   background: var(--accent);
   color: var(--text-on-accent);
   font-family: var(--font-body);
@@ -1268,7 +1268,7 @@ html.dark .notification-feed {
    ═══════════════════════════════════════════════════════════════════════════ */
 
 .stats-dashboard-card {
-  max-width: 70%;
+  max-width: 85%;
   margin: 0 auto;
   background: var(--bg);
   border: 1px solid var(--border);
@@ -5647,10 +5647,10 @@ html.dark .reveal-glow.visible {
 /* Hero content 70% width centered (matches nav width) */
 .hero-fullwidth-content .container-main {
   text-align: left;
-  max-width: 70%;
+  max-width: 85%;
   margin: 0 auto;
-  padding-left: 0;
-  padding-right: 0;
+  padding-left: 36px;
+  padding-right: 36px;
 }
 .hero-fw-h1 {
   text-align: left;
