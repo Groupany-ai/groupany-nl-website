@@ -5128,6 +5128,7 @@ html.dark .hero-slide-label {
 .hero-fullwidth-content {
   position: relative;
   z-index: 5;
+  width: 100%;
   padding-top: 100px;
   padding: clamp(120px, 15vh, 180px) 0 clamp(80px, 10vh, 120px);
 }
@@ -5684,4 +5685,14 @@ html.dark .reveal-glow.visible {
     padding-left: 20px;
     padding-right: 20px;
   }
+}
+
+/* Language switcher - dark text when scrolled */
+.nav-scrolled .lang-toggle,
+.nav-scrolled .lang-btn {
+  color: var(--text) !important;
+}
+.nav-scrolled .lang-btn-active {
+  background: var(--bg-alt) !important;
+  color: var(--text) !important;
 }
