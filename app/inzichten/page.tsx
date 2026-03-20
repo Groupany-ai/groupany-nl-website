@@ -5,117 +5,69 @@ import Link from 'next/link'
 import NewsletterForm from '@/components/NewsletterForm'
 
 export const metadata: Metadata = {
-  title: 'Knowledge Center | Groupany - Insights on AI, Technology & Business',
-  description: 'Expert insights, guides, and case studies about building and scaling businesses with AI agents. Software development, marketing, operations.',
+  title: 'Inzichten | Groupany - Gidsen over marketing, software en groei',
+  description: 'Praktische gidsen en artikelen over online marketing, SEO, software op maat, recruitment en procesautomatisering voor het MKB.',
   openGraph: {
-    title: 'Knowledge Center | Groupany',
-    description: 'Expert insights on AI-native business operations.',
+    title: 'Inzichten | Groupany',
+    description: 'Praktische gidsen over marketing, software en bedrijfsgroei.',
     type: 'website',
   },
 }
 
 const ARTICLES = [
   {
-    title: 'The complete guide to AI agents in business operations',
-    excerpt: 'Everything you need to know about deploying AI agents for software development, marketing, and strategy.',
-    category: 'Guide',
-    slug: 'ai-agents-business-operations',
-    readTime: 12,
-    date: '2026-03-15',
-    image: '/images/article-ai-agents.png',
-  },
-  {
-    title: 'Why we stopped hiring and started deploying',
-    excerpt: 'How Groupany runs four companies with a team of six humans and five AI agents.',
-    category: 'Behind the scenes',
-    slug: 'why-we-stopped-hiring',
+    title: 'Software op maat laten bouwen: de complete gids',
+    excerpt: 'Alles over maatwerk software: kosten, proces, technologie en tips. Van eerste idee tot live applicatie.',
+    category: 'Gids',
+    slug: 'software-op-maat',
     readTime: 8,
-    date: '2026-03-12',
-    image: '/images/team-abstract.png',
+    date: '2026-03-18',
+    image: '/images/article-software-op-maat.png',
   },
   {
-    title: 'Software development in 2026: AI-native from day one',
-    excerpt: 'The traditional dev agency model is broken. Here is what is replacing it.',
-    category: 'Opinion',
-    slug: 'software-development-2026',
-    readTime: 6,
-    date: '2026-03-10',
-    image: '/images/article-software.png',
+    title: 'Professionele website laten maken: wat kost het en wat krijgt u?',
+    excerpt: 'Van budget tot technologie: alles wat u moet weten voor een professionele bedrijfswebsite in 2026.',
+    category: 'Gids',
+    slug: 'website-laten-maken',
+    readTime: 7,
+    date: '2026-03-17',
+    image: '/images/article-website-laten-maken.png',
   },
   {
-    title: 'Building a 420K LOC platform with AI agents',
-    excerpt: 'A technical deep dive into how Propty is built, tested, and deployed by AI.',
-    category: 'Case Study',
-    slug: 'propty-case-study',
-    readTime: 15,
-    date: '2026-03-08',
-    image: '/images/article-case-study.png',
+    title: 'SEO uitbesteden: de complete gids voor bedrijven',
+    excerpt: 'Moet u SEO uitbesteden? Wat kost het, wat levert het op en waar let u op bij het kiezen van een SEO bureau?',
+    category: 'Gids',
+    slug: 'seo-uitbesteden',
+    readTime: 8,
+    date: '2026-03-16',
+    image: '/images/article-seo-uitbesteden.png',
   },
   {
-    title: 'The real cost of AI vs traditional teams',
-    excerpt: 'A transparent comparison of costs, speed, and quality between AI-native and traditional approaches.',
-    category: 'Analysis',
-    slug: 'cost-ai-vs-traditional',
-    readTime: 10,
-    date: '2026-03-05',
-    image: '/images/article-cost-analysis.png',
+    title: 'Online marketing voor het MKB: de complete gids',
+    excerpt: 'Praktische marketinggids voor het MKB. Van SEO en Google Ads tot social media en email marketing.',
+    category: 'Gids',
+    slug: 'online-marketing-mkb',
+    readTime: 8,
+    date: '2026-03-15',
+    image: '/images/article-online-marketing-mkb.png',
   },
   {
-    title: 'Marketing automation that actually works',
-    excerpt: 'How our AI marketing agent generates leads, writes content, and runs campaigns autonomously.',
-    category: 'Guide',
-    slug: 'marketing-automation-guide',
-    readTime: 9,
-    date: '2026-03-01',
-    image: '/images/article-marketing.png',
+    title: 'Bedrijfsprocessen automatiseren: waar begint u?',
+    excerpt: 'Ontdek welke processen u kunt automatiseren, welke tools er zijn en hoeveel tijd en geld u bespaart.',
+    category: 'Gids',
+    slug: 'processen-automatiseren',
+    readTime: 7,
+    date: '2026-03-14',
+    image: '/images/article-processen-automatiseren.png',
   },
   {
-    title: 'What is OpenClaw and why it matters for AI agents',
-    excerpt: 'A deep dive into the open-source AI agent framework powering production deployments.',
-    category: 'Guide',
-    slug: 'what-is-openclaw',
-    readTime: 11,
-    date: '2026-02-26',
-  },
-  {
-    title: 'The best open source AI tools in 2026',
-    excerpt: 'A practical guide to LangChain, Qdrant, Ollama, vLLM, OpenClaw, and more for CTOs building their AI stack.',
-    category: 'Guide',
-    slug: 'open-source-ai-tools-2026',
-    readTime: 13,
-    date: '2026-02-22',
-  },
-  {
-    title: 'AI agents vs chatbots: what is the difference and why it matters',
-    excerpt: 'A clear explanation of the difference between AI agents and chatbots, with real-world examples.',
-    category: 'Explainer',
-    slug: 'ai-agents-vs-chatbots',
-    readTime: 9,
-    date: '2026-02-18',
-  },
-  {
-    title: 'How to build an AI-native company from day one',
-    excerpt: 'A practical framework for founders starting new companies with AI-first operations.',
-    category: 'Framework',
-    slug: 'building-ai-native-company',
-    readTime: 12,
-    date: '2026-02-14',
-  },
-  {
-    title: 'AI security and compliance: what every business needs to know',
-    excerpt: 'GDPR, data handling, credential management, and audit trails for AI-native operations.',
-    category: 'Guide',
-    slug: 'ai-security-compliance',
-    readTime: 11,
-    date: '2026-02-10',
-  },
-  {
-    title: 'The future of work: how AI agents are reshaping teams',
-    excerpt: 'How AI agents are changing team structures, roles, and the human-AI collaboration model.',
-    category: 'Thought Leadership',
-    slug: 'future-of-work-ai-agents',
-    readTime: 11,
-    date: '2026-02-06',
+    title: 'Recruitment in 2026: hoe AI de juiste kandidaten vindt',
+    excerpt: 'AI verandert recruitment. Ontdek hoe u sneller en goedkoper de juiste mensen vindt zonder traditionele bureaus.',
+    category: 'Gids',
+    slug: 'recruitment-2026',
+    readTime: 7,
+    date: '2026-03-13',
+    image: '/images/article-recruitment-2026.png',
   },
 ]
 
@@ -147,12 +99,12 @@ function ArticleCard({ title, excerpt, category, slug, readTime, image }: {
       <div className="article-card-body">
         <div className="article-card-meta">
           <span className="article-category">{category}</span>
-          <span className="article-read-time">{readTime} min read</span>
+          <span className="article-read-time">{readTime} min leestijd</span>
         </div>
         <h3 className="article-card-title">{title}</h3>
         <p className="article-card-excerpt">{excerpt}</p>
-        <Link href={`/insights/${slug}`} className="article-link">
-          Read more
+        <Link href={`/inzichten/${slug}`} className="article-link">
+          Lees meer
         </Link>
       </div>
     </article>
@@ -167,10 +119,9 @@ export default function InsightsPage() {
         {/* Hero */}
         <section className="section-py" style={{ paddingTop: 120 }}>
           <div className="container-main">
-            <h1 className="insights-h1">Knowledge Center</h1>
+            <h1 className="insights-h1">Inzichten</h1>
             <p className="insights-sub">
-              Insights, guides, and case studies about building and scaling
-              businesses with technology.
+              Praktische gidsen over marketing, software, SEO en bedrijfsgroei.
             </p>
           </div>
         </section>
@@ -187,19 +138,19 @@ export default function InsightsPage() {
                   overflow: 'hidden',
                 }}
               >
-                <img src="/images/article-case-study.png" alt="Propty case study" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <img src="/images/article-software-op-maat.png" alt="Software op maat" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
               <div className="featured-content">
-                <span className="article-category">Case Study</span>
+                <span className="article-category">Gids</span>
                 <h2 style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2rem)', fontWeight: 700, margin: '12px 0', lineHeight: 1.3 }}>
-                  How we manage a 420,000-line codebase with AI agents
+                  Software op maat laten bouwen: de complete gids
                 </h2>
                 <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: 20 }}>
-                  A deep dive into how Propty, a property management platform, is
-                  built and maintained by AI-native teams.
+                  Alles over maatwerk software: kosten, proces, technologie en tips.
+                  Van eerste idee tot live applicatie.
                 </p>
-                <Link href="/inzichten/propty-case-study" className="article-link">
-                  Read case study
+                <Link href="/inzichten/software-op-maat" className="article-link">
+                  Lees de gids
                 </Link>
               </div>
             </div>
@@ -210,7 +161,7 @@ export default function InsightsPage() {
         <section className="section-py section-alt">
           <div className="container-main">
             <h2 style={{ fontSize: 'clamp(1.25rem, 2vw, 1.75rem)', fontWeight: 700, marginBottom: 32 }}>
-              Latest Insights
+              Alle artikelen
             </h2>
             <div className="articles-grid">
               {ARTICLES.map((article) => (
@@ -224,10 +175,10 @@ export default function InsightsPage() {
         <section className="section-py">
           <div className="container-main" style={{ textAlign: 'center', maxWidth: 600, margin: '0 auto' }}>
             <h2 style={{ fontSize: 'clamp(1.25rem, 2vw, 1.75rem)', fontWeight: 700, marginBottom: 8 }}>
-              Stay informed
+              Blijf op de hoogte
             </h2>
             <p style={{ color: 'var(--text-secondary)', marginBottom: 0 }}>
-              Monthly insights on AI, technology, and business operations. No spam.
+              Maandelijkse inzichten over marketing, technologie en groei. Geen spam.
             </p>
             <NewsletterForm />
           </div>
