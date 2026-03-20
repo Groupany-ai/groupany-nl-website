@@ -71,6 +71,12 @@ html.dark {
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+}
+
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -312,7 +318,7 @@ html.dark .btn-secondary {
 
 /* ── Rotating word animation (STABLE, fixed container) ───────────── */
 /* ── Rotating word animation (STABLE, fixed container) ─────────────── */
-.PLACEHOLDER_RWCTEMP {
+.rotating-word-container {
   display: inline-flex;
   min-width: 280px;
   justify-content: center;
@@ -5401,4 +5407,289 @@ html.dark .client-logo-img {
   background: var(--accent);
   color: white;
   border-color: var(--accent);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MISSING UTILITY CLASS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.feature-sub {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   COMPREHENSIVE MOBILE RESPONSIVE FIXES (v2)
+   Prevents horizontal overflow, stacks grids, scales typography
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Newsletter form: stack on mobile ─────────────────────────────────── */
+@media (max-width: 480px) {
+  .newsletter-form {
+    flex-direction: column;
+    max-width: 100%;
+  }
+  .newsletter-form input {
+    width: 100%;
+  }
+  .newsletter-form button {
+    width: 100%;
+  }
+}
+
+/* ── CTA Band: fix button overflow on small screens ──────────────────── */
+@media (max-width: 480px) {
+  .cta-band-actions {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .cta-band-primary,
+  .cta-band-secondary {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 20px;
+    font-size: 0.875rem;
+  }
+  .cta-band-trust {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .cta-band-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 16px;
+    gap: 12px;
+  }
+  .cta-card-divider {
+    width: 100% !important;
+    height: 1px !important;
+  }
+  .cta-card-number {
+    font-size: 1.5rem;
+  }
+}
+
+/* ── Hero fullwidth: center-align overlay on mobile ──────────────────── */
+@media (max-width: 768px) {
+  .hero-video-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(10, 37, 64, 0.8) 0%,
+      rgba(10, 37, 64, 0.7) 50%,
+      rgba(10, 37, 64, 0.5) 100%
+    );
+  }
+  .hero-fullwidth-content {
+    padding: clamp(100px, 12vh, 140px) 0 clamp(60px, 8vh, 80px);
+  }
+  .hero-fw-sub {
+    font-size: 1rem;
+  }
+}
+
+/* ── Dashboard metrics: wrap on mobile ───────────────────────────────── */
+@media (max-width: 768px) {
+  .dash-metrics {
+    flex-wrap: wrap;
+    padding: 12px 16px;
+    gap: 8px;
+  }
+  .dash-metric {
+    flex: 0 0 calc(50% - 8px);
+    justify-content: center;
+  }
+  .dash-metric-divider {
+    display: none;
+  }
+  .dash-metric-value {
+    font-size: 1rem;
+  }
+}
+
+/* ── Featured article image: responsive height ───────────────────────── */
+@media (max-width: 768px) {
+  .featured-image {
+    height: 200px !important;
+  }
+}
+
+/* ── Inline style overrides via max-width approach ───────────────────── */
+/* Prevent any element with fixed widths from causing overflow */
+@media (max-width: 768px) {
+  .container-main,
+  .container-narrow {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* Ensure feature grid cards don't overflow */
+  .feature-card {
+    padding: 20px;
+  }
+  .feature-card-lg,
+  .feature-card-md,
+  .feature-card-sm {
+    min-height: auto !important;
+  }
+
+  /* Feature visual panels - prevent overflow on mobile */
+  .feature-visual-panel {
+    min-height: auto !important;
+  }
+
+  /* Package grid mobile refinement */
+  .package-card {
+    padding: 24px;
+  }
+
+  /* Ensure hero dashboard wrapper doesn't overflow */
+  .hero-dashboard-wrapper {
+    padding: 0;
+    overflow: hidden;
+  }
+
+  /* Client strip adjustments */
+  .client-logo-text {
+    font-size: 1rem;
+    padding: 0 24px;
+  }
+
+  /* Feature card descriptions - allow full width */
+  .feature-card-desc {
+    max-width: 100%;
+  }
+}
+
+/* ── Extra small screens (< 380px) — aggressive stacking ─────────────── */
+@media (max-width: 380px) {
+  .hero-fw-ctas {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .hero-fw-btn-primary,
+  .hero-fw-btn-secondary {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .hero-fw-h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    align-items: center;
+  }
+  .hero-cta-group .btn-primary,
+  .hero-cta-group .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-split-ctas {
+    flex-direction: column;
+  }
+  .hero-split-ctas .btn-primary,
+  .hero-split-ctas .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .review-badges {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .toolbox-mobile-tools {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+  .stats-dashboard-item:not(:last-child)::after {
+    display: none;
+  }
+  .stats-dashboard-item {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .mobile-activity-stats {
+    grid-template-columns: 1fr;
+  }
+  .mobile-stat:first-child {
+    border-right: none;
+  }
+  .mobile-stat:nth-child(3) {
+    border-right: none;
+  }
+}
+
+/* ── Prevent content images from exceeding container ─────────────────── */
+/* Only apply to images inside content areas, not UI avatars/icons */
+.container-main img,
+.container-narrow img,
+.featured-image img,
+.article-card-image img,
+.blog-card-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ── Prevent horizontal overflow from absolutely positioned elements ── */
+.hero-shape {
+  max-width: 100vw;
+}
+
+@media (max-width: 768px) {
+  .hero-shape-1 {
+    width: 300px;
+    height: 300px;
+    right: -150px;
+    top: -100px;
+  }
+  .hero-shape-2 {
+    width: 200px;
+    height: 200px;
+    left: -100px;
+  }
+  .hero-shape-3 {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+/* ── Ensure scene event cards don't overflow on small screens ────────── */
+@media (max-width: 480px) {
+  .scene-stage {
+    padding: 0;
+    gap: 2px;
+  }
+  .scene-agent {
+    gap: 4px;
+  }
+  .scene-agent-avatar {
+    width: 24px;
+    height: 24px;
+  }
+  .scene-event-content {
+    font-size: 0.55rem;
+    padding: 3px 6px;
+    gap: 4px;
+  }
+  .mini-progress {
+    width: 50px;
+  }
+}
+
+/* ── Automation flow cards: wrap on mobile ─────────────────────────── */
+@media (max-width: 768px) {
+  .feature-visual-panel {
+    flex-wrap: wrap !important;
+  }
 }
