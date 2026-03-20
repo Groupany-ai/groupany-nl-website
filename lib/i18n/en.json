@@ -9,7 +9,7 @@
   "hero": {
     "socialProof": "Trusted by <strong>12 companies</strong> in the Netherlands",
     "headlinePre": "Your",
-    "headlinePost": "partner. Always at work.",
+    "headlinePost": "partner. Always focused on real impact.",
     "headlineLine2": "",
     "headline": "We build software, websites and marketing campaigns that deliver measurable results. Faster, smarter and more affordable.",
     "subline": "We build software, websites, and marketing campaigns that deliver measurable results. Faster, smarter, and more affordable than traditional agencies.",
@@ -493,8 +493,8 @@
   },
   "packages": {
     "eyebrow": "OUR PACKAGES",
-    "headline": "Clear solutions, fixed pricing",
-    "subline": "Choose the package that matches your ambition. All-inclusive, no surprises.",
+    "headline": "Clear solutions, tailored to you",
+    "subline": "Choose the package that matches your ambition. All-inclusive.",
     "from": "Starting at",
     "cta": "Request a quote",
     "popular": "Popular",

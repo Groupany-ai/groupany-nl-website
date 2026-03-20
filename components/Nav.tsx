@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { useTranslation, type Locale } from '@/lib/i18n/useTranslation'
 import ThemeToggle from './ThemeToggle'
@@ -13,13 +14,17 @@ const LOCALES: { code: Locale; label: string }[] = [
 export default function Nav() {
   const { t, locale, setLocale } = useTranslation()
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
+  const pathname = usePathname()
+  const isHome = pathname === '/'
+  const [scrolled, setScrolled] = useState(!isHome)
 
   useEffect(() => {
+    if (!isHome) { setScrolled(true); return }
     const handleScroll = () => setScrolled(window.scrollY > 100)
     window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [isHome])
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : ''
@@ -52,9 +57,9 @@ export default function Nav() {
           </div>
 
           <div className="hidden md:flex items-center gap-3">
-            <div className="lang-container" style={{ display: 'flex', alignItems: 'center', gap: 2, padding: 3, borderRadius: '999px', marginRight: 4 }}>
+            <div className="lang-container">
               {LOCALES.map(({ code, label }) => (
-                <button key={code} onClick={() => setLocale(code)} className={code === locale ? 'lang-active' : ''}>{label}</button>
+                <button key={code} onClick={() => setLocale(code)} className={`lang-btn ${code === locale ? 'lang-btn-active' : ''}`.trim()}>{label}</button>
               ))}
             </div>
             <ThemeToggle />

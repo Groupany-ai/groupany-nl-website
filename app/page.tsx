@@ -8,6 +8,7 @@ import { useReveal } from '@/lib/useReveal'
 import { useEffect, useState, useRef, useCallback } from 'react'
 import ToolboxSection from '@/components/ToolboxSection'
 
+import ShowcaseCarousel from '@/components/ShowcaseCarousel'
 /* -- Icon component ------------------------------------------------ */
 function Icon({ name, size = 20 }: { name: string; size?: number }) {
   const icons: Record<string, React.ReactNode> = {
@@ -605,6 +606,111 @@ const CLIENTS: { name: string; logo?: string; hasLogo: boolean }[] = [
   { name: 'Webgroeiers', hasLogo: false },
 ];
 
+
+/* ── TerminalTyper: types deployment lines on scroll-reveal ── */
+function TerminalTyper() {
+  const LINES = [
+    { prefix: '$ ', text: 'npm run deploy', color: '#a8b2d0' },
+    { prefix: '\u2713 ', text: 'Building application...', color: '#80E0A7' },
+    { prefix: '\u2713 ', text: 'Running tests (47 passed)', color: '#80E0A7' },
+    { prefix: '\u2713 ', text: 'Deploying to production...', color: '#80E0A7' },
+    { prefix: '\u2713 ', text: 'Live at app.client.nl', color: '#635BFF' },
+  ]
+  const [visibleLines, setVisibleLines] = useState<Array<{prefix:string,text:string,color:string,typed:string}>>([])
+  const [started, setStarted] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const card = el.closest('.reveal')
+    if (!card) return
+    const obs = new MutationObserver(() => {
+      if (card.classList.contains('visible') && !started) setStarted(true)
+    })
+    obs.observe(card, { attributes: true, attributeFilter: ['class'] })
+    if (card.classList.contains('visible')) setStarted(true)
+    return () => obs.disconnect()
+  }, [started])
+
+  useEffect(() => {
+    if (!started) return
+    let cancelled = false
+    const run = async () => {
+      for (let li = 0; li < LINES.length; li++) {
+        const line = LINES[li]
+        let typed = ''
+        for (let ci = 0; ci <= line.text.length; ci++) {
+          if (cancelled) return
+          typed = line.text.slice(0, ci)
+          setVisibleLines(prev => {
+            const next = [...prev]
+            next[li] = { ...line, typed }
+            return next
+          })
+          await new Promise(r => setTimeout(r, ci === 0 ? (li === 0 ? 300 : 500) : 28))
+        }
+      }
+    }
+    run()
+    return () => { cancelled = true }
+  }, [started])
+
+  return (
+    <div ref={ref} style={{ fontFamily: 'monospace', fontSize: 12, lineHeight: 1.9 }}>
+      {visibleLines.map((line, i) => (
+        <div key={i} style={{ color: line.color, display: 'flex' }}>
+          <span style={{ color: '#635BFF', marginRight: 4 }}>{line.prefix}</span>
+          <span>{line.typed}</span>
+          {i === visibleLines.length - 1 && line.typed.length < LINES[i]?.text.length && (
+            <span className="terminal-cursor" />
+          )}
+        </div>
+      ))}
+    </div>
+  )
+}
+
+/* ── SeoRankCounter: counts down from 47 to 3 on scroll-reveal ── */
+function SeoRankCounter() {
+  const [rank, setRank] = useState(47)
+  const [started, setStarted] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const card = el.closest('.reveal')
+    if (!card) return
+    const obs = new MutationObserver(() => {
+      if (card.classList.contains('visible') && !started) setStarted(true)
+    })
+    obs.observe(card, { attributes: true, attributeFilter: ['class'] })
+    if (card.classList.contains('visible')) setStarted(true)
+    return () => obs.disconnect()
+  }, [started])
+
+  useEffect(() => {
+    if (!started) return
+    let current = 47
+    const target = 3
+    const step = () => {
+      if (current <= target) return
+      current -= 1
+      setRank(current)
+      setTimeout(step, current > 20 ? 30 : current > 10 ? 50 : 80)
+    }
+    setTimeout(step, 600)
+  }, [started])
+
+  return (
+    <div ref={ref} className="seo-rank-inner">
+      <span className="seo-rank-arrow">▲</span>
+      <span className="seo-rank-num">#{rank}</span>
+    </div>
+  )
+}
+
 export default function Home() {
   const { t, tArray } = useTranslation()
   const revealRef = useReveal()
@@ -730,6 +836,7 @@ export default function Home() {
     author: t(`socialProof.testimonials.${i}.author`),
     role: t(`socialProof.testimonials.${i}.role`),
     initials: t(`socialProof.testimonials.${i}.author`).split(' ').map((w: string) => w[0]).join(''),
+    avatar: ['/images/avatar-jan.jpg', '/images/avatar-lisa.jpg', '/images/avatar-mark.jpg'][i],
   }))
 
   return (
@@ -809,86 +916,157 @@ export default function Home() {
               <h2 className="feature-h2 reveal reveal-delay-1" style={{textAlign:'center'}}>{t('impact.headline')}</h2>
             </div>
 
-            <div className="impact-grid">
-              {/* Large card: Software */}
+                        <div className="impact-grid">
+
+              {/* ── Card 1: SOFTWARE — typing terminal ── */}
               <div className="impact-card impact-card-lg reveal reveal-glow reveal-delay-1">
                 <div className="impact-card-content">
                   <span className="impact-label">SOFTWARE</span>
                   <h3 className="impact-title">{t('impact.software.title')}</h3>
                   <p className="impact-desc">{t('impact.software.desc')}</p>
                 </div>
-                <div className="impact-visual" style={{
-                  backgroundImage: 'url(/images/card-bg-dev.jpg)',
-                  backgroundSize: 'cover',
-                  borderRadius: 12,
-                  padding: 20,
-                  marginTop: 20,
-                  minHeight: 180,
-                }}>
-                  <div style={{fontFamily:'monospace', fontSize:12, lineHeight:2, color:'#8898AA'}}>
-                    <div><span style={{color:'#635BFF'}}>const</span> app = <span style={{color:'#80E0A7'}}>createApp</span>();</div>
-                    <div><span style={{color:'#635BFF'}}>await</span> app.deploy();</div>
-                    <div><span style={{color:'#80E0A7'}}>// Live in production</span></div>
+                <div className="impact-visual impact-visual-terminal">
+                  <div className="terminal-topbar">
+                    <span className="terminal-dot terminal-dot-red" />
+                    <span className="terminal-dot terminal-dot-yellow" />
+                    <span className="terminal-dot terminal-dot-green" />
+                    <span className="terminal-title">deploy.sh</span>
+                  </div>
+                  <div className="terminal-body">
+                    <TerminalTyper />
                   </div>
                 </div>
               </div>
 
-              {/* Large card: Marketing */}
-              <div className="impact-card impact-card-lg reveal reveal-glow reveal-delay-2">
+              {/* ── Card 2: MARKETING — animated bar chart ── */}
+              <div className="impact-card impact-card-lg impact-card-dark reveal reveal-glow reveal-delay-2">
                 <div className="impact-card-content">
                   <span className="impact-label">MARKETING</span>
                   <h3 className="impact-title">{t('impact.marketing.title')}</h3>
                   <p className="impact-desc">{t('impact.marketing.desc')}</p>
                 </div>
-                <div className="impact-visual" style={{
-                  backgroundImage: 'url(/images/card-bg-marketing.jpg)',
-                  backgroundSize: 'cover',
-                  borderRadius: 12,
-                  padding: 20,
-                  marginTop: 20,
-                  minHeight: 180,
-                }}>
-                  <div style={{display:'flex', alignItems:'flex-end', gap:5, height:140}}>
-                    {[35,55,45,70,50,85,65,95,75,110,80,120].map((h,i) => (
-                      <div key={i} style={{flex:1, height:h*0.9, background:'linear-gradient(to top, #2563eb, #635BFF)', borderRadius:'3px 3px 0 0', opacity:0.5+i*0.04}} />
+                <div className="impact-visual impact-visual-marketing">
+                  <div className="mkt-notifications">
+                    <div className="mkt-notif mkt-notif-1">
+                      <span>+23 leads</span>
+                    </div>
+                    <div className="mkt-notif mkt-notif-2">
+                      <span>+€4.2K omzet</span>
+                    </div>
+                    <div className="mkt-notif mkt-notif-3">
+                      <span>CTR +340%</span>
+                    </div>
+                  </div>
+                  <div className="mkt-chart">
+                    {[35,55,45,70,50,85,65,95,75,110,80,120].map((h, i) => (
+                      <div key={i} className="mkt-bar" style={({'--bar-h':(h*0.85)+'px','--bar-delay':(i*0.06)+'s'} as React.CSSProperties)} />
+                    ))}
+                  </div>
+                  <div className="mkt-labels">
+                    {['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Aug','Sep','Oct','Nov','Dec'].map((m) => (
+                      <span key={m} className="mkt-label">{m}</span>
                     ))}
                   </div>
                 </div>
               </div>
 
-              {/* Medium cards row */}
+              {/* ── Card 3: WEBSITES — browser skeleton loader ── */}
               <div className="impact-card impact-card-md reveal reveal-glow reveal-delay-1">
                 <div className="impact-card-content">
                   <div style={{display:'flex',alignItems:'center',gap:8,marginBottom:8}}>
-              <img src="/logos/wordpress.svg" alt="WordPress" style={{height:16,opacity:0.5,filter:'grayscale(100%)'}} />
-              <span className="impact-label">WEBSITES</span>
-            </div>
+                    <img src="/logos/wordpress.svg" alt="WordPress" style={{height:16,opacity:0.5,filter:'grayscale(100%)'}} />
+                    <span className="impact-label">WEBSITES</span>
+                  </div>
                   <h3 className="impact-title">{t('impact.websites.title')}</h3>
                   <p className="impact-desc">{t('impact.websites.desc')}</p>
                 </div>
+                <div className="impact-visual impact-visual-browser">
+                  <div className="browser-chrome">
+                    <div className="browser-dots">
+                      <span /><span /><span />
+                    </div>
+                    <div className="browser-urlbar">
+                      <span className="browser-lock">🔒</span>
+                      <span className="browser-url">client.nl</span>
+                    </div>
+                  </div>
+                  <div className="browser-body">
+                    <div className="skel-hero" />
+                    <div className="skel-row">
+                      <div className="skel-block skel-block-a" />
+                      <div className="skel-block skel-block-b" />
+                    </div>
+                    <div className="skel-line skel-line-1" />
+                    <div className="skel-line skel-line-2" />
+                    <div className="skel-btn" />
+                  </div>
+                </div>
               </div>
 
+              {/* ── Card 4: SEO — rank counter ── */}
               <div className="impact-card impact-card-md reveal reveal-glow reveal-delay-2">
                 <div className="impact-card-content">
                   <div style={{display:'flex',alignItems:'center',gap:8,marginBottom:8}}>
-              <img src="/logos/google.svg" alt="Google" style={{height:16,opacity:0.5,filter:'grayscale(100%)'}} />
-              <span className="impact-label">SEO</span>
-            </div>
+                    <img src="/logos/google.svg" alt="Google" style={{height:16,opacity:0.5,filter:'grayscale(100%)'}} />
+                    <span className="impact-label">SEO</span>
+                  </div>
                   <h3 className="impact-title">{t('impact.seo.title')}</h3>
                   <p className="impact-desc">{t('impact.seo.desc')}</p>
                 </div>
+                <div className="impact-visual impact-visual-seo">
+                  <div className="seo-searchbar">
+                    <span className="seo-search-icon">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                    </span>
+                    <span className="seo-search-text">beste CRM software 2024</span>
+                  </div>
+                  <div className="seo-snippet">
+                    <div className="seo-rank-badge">
+                      <SeoRankCounter />
+                    </div>
+                    <div className="seo-snippet-content">
+                      <div className="seo-url">client.nl › crm-software</div>
+                      <div className="seo-title-line">De beste CRM software voor uw bedrijf</div>
+                      <div className="seo-desc-line" />
+                      <div className="seo-desc-line seo-desc-line-short" />
+                    </div>
+                  </div>
+                </div>
               </div>
 
+              {/* ── Card 5: RECRUITMENT — candidate cards ── */}
               <div className="impact-card impact-card-md reveal reveal-glow reveal-delay-3">
                 <div className="impact-card-content">
                   <div style={{display:'flex',alignItems:'center',gap:8,marginBottom:8}}>
-              <img src="/logos/linkedin.svg" alt="LinkedIn" style={{height:16,opacity:0.5,filter:'grayscale(100%)'}} />
-              <span className="impact-label">RECRUITMENT</span>
-            </div>
+                    <img src="/logos/linkedin.svg" alt="LinkedIn" style={{height:16,opacity:0.5,filter:'grayscale(100%)'}} />
+                    <span className="impact-label">RECRUITMENT</span>
+                  </div>
                   <h3 className="impact-title">{t('impact.recruitment.title')}</h3>
                   <p className="impact-desc">{t('impact.recruitment.desc')}</p>
                 </div>
+                <div className="impact-visual impact-visual-recruitment">
+                  {[
+                    { initials: 'SB' as string, name: 'Sara Bakker', role: 'Senior Developer', match: 94, color: '#2563eb' },
+                    { initials: 'MV' as string, name: 'Marc Visser', role: 'Product Manager', match: 91, color: '#1d4ed8' },
+                    { initials: 'LK' as string, name: 'Lisa de Kok', role: 'UX Designer', match: 88, color: '#3b82f6' },
+                  ].map((c, i) => (
+                    <div key={i} className="recruit-card" style={{ '--card-delay': `${0.15 + i * 0.15}s` } as React.CSSProperties}>
+                      <div className="recruit-avatar" style={{ background: c.color }}>{c.initials}</div>
+                      <div className="recruit-info">
+                        <div className="recruit-name">{c.name}</div>
+                        <div className="recruit-role">{c.role}</div>
+                      </div>
+                      <div className="recruit-match">
+                        <span className="recruit-match-pct">Match {c.match}%</span>
+                        <div className="recruit-match-bar">
+                          <div className="recruit-match-fill" style={{ '--fill-w': `${c.match}%`, '--fill-delay': `${0.4 + i * 0.15}s` } as React.CSSProperties} />
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
+
             </div>
           </div>
         </section>
@@ -898,8 +1076,19 @@ export default function Home() {
         {/* TOOLBOX */}
         <ToolboxSection />
 
-        {/* SERVICE PACKAGES */}
+        {/* SHOWCASES */}
         <section className="section-py">
+          <div className="container-main">
+            <div style={{textAlign:'center', marginBottom:64}}>
+              <p className="feature-eyebrow reveal">ONZE CASES</p>
+              <h2 className="feature-h2 reveal reveal-delay-1" style={{textAlign:'center'}}>Waar wij aan werken</h2>
+            </div>
+            <ShowcaseCarousel />
+          </div>
+        </section>
+
+        {/* SERVICE PACKAGES */}
+        <section className="section-py packages-section-bg">
           <div className="container-main">
             <div style={{textAlign:'center', marginBottom:64}}>
               <p className="feature-eyebrow reveal">{t('packages.eyebrow')}</p>
@@ -940,10 +1129,6 @@ export default function Home() {
                     <li>Analytics dashboard</li>
                   </ul>
                   <div className="pkg-footer">
-                    <div className="pkg-price">
-                      <span className="pkg-from">{t('packages.from')}</span>
-                      <span className="pkg-amount">&euro;2.500</span>
-                    </div>
                     <a href="/contact" className="pkg-cta">{t('packages.cta')}</a>
                   </div>
                 </div>
@@ -960,11 +1145,7 @@ export default function Home() {
                       <div style={{width:60,height:60,background:'#fff',borderRadius:8,boxShadow:'0 2px 8px rgba(0,0,0,0.06)'}} />
                     </div>
                     <div style={{marginTop:12,background:'#fff',borderRadius:8,padding:10,boxShadow:'0 2px 8px rgba(0,0,0,0.06)'}}>
-                      <div style={{display:'flex',justifyContent:'space-between',fontSize:11,color:'#0A2540'}}>
-                        <span style={{fontWeight:600}}>Totaal</span>
-                        <span style={{fontWeight:700}}>&euro;149,95</span>
-                      </div>
-                      <div style={{marginTop:8,background:'#2563eb',borderRadius:6,padding:'6px 0',textAlign:'center',color:'#fff',fontSize:10,fontWeight:600}}>Afrekenen met iDEAL</div>
+                      <div style={{background:'#2563eb',borderRadius:6,padding:'6px 0',textAlign:'center',color:'#fff',fontSize:10,fontWeight:600}}>Afrekenen met iDEAL</div>
                     </div>
                   </div>
                 </div>
@@ -980,10 +1161,6 @@ export default function Home() {
                     <li>Email automatisering</li>
                   </ul>
                   <div className="pkg-footer">
-                    <div className="pkg-price">
-                      <span className="pkg-from">{t('packages.from')}</span>
-                      <span className="pkg-amount">&euro;5.000</span>
-                    </div>
                     <a href="/contact" className="pkg-cta pkg-cta-accent">{t('packages.cta')}</a>
                   </div>
                 </div>
@@ -1010,10 +1187,6 @@ export default function Home() {
                     <li>24/7 monitoring</li>
                   </ul>
                   <div className="pkg-footer">
-                    <div className="pkg-price">
-                      <span className="pkg-from">{t('packages.from')}</span>
-                      <span className="pkg-amount">&euro;10.000</span>
-                    </div>
                     <a href="/contact" className="pkg-cta">{t('packages.cta')}</a>
                   </div>
                 </div>
@@ -1039,19 +1212,13 @@ export default function Home() {
                     <li>Maandrapportage</li>
                   </ul>
                   <div className="pkg-footer">
-                    <div className="pkg-price">
-                      <span className="pkg-from">{t('packages.from')}</span>
-                      <span className="pkg-amount">&euro;1.500<span style={{fontSize:'0.5em',fontWeight:400}}>/mnd</span></span>
-                    </div>
                     <a href="/contact" className="pkg-cta">{t('packages.cta')}</a>
                   </div>
                 </div>
               </div>
             </div>
 
-            <p className="reveal" style={{textAlign:'center', marginTop:32, fontSize:'0.8125rem', color:'var(--text-tertiary)'}}>
-              {t('packages.note')}
-            </p>
+
           </div>
         </section>
 
@@ -1097,7 +1264,7 @@ export default function Home() {
                   </div>
                   <p className="testimonial-quote">&ldquo;{item.quote}&rdquo;</p>
                   <div className="testimonial-author">
-                    <div className="testimonial-avatar">{item.initials}</div>
+                    <img src={item.avatar} alt={item.author} className="testimonial-avatar" />
                     <div>
                       <strong>{item.author}</strong>
                       <span className="testimonial-role">{item.role}</span>
@@ -1142,21 +1309,11 @@ export default function Home() {
                 </div>
               </div>
               <div className="cta-band-right">
-                <div className="cta-band-card">
-                  <div className="cta-card-stat">
-                    <span className="cta-card-number">10x</span>
-                    <span className="cta-card-label">{t('ctaBand.stat1')}</span>
-                  </div>
-                  <div className="cta-card-divider" />
-                  <div className="cta-card-stat">
-                    <span className="cta-card-number">90%</span>
-                    <span className="cta-card-label">{t('ctaBand.stat2')}</span>
-                  </div>
-                  <div className="cta-card-divider" />
-                  <div className="cta-card-stat">
-                    <span className="cta-card-number">24/7</span>
-                    <span className="cta-card-label">{t('ctaBand.stat3')}</span>
-                  </div>
+                <div className="cta-visual">
+                  <div className="cta-layer cta-layer-1" />
+                  <div className="cta-layer cta-layer-2" />
+                  <div className="cta-layer cta-layer-3" />
+                  <div className="cta-layer cta-layer-4" />
                 </div>
               </div>
             </div>

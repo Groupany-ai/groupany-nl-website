@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" fill="none">
+  <rect x="6" y="10" width="14" height="40" rx="7" fill="currentColor"/>
+  <rect x="26" y="10" width="14" height="40" rx="7" fill="currentColor"/>
+  <text x="52" y="38" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="currentColor" letter-spacing="-0.5">Jaro Groep</text>
+</svg>

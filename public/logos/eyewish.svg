@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" fill="none">
+  <circle cx="18" cy="30" r="12" stroke="currentColor" stroke-width="2.5" fill="none"/>
+  <circle cx="18" cy="30" r="5" fill="currentColor"/>
+  <text x="38" y="36" font-family="Georgia, serif" font-size="20" font-weight="400" fill="currentColor" letter-spacing="0.5">Eye Wish</text>
+</svg>
